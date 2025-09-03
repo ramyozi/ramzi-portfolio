@@ -1,0 +1,35 @@
+'use client';
+
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Carousel } from '@/components/ui/carousel';
+import { useTranslations } from 'next-intl';
+
+export function Project() {
+  const t = useTranslations();
+  const rawProj = t('common.projects.list');
+  const projects = Array.isArray(rawProj) ? rawProj : [];
+
+  return (
+    <section id="projects">
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('common.header.projects')}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {projects.length > 0 ? (
+            <Carousel className="h-48">
+              {projects.map((p, idx) => (
+                <div key={idx} className="flex flex-col items-center justify-center h-full">
+                  <img src={p.image} alt={p.title} className="h-32 object-contain" />
+                  <p>{p.title}</p>
+                </div>
+              ))}
+            </Carousel>
+          ) : (
+            <p>{t('common.projects.empty')} (WIP)</p>
+          )}
+        </CardContent>
+      </Card>
+    </section>
+  );
+}
