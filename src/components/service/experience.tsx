@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 export function Experience() {
   const t = useTranslations();
-  const rawExp = t('common.experience.list');
+  const rawExp = t('common.experience.list') as any;
   const experiences = Array.isArray(rawExp) ? rawExp : [];
 
   return (
@@ -24,7 +24,7 @@ export function Experience() {
               </div>
             ))
           ) : (
-            <p>{t('common.experience.empty')}</p>
+            <p>{t('common.experience.empty')} (WIP)</p>
           )}
         </CardContent>
       </Card>

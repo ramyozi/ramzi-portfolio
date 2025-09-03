@@ -1,10 +1,59 @@
 {
   "common": {
-    "button": {
-      "click": "Cliquez"
+    "header": {
+      "siteName": "Portfolio de Ramzi",
+      "about": "À propos",
+      "motivation": "Motivation",
+      "experience": "Expériences",
+      "skills": "Compétences",
+      "projects": "Projets",
+      "contact": "Contactez-moi",
+      "languages": "Langues parlées"
+    },
+    "languages": {
+      "list": {
+        "fr": "Français",
+        "en": "Anglais",
+        "ar": "Arabe",
+        "kr": "Coréen"
+      },
+      "empty": "Aucune langue définie"
+    },
+    "aboutMe": {
+      "description": "Développeur full-stack passionné par la création d'applications web et mobiles modernes. Curieux, rigoureux et à l'aise en environnement Agile."
+    },
+    "motivation": {
+      "description": "Motivé à rejoindre des équipes tech ambitieuses pour concevoir, développer et faire évoluer des applications innovantes."
+    },
+    "experience": {
+      "list": [],
+      "empty": "Aucune expérience à afficher pour le moment."
+    },
+    "skills": {
+      "tab": {
+        "languages": "Langages de programmation",
+        "frameworks": "Frameworks",
+        "tools": "Outils"
+      },
+      "proficiency": {
+        "+": "Apprenti",
+        "++": "Moyen",
+        "+++": "Expert"
+      },
+      "empty": "Aucune compétence à afficher.",
+      "logoFallbackNote": "Certains logos peuvent ne pas apparaître en raison de bloqueurs de publicités ou de restrictions réseau."
+    },
+    "projects": {
+      "list": [],
+      "empty": "Aucun projet à afficher pour le moment"
+    },
+    "contact": {
+      "name": "Votre nom",
+      "email": "Votre email",
+      "message": "Votre message",
+      "submit": "Envoyer",
+      "success": "Message envoyé avec succès !",
+      "error": "Erreur lors de l'envoi."
     }
-  },
-  "homePage": {
-    "title": "Mon portfolio!"
   }
 }

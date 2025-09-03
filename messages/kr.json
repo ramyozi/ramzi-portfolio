@@ -1,10 +1,59 @@
 {
   "common": {
-    "button": {
-      "click": "컴퓨터를"
+    "header": {
+      "siteName": "람지 포트폴리오",
+      "about": "소개",
+      "motivation": "동기",
+      "experience": "경험",
+      "skills": "기술",
+      "projects": "프로젝트",
+      "contact": "연락하기",
+      "languages": "사용 언어"
+    },
+    "languages": {
+      "list": {
+        "fr": "프랑스어",
+        "en": "영어",
+        "ar": "아랍어",
+        "kr": "한국어"
+      },
+      "empty": "언어가 정의되지 않았습니다"
+    },
+    "aboutMe": {
+      "description": "현대적인 웹 및 모바일 애플리케이션 구축에 열정적인 풀스택 개발자. 호기심 많고, 꼼꼼하며, 애자일 환경에 익숙합니다."
+    },
+    "motivation": {
+      "description": "혁신적인 애플리케이션을 설계, 개발 및 발전시키기 위해 야심찬 기술 팀에 합류하고자 합니다."
+    },
+    "experience": {
+      "list": [],
+      "empty": "표시할 경험이 없습니다."
+    },
+    "skills": {
+      "tab": {
+        "languages": "프로그래밍 언어",
+        "frameworks": "프레임워크",
+        "tools": "도구"
+      },
+      "proficiency": {
+        "+": "초급",
+        "++": "중급",
+        "+++": "고급"
+      },
+      "empty": "표시할 기술이 없습니다.",
+      "logoFallbackNote": "광고 차단기나 네트워크 제한으로 인해 일부 로고가 표시되지 않을 수 있습니다."
+    },
+    "projects": {
+      "list": [],
+      "empty": "프로젝트가 없습니다."
+    },
+    "contact": {
+      "name": "이름",
+      "email": "이메일",
+      "message": "메시지",
+      "submit": "전송",
+      "success": "메시지가 성공적으로 전송되었습니다!",
+      "error": "메시지 전송 중 오류가 발생했습니다."
     }
-  },
-  "homePage": {
-    "title": "나의 포트폴리오!"
   }
 }

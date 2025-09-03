@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 export function Project() {
   const t = useTranslations();
-  const rawProj = t('common.projects.list');
+  const rawProj = t('common.projects.list') as any;
   const projects = Array.isArray(rawProj) ? rawProj : [];
 
   return (
