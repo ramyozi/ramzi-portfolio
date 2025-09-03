@@ -1,0 +1,10 @@
+{
+  "common": {
+    "button": {
+      "click": "Cliquez"
+    }
+  },
+  "homePage": {
+    "title": "Mon portfolio!"
+  }
+}

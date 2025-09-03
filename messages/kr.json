@@ -1,0 +1,10 @@
+{
+  "common": {
+    "button": {
+      "click": "컴퓨터를"
+    }
+  },
+  "homePage": {
+    "title": "나의 포트폴리오!"
+  }
+}
