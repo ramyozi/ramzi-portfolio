@@ -13,6 +13,10 @@ import {
   NavigationMenuViewport,
 } from '@/components/ui/navigation-menu';
 import { useTranslations } from 'next-intl';
+import LanguageSelector from '@/components/layout/language-selector';
+import { usePathname } from '@/i18n/navigation';
+import { routing } from '@/i18n/routing';
+import { ThemeToggle } from '@/components/layout/theme-toggle';
 
 interface HeaderProps {
   logoSrc?: string;
@@ -21,23 +25,36 @@ interface HeaderProps {
 
 export function Header({ logoSrc, logoAlt = 'Logo' }: HeaderProps) {
   const t = useTranslations();
+  const pathname = usePathname();
+
+  const currentLocale =
+    routing.locales.find((l) => pathname.startsWith(`/${l}`)) ||
+    routing.defaultLocale;
 
   const menuItems = [
-    { label: t('common.header.about'), href: '#about' },
-    { label: t('common.header.motivation'), href: '#motivation' },
-    { label: t('common.header.experience'), href: '#experience' },
-    { label: t('common.header.skills'), href: '#skills' },
-    { label: t('common.header.projects'), href: '#projects' },
-    { label: t('common.header.contact'), href: '#contact' },
+    { label: t('common.header.about'), href: `/${currentLocale}#about` },
+    {
+      label: t('common.header.motivation'),
+      href: `/${currentLocale}#motivation`,
+    },
+    {
+      label: t('common.header.experience'),
+      href: `/${currentLocale}#experience`,
+    },
+    { label: t('common.header.skills'), href: `/${currentLocale}#skills` },
+    { label: t('common.header.projects'), href: `/${currentLocale}#projects` },
+    { label: t('common.header.contact'), href: `/${currentLocale}#contact` },
   ];
 
   return (
-    <header className="w-full border-b border-border bg-background text-foreground sticky top-0 z-50">
-      <div className="container flex items-center justify-between py-4">
+    <header className='sticky top-0 z-50 w-full bg-background text-foreground'>
+      <div className='container flex items-center justify-between py-4'>
         {logoSrc && (
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href='/' className='flex items-center space-x-2'>
             <Image src={logoSrc} alt={logoAlt} width={40} height={40} />
-            <span className="font-bold text-lg">{t('common.header.siteName')}</span>
+            <span className='text-lg font-bold'>
+              {t('common.header.siteName')}
+            </span>
           </Link>
         )}
 
@@ -46,7 +63,10 @@ export function Header({ logoSrc, logoAlt = 'Logo' }: HeaderProps) {
             {menuItems.map((item, idx) => (
               <NavigationMenuItem key={idx}>
                 <NavigationMenuLink asChild>
-                  <Link href={item.href} className="px-3 py-2 hover:text-primary">
+                  <Link
+                    href={item.href}
+                    className='px-3 py-2 hover:text-primary'
+                  >
                     {item.label}
                   </Link>
                 </NavigationMenuLink>
@@ -56,6 +76,9 @@ export function Header({ logoSrc, logoAlt = 'Logo' }: HeaderProps) {
           <NavigationMenuIndicator />
           <NavigationMenuViewport />
         </NavigationMenu>
+
+        <LanguageSelector />
+        <ThemeToggle />
       </div>
     </header>
   );
