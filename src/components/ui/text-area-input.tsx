@@ -1,39 +1,35 @@
 'use client';
 import * as React from 'react';
-import { RefCallback, RefObject } from 'react';
+import { RefCallback } from 'react';
 
 import { cn } from '@/lib/utils';
 import { Label } from '@/components/ui/label';
 import { FieldErrors, UseFormReturn } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
-import { Info, PencilLine } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Info, Pencil } from 'lucide-react';
 import { getValueInObject } from '@/lib/get-value-in-object.utils';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TextAreaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   formHook?: UseFormReturn<any>;
   capitalize?: boolean;
   trim?: boolean;
   onUpdateButtonClick?: () => void;
-  wrapperClassName?: string;
 }
 
-const Input = ({
+const TextArea = ({
   ref,
   className,
-  type = 'text',
   label,
   formHook,
   capitalize = false,
   trim = true,
   onUpdateButtonClick,
-  wrapperClassName,
   ...props
-}: InputProps & {
-  ref?: RefObject<HTMLInputElement> | RefCallback<HTMLInputElement>;
+}: TextAreaProps & {
+  ref?: RefCallback<HTMLTextAreaElement>;
 }) => {
   const t = useTranslations();
 
@@ -45,14 +41,10 @@ const Input = ({
       )) ||
     null;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value: any = e.target.value;
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const value = transformTextAreaValue(e.target.value, capitalize, false);
 
-    if (type === 'text') {
-      value = transformInputValue(e.target.value, capitalize, false);
-
-      e.target.value = value ?? '';
-    }
+    e.target.value = value ?? '';
 
     if (formHook && props.name) {
       formHook.setValue(props.name, value);
@@ -61,8 +53,8 @@ const Input = ({
     if (props.onChange) props.onChange(e);
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const value = transformInputValue(e.target.value, capitalize, trim);
+  const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    const value = transformTextAreaValue(e.target.value, capitalize, trim);
 
     if (formHook && props.name) {
       formHook.setValue(props.name, value);
@@ -71,57 +63,39 @@ const Input = ({
     if (props.onBlur) props.onBlur(e);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      if (formHook && props.name) {
-        const value = transformInputValue(
-          formHook.getValues()[props.name],
-          capitalize,
-          trim
-        );
-
-        formHook.setValue(props.name, value);
-      }
-
-      if (props.onKeyDown) props.onKeyDown(e);
-    }
-  };
-
   return (
-    <div className={cn('w-full', props.hidden && 'hidden', wrapperClassName)}>
+    <div className={cn('w-full', props.hidden && 'hidden')}>
       {label && (
         <Label
           className='block text-sm font-bold'
           htmlFor={props.id || props.name}
         >
           {label}
-          {props.required && <span className='pl-1 text-destructive'>*</span>}
+          {props.required && <span className='pl-1 text-red-500'>*</span>}
         </Label>
       )}
       <div className='relative flex items-center'>
-        <input
-          type={type}
+        <textarea
           id={props.id || props.name}
           className={cn(
-            'flex h-10 w-full rounded-md border border-muted bg-transparent px-3 py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground',
-            props.disabled && 'cursor-not-allowed bg-muted',
+            'flex min-h-[80px] w-full rounded-md border border-muted bg-transparent px-3 py-2 text-sm outline-none ring-offset-background placeholder:text-muted-foreground',
+            props.disabled && 'cursor-not-allowed bg-gray-100',
             props.readOnly && 'cursor-not-allowed',
             className
           )}
           ref={ref}
           {...props}
           onChange={handleChange}
-          onKeyDown={handleKeyDown}
           onBlur={handleBlur}
         />
         {onUpdateButtonClick && (
           <Button
             variant='outline'
             size='icon'
-            className='absolute right-0 -translate-x-1/2 transform border-none'
+            className='absolute right-0 top-0 -translate-x-1/2 transform border-none'
             onClick={onUpdateButtonClick}
           >
-            <PencilLine size={18} strokeWidth={1} className='text-foreground' />
+            <Pencil />
           </Button>
         )}
       </div>
@@ -136,15 +110,18 @@ const Input = ({
   );
 };
 
-Input.displayName = 'Input';
+TextArea.displayName = 'TextArea';
 
-function transformInputValue(
+function transformTextAreaValue(
   value: string,
   capitalize: boolean = false,
   trim: boolean = true
 ): string | null {
   if (capitalize && value) {
-    value = value[0].toUpperCase() + value.slice(1);
+    value = value
+      .split('\n')
+      .map((line) => line.charAt(0).toUpperCase() + line.slice(1))
+      .join('\n');
   }
 
   if (trim && value) {
@@ -158,13 +135,4 @@ function transformInputValue(
   return value;
 }
 
-export { Input };
-
-export function InputSkeleton({ label }: { label?: string }) {
-  return (
-    <div className='flex flex-col gap-4'>
-      {label && <Label className='mb-2 block text-sm font-bold'>{label}</Label>}
-      <Skeleton className={'h-10 w-full'} />
-    </div>
-  );
-}
+export { TextArea };
