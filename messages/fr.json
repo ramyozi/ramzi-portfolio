@@ -11,6 +11,12 @@
       "languages": "Langues parlées"
     },
     "languages": {
+      "levels": {
+        "1": "Débutant",
+        "2": "Intermédiaire",
+        "3": "Avancé",
+        "4": "Natif"
+      },
       "list": {
         "fr": "Français",
         "en": "Anglais",
