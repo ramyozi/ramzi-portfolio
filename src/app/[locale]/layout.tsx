@@ -1,6 +1,6 @@
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
+import { Locale, routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import { Header } from '@/components/layout/header';
 import './globals.css';
@@ -8,11 +8,11 @@ import { ThemeProvider } from '@/components/layout/theme-provider';
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
-  const locale = (await params).locale;
+  const locale = params.locale;
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -20,10 +20,14 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale);
 
-  const messages = require(`../../../messages/${locale}.json`);
+  const messages: Record<string, string> = (
+    await import(`../../../messages/${locale}.json`)
+  ).default;
+
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={direction}>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProvider
@@ -32,7 +36,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            <Header />
+            <Header locale={locale as Locale} />
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>
