@@ -7,7 +7,7 @@
       "experience": "경험",
       "skills": "기술",
       "projects": "프로젝트",
-      "contact": "연락하기",
+      "contact": "문의하기",
       "languages": "사용 언어"
     },
     "languages": {
@@ -17,13 +17,13 @@
         "ar": "아랍어",
         "kr": "한국어"
       },
-      "empty": "언어가 정의되지 않았습니다"
+      "empty": "정의된 언어가 없습니다"
     },
     "aboutMe": {
-      "description": "현대적인 웹 및 모바일 애플리케이션 구축에 열정적인 풀스택 개발자. 호기심 많고, 꼼꼼하며, 애자일 환경에 익숙합니다."
+      "description": "현대적인 웹 및 모바일 애플리케이션 개발에 열정을 가진 풀스택 개발자. 호기심이 많고 꼼꼼하며 애자일 환경에 능숙합니다."
     },
     "motivation": {
-      "description": "혁신적인 애플리케이션을 설계, 개발 및 발전시키기 위해 야심찬 기술 팀에 합류하고자 합니다."
+      "description": "혁신적인 애플리케이션을 설계, 개발, 개선하기 위해 야심찬 기술 팀에 합류하고 싶습니다."
     },
     "experience": {
       "list": [],
@@ -38,22 +38,32 @@
       "proficiency": {
         "+": "초급",
         "++": "중급",
-        "+++": "고급"
+        "+++": "전문가"
       },
       "empty": "표시할 기술이 없습니다.",
-      "logoFallbackNote": "광고 차단기나 네트워크 제한으로 인해 일부 로고가 표시되지 않을 수 있습니다."
+      "logoFallbackNote": "광고 차단기 또는 네트워크 제한으로 인해 일부 로고가 표시되지 않을 수 있습니다."
     },
     "projects": {
       "list": [],
-      "empty": "프로젝트가 없습니다."
+      "empty": "표시할 프로젝트가 없습니다."
     },
-    "contact": {
-      "name": "이름",
-      "email": "이메일",
-      "message": "메시지",
-      "submit": "전송",
-      "success": "메시지가 성공적으로 전송되었습니다!",
-      "error": "메시지 전송 중 오류가 발생했습니다."
+    "form": {
+      "error": {
+        "required": "이 필드는 필수입니다",
+        "minLength": "최소 길이는 {n}자입니다",
+        "maxLength": "최대 길이는 {n}자입니다",
+        "invalidEmail": "유효하지 않은 이메일 주소"
+      }
+    },
+    "contactMe": {
+      "form": {
+        "senderName": "이름",
+        "email": "이메일",
+        "companyName": "회사명",
+        "title": "제목",
+        "message": "메시지",
+        "submit": "전송"
+      }
     }
   }
 }

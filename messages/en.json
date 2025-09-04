@@ -8,7 +8,7 @@
       "skills": "Skills",
       "projects": "Projects",
       "contact": "Contact Me",
-      "languages": "Spoken Languages"
+      "languages": "Languages Spoken"
     },
     "languages": {
       "list": {
@@ -17,17 +17,17 @@
         "ar": "Arabic",
         "kr": "Korean"
       },
-      "empty": "No languages defined"
+      "empty": "No language defined"
     },
     "aboutMe": {
-      "description": "Full-stack developer passionate about building modern web and mobile applications. Curious, rigorous, and comfortable in Agile environments."
+      "description": "Full-stack developer passionate about building modern web and mobile applications. Curious, meticulous, and comfortable in Agile environments."
     },
     "motivation": {
       "description": "Motivated to join ambitious tech teams to design, develop, and evolve innovative applications."
     },
     "experience": {
       "list": [],
-      "empty": "No experience to display."
+      "empty": "No experience to display at the moment."
     },
     "skills": {
       "tab": {
@@ -45,15 +45,25 @@
     },
     "projects": {
       "list": [],
-      "empty": "No projects yet"
+      "empty": "No projects to display at the moment."
     },
-    "contact": {
-      "name": "Your Name",
-      "email": "Your Email",
-      "message": "Your Message",
-      "submit": "Send",
-      "success": "Message sent successfully!",
-      "error": "Error sending message."
+    "form": {
+      "error": {
+        "required": "This field is required",
+        "minLength": "Minimum length is {n} characters",
+        "maxLength": "Maximum length is {n} characters",
+        "invalidEmail": "Invalid email address"
+      }
+    },
+    "contactMe": {
+      "form": {
+        "senderName": "Name",
+        "email": "Email",
+        "companyName": "Company Name",
+        "title": "Subject",
+        "message": "Message",
+        "submit": "Send"
+      }
     }
   }
 }
