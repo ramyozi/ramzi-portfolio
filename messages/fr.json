@@ -47,13 +47,23 @@
       "list": [],
       "empty": "Aucun projet à afficher pour le moment"
     },
-    "contact": {
-      "name": "Votre nom",
-      "email": "Votre email",
-      "message": "Votre message",
-      "submit": "Envoyer",
-      "success": "Message envoyé avec succès !",
-      "error": "Erreur lors de l'envoi."
+    "form": {
+      "error": {
+        "required": "Ce champ est requis",
+        "minLength": "La longueur minimale est de {n} caractères",
+        "maxLength": "La longueur maximale est de {n} caractères",
+        "invalidEmail": "Adresse e-mail invalide"
+      }
+    },
+    "contactMe": {
+      "form": {
+        "senderName": "Nom",
+        "email": "E-mail",
+        "companyName": "Nom de l'entreprise",
+        "title": "Objet",
+        "message": "Message",
+        "submit": "Envoyer"
+      }
     }
   }
 }
