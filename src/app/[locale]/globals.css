@@ -1,7 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "tailwindcss-animate";
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,4 +119,36 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+body.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+body.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+body.rtl .flex {
+  flex-direction: row-reverse;
+}
+
+body.rtl .space-x-2 > * + * {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.mis {
+  margin-inline-start: 1rem;
+}
+.mie {
+  margin-inline-end: 1rem;
+}
+.text-start {
+  text-align: start;
+}
+.text-end {
+  text-align: end;
 }

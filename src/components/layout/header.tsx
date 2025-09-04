@@ -6,8 +6,6 @@ import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
   NavigationMenuLink,
   NavigationMenuIndicator,
   NavigationMenuViewport,
@@ -15,40 +13,42 @@ import {
 import { useTranslations } from 'next-intl';
 import LanguageSelector from '@/components/layout/language-selector';
 import { usePathname } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
+import { Locale } from '@/i18n/routing';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 
 interface HeaderProps {
   logoSrc?: string;
   logoAlt?: string;
+  locale: Locale;
 }
 
-export function Header({ logoSrc, logoAlt = 'Logo' }: HeaderProps) {
+export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
   const t = useTranslations();
   const pathname = usePathname();
 
-  const currentLocale =
-    routing.locales.find((l) => pathname.startsWith(`/${l}`)) ||
-    routing.defaultLocale;
-
+  const isRtl = locale === 'ar';
   const menuItems = [
-    { label: t('common.header.about'), href: `/${currentLocale}#about` },
+    { label: t('common.header.about'), href: `/${locale}#about` },
     {
       label: t('common.header.motivation'),
-      href: `/${currentLocale}#motivation`,
+      href: `/${locale}#motivation`,
     },
     {
       label: t('common.header.experience'),
-      href: `/${currentLocale}#experience`,
+      href: `/${locale}#experience`,
     },
-    { label: t('common.header.skills'), href: `/${currentLocale}#skills` },
-    { label: t('common.header.projects'), href: `/${currentLocale}#projects` },
-    { label: t('common.header.contact'), href: `/${currentLocale}#contact` },
+    { label: t('common.header.skills'), href: `/${locale}#skills` },
+    { label: t('common.header.projects'), href: `/${locale}#projects` },
+    { label: t('common.header.contact'), href: `/${locale}#contact` },
   ];
 
   return (
     <header className='sticky top-0 z-50 w-full bg-background text-foreground'>
-      <div className='container flex items-center justify-between py-4'>
+      <div
+        className={`container mx-auto flex items-center justify-center py-4 ${
+          isRtl ? 'flex-row-reverse' : 'flex-row'
+        }`}
+      >
         {logoSrc && (
           <Link href='/' className='flex items-center space-x-2'>
             <Image src={logoSrc} alt={logoAlt} width={40} height={40} />
@@ -57,7 +57,6 @@ export function Header({ logoSrc, logoAlt = 'Logo' }: HeaderProps) {
             </span>
           </Link>
         )}
-
         <NavigationMenu>
           <NavigationMenuList>
             {menuItems.map((item, idx) => (
@@ -76,9 +75,10 @@ export function Header({ logoSrc, logoAlt = 'Logo' }: HeaderProps) {
           <NavigationMenuIndicator />
           <NavigationMenuViewport />
         </NavigationMenu>
-
-        <LanguageSelector />
-        <ThemeToggle />
+        <div className='ml-auto flex items-center space-x-4'>
+          <LanguageSelector />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

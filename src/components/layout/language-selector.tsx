@@ -7,12 +7,6 @@ import {
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import {
-  Drawer,
-  DrawerTrigger,
-  DrawerContent,
-  DrawerClose,
-} from '@/components/ui/drawer';
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
@@ -28,8 +22,9 @@ export default function LanguageSelector() {
     routing.defaultLocale;
 
   const switchLocale = (locale: string) => {
-    const newPath = `/${locale}${pathname.replace(/^\/[a-z]{2}/, '')}`;
-
+    const currentPath = pathname.replace(/^\/[a-z]{2}/, '');
+    const hash = window.location.hash;
+    const newPath = `/${locale}${currentPath}${hash}`;
     router.push(newPath);
   };
 
