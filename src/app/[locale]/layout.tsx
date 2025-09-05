@@ -14,8 +14,11 @@ export async function generateMetadata({ params }: { params: Params }) {
   const { locale } = await params;
 
   return {
-    title: 'Portfolio de Ramzi',
+    title: "Ramzi's Portfolio",
     description: `Localized portfolio for ${locale}`,
+    icons: {
+      icon: '/images/logo.jpg',
+    },
   };
 }
 
@@ -47,9 +50,13 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            <Header locale={locale as Locale} />
+            <Header
+              logoSrc={'/images/logo.jpg'}
+              logoAlt={'Logo'}
+              locale={locale as Locale}
+            />
             {children}
-             <Toaster richColors position="top-center" />
+            <Toaster richColors position='top-center' />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

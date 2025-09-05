@@ -8,10 +8,12 @@ export function Project() {
   const t = useTranslations();
 
   return (
-    <section id="projects">
-      <Card>
+    <section id='projects'>
+      <Card className='border-2 border-primary'>
         <CardHeader>
-          <CardTitle>{t('common.header.projects')}</CardTitle>
+          <CardTitle className='text-2xl'>
+            {t('common.header.projects')}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           {/*
@@ -28,7 +30,7 @@ export function Project() {
             <p>{t('common.projects.empty')} (WIP)</p>
           )}
             */}
-            <p>{t('common.projects.empty')} (WIP)</p>
+          <p>{t('common.projects.empty')} (WIP)</p>
         </CardContent>
       </Card>
     </section>

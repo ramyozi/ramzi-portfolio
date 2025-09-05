@@ -16,24 +16,28 @@ export function Language() {
 
   return (
     <section id='languages' className='space-y-4'>
-      <Card>
+      <Card className='border-2 border-primary'>
         <CardHeader>
-          <CardTitle>{t('common.header.languages')}</CardTitle>
+          <CardTitle className='text-2xl'>
+            {t('common.header.languages')}
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className='space-y-3'>
           {spokenLanguages.length > 0 ? (
             spokenLanguages.map((lang, idx) => (
-              <div key={idx} className="space-y-1">
-                <div className="flex justify-between font-medium">
+              <div key={idx} className='space-y-1'>
+                <div className='flex justify-between font-medium'>
                   <span>{t(`common.languages.list.${lang.key}`)}</span>
                   <span>{t(`common.languages.levels.${lang.level}`)}</span>
                 </div>
-                <div className="flex gap-1">
+                <div className='flex gap-1'>
                   {[1, 2, 3, 4].map((levelIdx) => (
                     <div
                       key={levelIdx}
-                      className={`flex-1 h-3 rounded-full ${
-                        levelIdx <= lang.level ? LEVEL_COLORS[levelIdx - 1] : 'bg-gray-300'
+                      className={`h-3 flex-1 rounded-full ${
+                        levelIdx <= lang.level
+                          ? LEVEL_COLORS[levelIdx - 1]
+                          : 'bg-gray-300'
                       }`}
                     />
                   ))}
