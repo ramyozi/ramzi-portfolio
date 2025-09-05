@@ -7,7 +7,7 @@
       "experience": "Experience",
       "skills": "Skills",
       "projects": "Projects",
-      "contact": "Contact Me",
+      "contact": "Contact",
       "languages": "Languages Spoken"
     },
     "languages": {
@@ -23,17 +23,92 @@
         "ar": "Arabic",
         "kr": "Korean"
       },
-      "empty": "No language defined"
+      "empty": "No languages defined"
     },
     "aboutMe": {
-      "description": "Full-stack developer passionate about building modern web and mobile applications. Curious, meticulous, and comfortable in Agile environments."
+      "description": "Full-stack developer passionate about creating modern web and mobile applications. Curious, meticulous, and comfortable in an Agile environment."
     },
     "motivation": {
       "description": "Motivated to join ambitious tech teams to design, develop, and evolve innovative applications."
     },
     "experience": {
-      "list": [],
-      "empty": "No experience to display at the moment."
+      "empty": "No experience to display at the moment.",
+      "labels": {
+        "technologies": "Technologies",
+        "tasks": "Tasks",
+        "partners": "Partners",
+        "solution": "Solution"
+      },
+      "items": {
+        "item1": {
+          "company": "Artdigit",
+          "role": "Full-stack Developer (Apprenticeship)",
+          "location": "Montpellier",
+          "period": "November 2023 - April 2025",
+          "logo": "/logo/artdigit-logo.svg",
+          "technologies": {
+            "nestjs": "NestJS",
+            "reactNative": "React Native",
+            "expo": "Expo",
+            "nextjs": "Next.js",
+            "typescript": "TypeScript",
+            "tailwindcss": "TailwindCSS",
+            "docker": "Docker",
+            "aws": "AWS"
+          },
+          "tasks": {
+            "task1": "Backend design: REST API, business logic, authentication, unit and end-to-end tests",
+            "task2": "Database modeling (Merise) and scalable architecture",
+            "task3": "Development of a cross-platform mobile application",
+            "task4": "Contribution to web frontend and UI design with Figma",
+            "task5": "Work in Agile/Scrum methodology",
+            "task6": "Implementation of CI/CD",
+            "task7": "Mentoring and training of new arrivals"
+          },
+          "solution": "Scanow is a SaaS solution developed by Artdigit. It allows incident reporting, stock management, and maintenance planning using QR codes. Teams can thus report, track, and optimize their equipment on a single platform."
+        },
+        "item2": {
+          "company": "ACTIVUS Group",
+          "role": "Web Developer (Internship)",
+          "location": "Toulouse",
+          "period": "June 2023 – August 2023",
+          "logo": "/logo/activus-logo.svg",
+          "technologies": {
+            "angular": "Angular 10",
+            "spring": "Spring Boot",
+            "postgresql": "PostgreSQL",
+            "orient": "OrientDB",
+            "activemq": "ActiveMQ"
+          },
+          "tasks": {
+            "task1": "Frontend development with Angular 10",
+            "task2": "Backend integration with Spring Boot and REST APIs",
+            "task3": "UI design with Figma and Photoshop",
+            "task4": "Management of relational and graph databases"
+          },
+          "solution": "Digibrain, the solution developed by ACTIVUS Group, is an intelligent platform for centralizing data management and automating complex processes."
+        },
+        "item3": {
+          "company": "Central Library of Mostaganem",
+          "role": "Full-stack Developer (Freelance / Volunteer)",
+          "location": "Algeria",
+          "period": "March 2021 – August 2022",
+          "logo": "/logo/iqraa-logo.svg",
+          "technologies": {
+            "angular": "Angular",
+            "nodejs": "Node.js",
+            "express": "Express"
+          },
+          "tasks": {
+            "task1": "Design and development of a management application",
+            "task2": "Frontend and backend development",
+            "task3": "User, catalog, borrowing, and notification management",
+            "task4": "Deployment and technical support",
+            "task5": "Collaboration via Git"
+          },
+          "solution": "Management application for the Central Library of Mostaganem, enabling management of loans, catalog, and notifications for students and university administration."
+        }
+      }
     },
     "skills": {
       "tab": {
@@ -42,7 +117,7 @@
         "tools": "Tools"
       },
       "proficiency": {
-        "+": "Beginner",
+        "+": "Apprentice",
         "++": "Intermediate",
         "+++": "Expert"
       },
@@ -51,7 +126,7 @@
     },
     "projects": {
       "list": [],
-      "empty": "No projects to display at the moment."
+      "empty": "No projects to display at the moment"
     },
     "form": {
       "error": {
