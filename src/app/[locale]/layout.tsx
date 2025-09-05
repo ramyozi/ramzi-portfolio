@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 import { Locale, routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import './globals.css';
+import { Toaster } from 'sonner';
 
 type Params = Promise<{ locale: string }>;
 
@@ -48,6 +49,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           >
             <Header locale={locale as Locale} />
             {children}
+             <Toaster richColors position="top-center" />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

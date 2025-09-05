@@ -137,6 +137,7 @@
       }
     },
     "contactMe": {
+      "or": "OU",
       "form": {
         "senderName": "Nom",
         "email": "E-mail",
@@ -145,6 +146,10 @@
         "message": "Message",
         "submit": "Envoyer"
       }
+    },
+    "toast": {
+      "success": "Message envoyé avec succès !",
+      "error": "Échec de l'envoi du message. Veuillez réessayer plus tard."
     }
   }
 }

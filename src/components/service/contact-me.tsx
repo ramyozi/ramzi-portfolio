@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,8 @@ import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormValidator } from '@/hooks/use-form-validator';
+import { Mail, Github, Linkedin } from 'lucide-react';
+import { toast } from 'sonner';
 
 export function ContactMe() {
   const t = useTranslations();
@@ -39,7 +41,7 @@ export function ContactMe() {
     },
   });
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       const recipientEmail =
         process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'default@example.com';
@@ -60,20 +62,41 @@ export function ContactMe() {
 
       if (!res.ok) throw new Error('Failed to send message');
 
-      alert('Message sent successfully!');
+      toast.success(t('common.toast.success', { default: 'Message sent successfully!' }));
       form.reset();
     } catch (err) {
       console.error(err);
-      alert('Failed to send message. Please try again later.');
+      toast.error(t('common.toast.error', { default: 'Failed to send message. Please try again later.' }));
     }
   };
+
+  const mailLink = `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || ''}`;
+  const githubLink = process.env.NEXT_PUBLIC_GITHUB_URL || '#';
+  const linkedinLink = process.env.NEXT_PUBLIC_LINKEDIN_URL || '#';
 
   return (
     <section id='contact'>
       <Card>
-        <CardHeader>
+        <CardHeader className='flex flex-col items-center gap-3'>
+          <div className='flex items-center justify-center gap-6'>
+            <a href={mailLink} target='_blank' rel='noopener noreferrer'>
+              <Mail className='h-6 w-6 transition-colors hover:text-blue-500' />
+            </a>
+            <a href={githubLink} target='_blank' rel='noopener noreferrer'>
+              <Github className='h-6 w-6 transition-colors hover:text-gray-700' />
+            </a>
+            <a href={linkedinLink} target='_blank' rel='noopener noreferrer'>
+              <Linkedin className='h-6 w-6 transition-colors hover:text-blue-600' />
+            </a>
+          </div>
+          <div className="relative w-full my-4 flex items-center">
+            <div className="flex-grow border-t border-gray-300"></div>
+            <span className="px-3 text-sm text-gray-500">{t('common.contactMe.or')}</span>
+            <div className="flex-grow border-t border-gray-300"></div>
+          </div>
           <CardTitle>{t('common.header.contact')}</CardTitle>
         </CardHeader>
+
         <CardContent>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
