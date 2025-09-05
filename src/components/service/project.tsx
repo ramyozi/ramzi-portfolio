@@ -6,8 +6,6 @@ import { useTranslations } from 'next-intl';
 
 export function Project() {
   const t = useTranslations();
-  const rawProj = t('common.projects.list') as any;
-  const projects = Array.isArray(rawProj) ? rawProj : [];
 
   return (
     <section id="projects">
@@ -16,7 +14,8 @@ export function Project() {
           <CardTitle>{t('common.header.projects')}</CardTitle>
         </CardHeader>
         <CardContent>
-          {projects.length > 0 ? (
+          {/*
+            {projects.length > 0 ? (
             <Carousel className="h-48">
               {projects.map((p, idx) => (
                 <div key={idx} className="flex flex-col items-center justify-center h-full">
@@ -28,6 +27,8 @@ export function Project() {
           ) : (
             <p>{t('common.projects.empty')} (WIP)</p>
           )}
+            */}
+            <p>{t('common.projects.empty')} (WIP)</p>
         </CardContent>
       </Card>
     </section>

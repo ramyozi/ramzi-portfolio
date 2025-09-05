@@ -5,6 +5,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { ReactNode } from 'react';
 import { Locale, routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
+import './globals.css';
 
 type Params = Promise<{ locale: string }>;
 
