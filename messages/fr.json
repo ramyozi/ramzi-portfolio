@@ -32,8 +32,83 @@
       "description": "Motivé à rejoindre des équipes tech ambitieuses pour concevoir, développer et faire évoluer des applications innovantes."
     },
     "experience": {
-      "list": [],
-      "empty": "Aucune expérience à afficher pour le moment."
+      "empty": "Aucune expérience à afficher pour le moment.",
+      "labels": {
+        "technologies": "Technologies",
+        "tasks": "Tâches",
+        "partners": "Collaborateurs",
+        "solution": "Solution"
+      },
+      "items": {
+        "item1": {
+          "company": "Artdigit",
+          "role": "Développeur full-stack (Alternance)",
+          "location": "Montpellier",
+          "period": "Novembre 2023 - Avril 2025",
+          "logo": "/logo/artdigit-logo.svg",
+          "technologies": {
+            "nestjs": "NestJS",
+            "reactNative": "React Native",
+            "expo": "Expo",
+            "nextjs": "Next.js",
+            "typescript": "TypeScript",
+            "tailwindcss": "TailwindCSS",
+            "docker": "Docker",
+            "aws": "AWS"
+          },
+          "tasks": {
+            "task1": "Conception du backend : API REST, logique métier, authentification, tests unitaires et end-to-end",
+            "task2": "Modélisation de la base de données (Merise) et architecture évolutive",
+            "task3": "Développement d’une application mobile multiplateforme",
+            "task4": "Contribution au frontend web et conception UI avec Figma",
+            "task5": "Travail en méthodologie Agile/Scrum",
+            "task6": "Mise en place de la CI/CD",
+            "task7": "Encadrement et formation de nouveaux arrivants"
+          },
+          "solution": "Scanow est une solution SaaS développée par Artdigit. Elle permet de déclarer des incidents, gérer les stocks et planifier la maintenance grâce à des QR codes. Les équipes peuvent ainsi signaler, suivre et optimiser leurs équipements sur une plateforme unique."
+        },
+        "item2": {
+          "company": "ACTIVUS Group",
+          "role": "Développeur Web (Stage)",
+          "location": "Toulouse",
+          "period": "Juin 2023 – Août 2023",
+          "logo": "/logo/activus-logo.svg",
+          "technologies": {
+            "angular": "Angular 10",
+            "spring": "Spring Boot",
+            "postgresql": "PostgreSQL",
+            "orient": "OrientDB",
+            "activemq": "ActiveMQ"
+          },
+          "tasks": {
+            "task1": "Développement frontend avec Angular 10",
+            "task2": "Intégration backend avec Spring Boot et APIs REST",
+            "task3": "Conception d’interfaces utilisateur avec Figma et Photoshop",
+            "task4": "Gestion de bases de données relationnelles et graphes"
+          },
+          "solution": "Digibrain, la solution développée par ACTIVUS Group, est une plateforme intelligente pour centraliser la gestion de données et automatiser des processus complexes."
+        },
+        "item3": {
+          "company": "Bibliothèque Centrale de Mostaganem",
+          "role": "Développeur full-stack (Freelance / Bénévole)",
+          "location": "Algérie",
+          "period": "Mars 2021 – Août 2022",
+          "logo": "/logo/iqraa-logo.svg",
+          "technologies": {
+            "angular": "Angular",
+            "nodejs": "Node.js",
+            "express": "Express"
+          },
+          "tasks": {
+            "task1": "Conception et développement d’une application de gestion",
+            "task2": "Développement frontend et backend",
+            "task3": "Gestion utilisateurs, catalogue, emprunts et notifications",
+            "task4": "Déploiement et support technique",
+            "task5": "Collaboration via Git"
+          },
+          "solution": "Application de gestion pour la Bibliothèque Centrale de Mostaganem, permettant la gestion des emprunts, du catalogue et des notifications pour les étudiants et l’administration universitaire."
+        }
+      }
     },
     "skills": {
       "tab": {

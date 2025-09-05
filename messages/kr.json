@@ -1,14 +1,14 @@
 {
   "common": {
     "header": {
-      "siteName": "람지 포트폴리오",
+      "siteName": "Ramzi 포트폴리오",
       "about": "소개",
       "motivation": "동기",
       "experience": "경험",
       "skills": "기술",
       "projects": "프로젝트",
-      "contact": "문의하기",
-      "languages": "사용 언어"
+      "contact": "연락하기",
+      "languages": "사용 가능한 언어"
     },
     "languages": {
       "levels": {
@@ -26,14 +26,89 @@
       "empty": "정의된 언어가 없습니다"
     },
     "aboutMe": {
-      "description": "현대적인 웹 및 모바일 애플리케이션 개발에 열정을 가진 풀스택 개발자. 호기심이 많고 꼼꼼하며 애자일 환경에 능숙합니다."
+      "description": "모던 웹 및 모바일 애플리케이션을 만드는 데 열정을 가진 풀스택 개발자. 호기심 많고 세심하며 Agile 환경에서 편안하게 일함."
     },
     "motivation": {
-      "description": "혁신적인 애플리케이션을 설계, 개발, 개선하기 위해 야심찬 기술 팀에 합류하고 싶습니다."
+      "description": "혁신적인 애플리케이션을 설계, 개발, 발전시키기 위해 야심찬 기술 팀에 합류하고 싶습니다."
     },
     "experience": {
-      "list": [],
-      "empty": "표시할 경험이 없습니다."
+      "empty": "현재 표시할 경험이 없습니다.",
+      "labels": {
+        "technologies": "기술",
+        "tasks": "업무",
+        "partners": "협업자",
+        "solution": "솔루션"
+      },
+      "items": {
+        "item1": {
+          "company": "Artdigit",
+          "role": "풀스택 개발자 (인턴십)",
+          "location": "몽펠리에",
+          "period": "2023년 11월 - 2025년 4월",
+          "logo": "/logo/artdigit-logo.svg",
+          "technologies": {
+            "nestjs": "NestJS",
+            "reactNative": "React Native",
+            "expo": "Expo",
+            "nextjs": "Next.js",
+            "typescript": "TypeScript",
+            "tailwindcss": "TailwindCSS",
+            "docker": "Docker",
+            "aws": "AWS"
+          },
+          "tasks": {
+            "task1": "백엔드 설계: REST API, 비즈니스 로직, 인증, 단위 및 종단간 테스트",
+            "task2": "데이터베이스 모델링 (Merise) 및 확장 가능한 아키텍처",
+            "task3": "크로스 플랫폼 모바일 앱 개발",
+            "task4": "웹 프론트엔드 및 Figma를 이용한 UI 설계 기여",
+            "task5": "Agile/Scrum 방법론 적용",
+            "task6": "CI/CD 구축",
+            "task7": "신입 교육 및 멘토링"
+          },
+          "solution": "Scanow는 Artdigit가 개발한 SaaS 솔루션입니다. QR 코드를 사용하여 사고 보고, 재고 관리 및 유지보수 계획을 가능하게 합니다. 팀은 단일 플랫폼에서 장비를 보고, 추적하고, 최적화할 수 있습니다."
+        },
+        "item2": {
+          "company": "ACTIVUS Group",
+          "role": "웹 개발자 (인턴십)",
+          "location": "툴루즈",
+          "period": "2023년 6월 – 2023년 8월",
+          "logo": "/logo/activus-logo.svg",
+          "technologies": {
+            "angular": "Angular 10",
+            "spring": "Spring Boot",
+            "postgresql": "PostgreSQL",
+            "orient": "OrientDB",
+            "activemq": "ActiveMQ"
+          },
+          "tasks": {
+            "task1": "Angular 10을 사용한 프론트엔드 개발",
+            "task2": "Spring Boot 및 REST API와 백엔드 통합",
+            "task3": "Figma 및 Photoshop을 사용한 UI 설계",
+            "task4": "관계형 및 그래프 데이터베이스 관리"
+          },
+          "solution": "Digibrain은 ACTIVUS Group에서 개발한 솔루션으로, 데이터를 중앙 집중식으로 관리하고 복잡한 프로세스를 자동화하는 지능형 플랫폼입니다."
+        },
+        "item3": {
+          "company": "모스타가넴 중앙 도서관",
+          "role": "풀스택 개발자 (프리랜서 / 자원봉사)",
+          "location": "알제리",
+          "period": "2021년 3월 – 2022년 8월",
+          "logo": "/logo/iqraa-logo.svg",
+          "technologies": {
+            "angular": "Angular",
+            "nodejs": "Node.js",
+            "express": "Express"
+          },
+          "tasks": {
+            "task1": "관리 애플리케이션 설계 및 개발",
+            "task2": "프론트엔드 및 백엔드 개발",
+            "task3": "사용자, 카탈로그, 대출 및 알림 관리",
+            "task4": "배포 및 기술 지원",
+            "task5": "Git을 통한 협업"
+          },
+          "solution": "모스타가넴 중앙 도서관 관리 애플리케이션으로, 학생과 대학 행정을 위해 대출, 카탈로그 및 알림 관리를 가능하게 합니다."
+        }
+      }
     },
     "skills": {
       "tab": {
@@ -47,18 +122,18 @@
         "+++": "전문가"
       },
       "empty": "표시할 기술이 없습니다.",
-      "logoFallbackNote": "광고 차단기 또는 네트워크 제한으로 인해 일부 로고가 표시되지 않을 수 있습니다."
+      "logoFallbackNote": "광고 차단기나 네트워크 제한으로 일부 로고가 표시되지 않을 수 있습니다."
     },
     "projects": {
       "list": [],
-      "empty": "표시할 프로젝트가 없습니다."
+      "empty": "현재 표시할 프로젝트가 없습니다"
     },
     "form": {
       "error": {
         "required": "이 필드는 필수입니다",
         "minLength": "최소 길이는 {n}자입니다",
         "maxLength": "최대 길이는 {n}자입니다",
-        "invalidEmail": "유효하지 않은 이메일 주소"
+        "invalidEmail": "잘못된 이메일 주소"
       }
     },
     "contactMe": {
