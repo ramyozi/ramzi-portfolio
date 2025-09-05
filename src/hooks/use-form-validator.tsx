@@ -15,10 +15,14 @@ export const useFormValidator = () => {
     let schema = z.string();
 
     if (min !== undefined)
-      schema = schema.min(min, { message: `Min length ${min}` });
+      schema = schema.min(min, {
+        message: t('common.form.error.minLength', { n: min }),
+      });
 
     if (max !== undefined)
-      schema = schema.max(max, { message: `Max length ${max}` });
+      schema = schema.max(max, {
+        message: t('common.form.error.maxLength', { n: max }),
+      });
 
     return schema;
   }
