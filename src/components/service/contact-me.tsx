@@ -5,13 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { TextArea } from '@/components/ui/text-area-input';
 import { useTranslations } from 'next-intl';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  useFormValidator,
-  registerFormReset,
-} from '@/hooks/use-form-validator';
+import { useFormValidator } from '@/hooks/use-form-validator';
 
 export function ContactMe() {
   const t = useTranslations();
@@ -21,8 +18,8 @@ export function ContactMe() {
     () =>
       z.object({
         senderName: stringValidation({ min: 2 }),
-        email: emailValidation({ optional: false }),
-        title: stringValidation({ optional: true }),
+        email: emailValidation(),
+        title: stringValidation({ min: 0 }),
         message: stringValidation({ min: 10 }),
       }),
     []
@@ -30,8 +27,10 @@ export function ContactMe() {
 
   type FormData = z.infer<typeof formSchema>;
 
+  const resolver: Resolver<FormData> = zodResolver(formSchema) as any;
+
   const form = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+    resolver,
     defaultValues: {
       senderName: '',
       email: '',
@@ -40,22 +39,18 @@ export function ContactMe() {
     },
   });
 
-  useEffect(() => {
-    registerFormReset(form)();
-  }, [form]);
-
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       const recipientEmail =
         process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'default@example.com';
-      const subject = `Formulaire de contact: ${data.title || 'Sans titre'}`;
+      const subject = `Contact form: ${data.title || 'No title'}`;
       const text = `
-        Nom: ${data.senderName || 'N/A'}
-        E-mail: ${data.email || 'N/A'}
-        Titre: ${data.title || 'N/A'}
-        Message:
-        ${data.message || 'N/A'}
-      `;
+      Name: ${data.senderName || 'N/A'}
+      Email: ${data.email || 'N/A'}
+      Title: ${data.title || 'N/A'}
+      Message:
+      ${data.message || 'N/A'}
+    `;
 
       const res = await fetch('/api/send-email', {
         method: 'POST',
@@ -63,15 +58,13 @@ export function ContactMe() {
         body: JSON.stringify({ to: recipientEmail, subject, text }),
       });
 
-      if (!res.ok) {
-        throw new Error("Échec de l'envoi du message");
-      }
+      if (!res.ok) throw new Error('Failed to send message');
 
-      alert('Message envoyé avec succès !');
+      alert('Message sent successfully!');
       form.reset();
     } catch (err) {
       console.error(err);
-      alert("Échec de l'envoi du message. Veuillez réessayer plus tard.");
+      alert('Failed to send message. Please try again later.');
     }
   };
 
