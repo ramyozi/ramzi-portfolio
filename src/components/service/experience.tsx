@@ -25,9 +25,11 @@ export function Experience() {
   if (!items || Object.keys(items).length === 0) {
     return (
       <section id='experience'>
-        <Card>
+        <Card className='border-2 border-primary'>
           <CardHeader>
-            <CardTitle>{t('common.header.experience')}</CardTitle>
+            <CardTitle className='text-2xl'>
+              {t('common.header.experience')}
+            </CardTitle>
           </CardHeader>
           <CardContent>{t('common.experience.empty')}</CardContent>
         </Card>
@@ -37,9 +39,11 @@ export function Experience() {
 
   return (
     <section id='experience' className='space-y-6'>
-      <Card>
+      <Card className='border-2 border-primary'>
         <CardHeader>
-          <CardTitle>{t('common.header.experience')}</CardTitle>
+          <CardTitle className='text-2xl'>
+            {t('common.header.experience')}
+          </CardTitle>
         </CardHeader>
         <CardContent className='grid gap-6 md:grid-cols-3'>
           {Object.entries(items).map(([key, exp]) => (
