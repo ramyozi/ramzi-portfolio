@@ -41,7 +41,7 @@ export function ContactMe() {
     },
   });
 
-   const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       const recipientEmail =
         process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'default@example.com';
@@ -62,11 +62,17 @@ export function ContactMe() {
 
       if (!res.ok) throw new Error('Failed to send message');
 
-      toast.success(t('common.toast.success', { default: 'Message sent successfully!' }));
+      toast.success(
+        t('common.toast.success', { default: 'Message sent successfully!' })
+      );
       form.reset();
     } catch (err) {
       console.error(err);
-      toast.error(t('common.toast.error', { default: 'Failed to send message. Please try again later.' }));
+      toast.error(
+        t('common.toast.error', {
+          default: 'Failed to send message. Please try again later.',
+        })
+      );
     }
   };
 
@@ -89,10 +95,12 @@ export function ContactMe() {
               <Linkedin className='h-6 w-6 transition-colors hover:text-blue-600' />
             </a>
           </div>
-          <div className="relative w-full my-4 flex items-center">
-            <div className="flex-grow border-t border-gray-300"></div>
-            <span className="px-3 text-sm text-gray-500">{t('common.contactMe.or')}</span>
-            <div className="flex-grow border-t border-gray-300"></div>
+          <div className='relative my-4 flex w-full items-center'>
+            <div className='flex-grow border-t border-gray-300'></div>
+            <span className='px-3 text-sm text-gray-500'>
+              {t('common.contactMe.or')}
+            </span>
+            <div className='flex-grow border-t border-gray-300'></div>
           </div>
           <CardTitle>{t('common.header.contact')}</CardTitle>
         </CardHeader>
