@@ -29,14 +29,8 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
   const isRtl = locale === 'ar';
   const menuItems = [
     { label: t('common.header.about'), href: `/${locale}#about` },
-    {
-      label: t('common.header.motivation'),
-      href: `/${locale}#motivation`,
-    },
-    {
-      label: t('common.header.experience'),
-      href: `/${locale}#experience`,
-    },
+    { label: t('common.header.motivation'), href: `/${locale}#motivation` },
+    { label: t('common.header.experience'), href: `/${locale}#experience` },
     { label: t('common.header.skills'), href: `/${locale}#skills` },
     { label: t('common.header.projects'), href: `/${locale}#projects` },
     { label: t('common.header.contact'), href: `/${locale}#contact` },
@@ -45,7 +39,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
   return (
     <header className='sticky top-0 z-50 w-full bg-background text-foreground'>
       <div
-        className={`container mx-auto flex items-center justify-center py-4 ${
+        className={`container mx-auto flex items-center justify-between py-4 ${
           isRtl ? 'flex-row-reverse' : 'flex-row'
         }`}
       >
@@ -57,25 +51,29 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
             </span>
           </Link>
         )}
-        <NavigationMenu>
-          <NavigationMenuList>
-            {menuItems.map((item, idx) => (
-              <NavigationMenuItem key={idx}>
-                <NavigationMenuLink asChild>
-                  <Link
-                    href={item.href}
-                    className='px-3 py-2 hover:text-primary'
-                  >
-                    {item.label}
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-          <NavigationMenuIndicator />
-          <NavigationMenuViewport />
-        </NavigationMenu>
-        <div className='ml-auto flex items-center space-x-4'>
+
+        <div className='absolute left-1/2 -translate-x-1/2 transform'>
+          <NavigationMenu>
+            <NavigationMenuList>
+              {menuItems.map((item, idx) => (
+                <NavigationMenuItem key={idx}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href={item.href}
+                      className='px-3 py-2 hover:text-primary'
+                    >
+                      {item.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+            <NavigationMenuIndicator />
+            <NavigationMenuViewport />
+          </NavigationMenu>
+        </div>
+
+        <div className='flex items-center space-x-4'>
           <LanguageSelector />
           <ThemeToggle />
         </div>
