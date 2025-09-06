@@ -150,6 +150,9 @@
     "toast": {
       "success": "Message sent successfully!",
       "error": "Failed to send message. Please try again later."
+    },
+  "footer": {
+      "copyright": "© {year} {name}. All rights reserved."
     }
   }
 }
