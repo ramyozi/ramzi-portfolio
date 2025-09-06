@@ -7,6 +7,7 @@ import { Locale, routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import './globals.css';
 import { Toaster } from 'sonner';
+import { Footer } from '@/components/layout/footer';
 
 type Params = Promise<{ locale: string }>;
 
@@ -57,6 +58,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             />
             {children}
             <Toaster richColors position='top-center' />
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
