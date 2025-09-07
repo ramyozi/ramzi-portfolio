@@ -8,7 +8,7 @@ export function Project() {
   const t = useTranslations();
 
   return (
-    <section id='projects'>
+    <section id='projects' className='space-y-6 scroll-mt-24'>
       <Card className='border-2 border-primary'>
         <CardHeader>
           <CardTitle className='text-2xl'>

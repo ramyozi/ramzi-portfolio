@@ -15,7 +15,7 @@ export function Language() {
   const t = useTranslations();
 
   return (
-    <section id='languages' className='space-y-4'>
+    <section id='languages' className='space-y-4 scroll-mt-24'>
       <Card className='border-2 border-primary'>
         <CardHeader>
           <CardTitle className='text-2xl'>
