@@ -64,7 +64,7 @@ export function Skill() {
   );
 
   return (
-    <section id='skills' className='relative space-y-6'>
+    <section id='skills' className='relative space-y-6 scroll-mt-24'>
       <Card className='border-2 border-primary'>
         <CardHeader>
           <CardTitle className='text-2xl'>
