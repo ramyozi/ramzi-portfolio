@@ -12,9 +12,19 @@ import {
 } from '@/components/ui/navigation-menu';
 import { useTranslations } from 'next-intl';
 import LanguageSelector from '@/components/layout/language-selector';
-import { usePathname } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { Locale } from '@/i18n/routing';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
+import { Button } from '../ui/button';
+import { Menu } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
 
 interface HeaderProps {
   logoSrc?: string;
@@ -25,6 +35,7 @@ interface HeaderProps {
 export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
   const t = useTranslations();
   const pathname = usePathname();
+  const router = useRouter();
 
   const isRtl = locale === 'ar';
   const menuItems = [
@@ -44,7 +55,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
         }`}
       >
         {logoSrc && (
-          <Link href='/' className='flex items-center space-x-2'>
+          <Link href={`/${locale}`} className='flex items-center space-x-2'>
             <Image src={logoSrc} alt={logoAlt} width={40} height={40} />
             <span className='text-lg font-bold'>
               {t('common.header.siteName')}
@@ -52,7 +63,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
           </Link>
         )}
 
-        <div className='absolute left-1/2 -translate-x-1/2 transform'>
+        <div className='absolute left-1/2 hidden -translate-x-1/2 transform lg:block'>
           <NavigationMenu>
             <NavigationMenuList>
               {menuItems.map((item, idx) => (
@@ -76,6 +87,32 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
         <div className='flex items-center space-x-4'>
           <LanguageSelector />
           <ThemeToggle />
+
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Button
+                variant='outline'
+                className='block flex items-center gap-2 lg:hidden xl:hidden'
+              >
+                <Menu className='h-5 w-5' />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel></DropdownMenuLabel>
+              {menuItems.map((item, idx) => (
+                <div key={idx}>
+                  <DropdownMenuItem>
+                    <Link
+                      href={item.href}
+                      className='px-3 py-2 hover:text-primary'
+                    >
+                      {item.label}
+                    </Link>
+                  </DropdownMenuItem>
+                </div>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
