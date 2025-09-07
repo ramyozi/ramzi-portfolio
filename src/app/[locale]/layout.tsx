@@ -51,12 +51,14 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            <Header
+              <Header
               logoSrc={'/images/logo.jpg'}
               logoAlt={'Logo'}
               locale={locale as Locale}
             />
-            {children}
+            <div className='flex min-h-screen flex-col'>
+              {children}
+            </div>
             <Toaster richColors position='top-center' />
             <Footer />
           </ThemeProvider>
