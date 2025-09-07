@@ -44,7 +44,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
         }`}
       >
         {logoSrc && (
-          <Link href='/' className='flex items-center space-x-2'>
+          <Link href={`/${locale}`} className='flex items-center space-x-2'>
             <Image src={logoSrc} alt={logoAlt} width={40} height={40} />
             <span className='text-lg font-bold'>
               {t('common.header.siteName')}
