@@ -10,7 +10,7 @@ export function Motivation() {
   return (
     <section
       id='motivation'
-      className='grid grid-cols-1 items-center gap-6 md:grid-cols-2'
+      className='grid grid-cols-1 items-center gap-6 md:grid-cols-2 scroll-mt-24'
     >
       <div className='flex justify-center'>
         <Image
