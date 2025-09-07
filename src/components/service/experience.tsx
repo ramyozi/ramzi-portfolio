@@ -24,7 +24,7 @@ export function Experience() {
 
   if (!items || Object.keys(items).length === 0) {
     return (
-      <section id='experience'>
+      <section id='experience' className="scroll-mt-24">
         <Card className='border-2 border-primary'>
           <CardHeader>
             <CardTitle className='text-2xl'>
@@ -38,7 +38,7 @@ export function Experience() {
   }
 
   return (
-    <section id='experience' className='space-y-6'>
+    <section id='experience' className='space-y-6 scroll-mt-24'>
       <Card className='border-2 border-primary'>
         <CardHeader>
           <CardTitle className='text-2xl'>

@@ -9,7 +9,7 @@ export function AboutMe() {
   return (
     <section
       id='about'
-      className='grid grid-cols-1 items-stretch gap-6 md:grid-cols-2'
+      className='grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 scroll-mt-24'
     >
       <Card className='h-full border-2 border-primary'>
         <CardHeader>
