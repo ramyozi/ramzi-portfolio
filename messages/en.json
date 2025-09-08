@@ -125,8 +125,41 @@
       "logoFallbackNote": "Some logos may not appear due to ad blockers or network restrictions."
     },
     "projects": {
-      "list": [],
-      "empty": "No projects to display at the moment"
+      "items": {
+        "item1": {
+          "id": "5ce4de7c-9711-4793-91e9-ccc46d288b35",
+          "title": "Ramzi's Portfolio",
+          "image": "/images/logo.jpg",
+          "description": "A web app for recruiters to check out me, my skills, and some projects I've built.",
+          "technologies": {
+            "nextjs": "Next.js",
+            "typescript": "TypeScript",
+            "tailwindcss": "TailwindCSS",
+            "shadcnui": "Shadcn UI",
+            "vercel": "Vercel"
+          },
+          "gallery": [
+            "/images/projects/ramzi-portfolio/site.jpg"
+          ],
+          "dateRange": "September 2025",
+          "links": {
+            "repo": "https://github.com/ramyozi/ramzi-portfolio",
+            "live": "https://ramzibenmansour.com"
+          }
+        }
+      },
+      "checkOut": "Check it out",
+      "empty": "No projects to show right now",
+      "date": "Date",
+      "stack": "Stack",
+      "links": "Links",
+      "repo": "Repo",
+      "repoFrontend": "Frontend Repo",
+      "repoBackend": "Backend Repo",
+      "liveSite": "Live Site",
+      "gallery": "Gallery",
+      "noImages": "No images available.",
+      "noLinks": "No links available."
     },
     "form": {
       "error": {
@@ -153,6 +186,9 @@
     },
   "footer": {
       "copyright": "© {year} {name}. All rights reserved."
-    }
+    },
+    "viewMore": "View More",
+    "viewLess": "View Less",
+    "viewAll": "View All"
   }
 }
