@@ -125,8 +125,41 @@
       "logoFallbackNote": "Certains logos peuvent ne pas apparaître en raison de bloqueurs de publicités ou de restrictions réseau."
     },
     "projects": {
-      "list": [],
-      "empty": "Aucun projet à afficher pour le moment"
+      "items": {
+        "item1": {
+          "id": "5ce4de7c-9711-4793-91e9-ccc46d288b35",
+          "title": "Ramzi's Portfolio",
+          "image": "/images/logo.jpg",
+          "description": "Une application web destinée aux recruteurs pour se présenter et présenter mes compétences et quelques projets que j'ai pu développer.",
+          "technologies": {
+            "nextjs": "Next.js",
+            "typescript": "TypeScript",
+            "tailwindcss": "TailwindCSS",
+            "shadcnui": "Shadcn UI",
+            "vercel": "Vercel"
+          },
+          "gallery": [
+            "/images/projects/ramzi-portfolio/site.jpg"
+          ],
+          "dateRange": "Septembre 2025",
+          "links": {
+            "repo": "https://github.com/ramyozi/ramzi-portfolio",
+            "live": "https://ramzibenmansour.com"
+          }
+        }
+      },
+      "checkOut": "Voir plus",
+      "empty": "Aucun projet à afficher pour le moment",
+      "date": "Date",
+      "stack": "Stack",
+      "links": "Liens",
+      "repo": "Repo",
+      "repoFrontend": "Repo Frontend",
+      "repoBackend": "Repo Backend",
+      "liveSite": "Site Live",
+      "gallery": "Galerie",
+      "noImages": "Aucune image disponible.",
+      "noLinks": "Aucun lien disponible."
     },
     "form": {
       "error": {
@@ -153,6 +186,9 @@
     },
   "footer": {
       "copyright": "© {year} {name}. Tous droits réservés."
-    }
+    },
+    "viewMore": "Voir plus",
+    "viewLess": "Voir moins",
+    "viewAll": "Tout voir"
   }
 }
