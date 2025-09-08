@@ -1,13 +1,12 @@
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { ProjectDetail } from '@/components/service/project-detail';
+import { use } from 'react';
 
-type Params = {
-  params: { locale: string; id: string };
-};
+type Params = Promise<{ locale: string; id: string }>;
 
-export default async function ProjectPage({ params }: Params) {
-  const { locale, id } = params;
+export default async function ProjectPage({ params }: { params: Params }) {
+  const { locale, id } = await params
 
   const t = await getTranslations({ locale, namespace: 'common.projects' });
   const items = t.raw('items') as Record<string, any>;
