@@ -81,7 +81,7 @@ export function ContactMe() {
   const linkedinLink = process.env.NEXT_PUBLIC_LINKEDIN_URL || '#';
 
   return (
-    <section id='contact' className="scroll-mt-24">
+    <section id='contact' className='scroll-mt-24'>
       <Card>
         <CardHeader className='flex flex-col items-center gap-3'>
           <div className='flex items-center justify-center gap-6'>

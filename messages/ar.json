@@ -1,7 +1,7 @@
 {
   "common": {
     "header": {
-      "siteName": "محفظة رمزي",
+      "siteName": "بورتفوليو رمزي",
       "about": "من أنا",
       "motivation": "ما يحفزني",
       "experience": "خبرتي",
@@ -125,8 +125,41 @@
       "logoFallbackNote": "قد لا تظهر بعض الشعارات بسبب مانعات الإعلانات أو قيود الشبكة"
     },
     "projects": {
-      "list": [],
-      "empty": "لا توجد مشاريع للعرض حالياً"
+      "items": {
+        "item1": {
+          "id": "5ce4de7c-9711-4793-91e9-ccc46d288b35",
+          "title": "بورتفوليو رمزي",
+          "image": "/images/logo.jpg",
+          "description": "تطبيق ويب مخصص لأصحاب العمل لعرض ملفي الشخصي ومهاراتي وبعض المشاريع التي قمت بتطويرها.",
+          "technologies": {
+            "nextjs": "Next.js",
+            "typescript": "TypeScript",
+            "tailwindcss": "TailwindCSS",
+            "shadcnui": "Shadcn UI",
+            "vercel": "Vercel"
+          },
+          "gallery": [
+            "/images/projects/ramzi-portfolio/site.jpg"
+          ],
+          "dateRange": "سبتمبر 2025",
+          "links": {
+            "repo": "https://github.com/ramyozi/ramzi-portfolio",
+            "live": "https://ramzibenmansour.com"
+          }
+        }
+      },
+      "checkOut": "عرض المزيد",
+      "empty": "لا توجد مشاريع حالياً",
+      "date": "التاريخ",
+      "stack": "التقنيات",
+      "links": "روابط",
+      "repo": "المستودع",
+      "repoFrontend": "مستودع الواجهة الأمامية",
+      "repoBackend": "مستودع الواجهة الخلفية",
+      "liveSite": "الموقع الفعلي",
+      "gallery": "معرض الصور",
+      "noImages": "لا توجد صور متاحة.",
+      "noLinks": "لا توجد روابط متاحة."
     },
     "form": {
       "error": {
@@ -153,6 +186,10 @@
     },
     "footer": {
       "copyright": "© {year} {name}. جميع الحقوق محفوظة."
-    }
+    },
+    "viewMore": "المزيد",
+    "viewLess": "الأقل",
+    "viewAll": "الكل"
   }
 }
+
