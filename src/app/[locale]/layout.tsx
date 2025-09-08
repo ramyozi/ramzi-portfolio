@@ -2,21 +2,17 @@ import { ThemeProvider } from '@/components/layout/theme-provider';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { Header } from '@/components/layout/header';
 import { setRequestLocale } from 'next-intl/server';
-import { ReactNode } from 'react';
+import { ReactNode, use } from 'react';
 import { Locale, routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import './globals.css';
 import { Toaster } from 'sonner';
 import { Footer } from '@/components/layout/footer';
 
-type Params = { locale: string };
+type Params = Promise<{ locale: string }>
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
-  const { locale } = await params;
+export async function generateMetadata({ params }: { params: Params }) {
+  const locale  = await params
 
   return {
     title: "Ramzi's Portfolio",
@@ -29,7 +25,7 @@ export async function generateMetadata({
 
 type Props = {
   children: ReactNode;
-  params: Promise<Params>;
+  params: Params;
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
