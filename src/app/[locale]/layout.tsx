@@ -9,9 +9,13 @@ import './globals.css';
 import { Toaster } from 'sonner';
 import { Footer } from '@/components/layout/footer';
 
-type Params = Promise<{ locale: string }>;
+type Params = { locale: string };
 
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { locale } = await params;
 
   return {
@@ -25,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 type Props = {
   children: ReactNode;
-  params: Params;
+  params: Promise<Params>;
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
@@ -51,14 +55,12 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-              <Header
+            <Header
               logoSrc={'/images/logo.jpg'}
               logoAlt={'Logo'}
               locale={locale as Locale}
             />
-            <div className='flex min-h-screen flex-col'>
-              {children}
-            </div>
+            <div className='flex min-h-screen flex-col'>{children}</div>
             <Toaster richColors position='top-center' />
             <Footer />
           </ThemeProvider>
