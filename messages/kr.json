@@ -125,8 +125,41 @@
       "logoFallbackNote": "광고 차단기나 네트워크 제한으로 일부 로고가 표시되지 않을 수 있습니다."
     },
     "projects": {
-      "list": [],
-      "empty": "현재 표시할 프로젝트가 없습니다"
+      "items": {
+        "item1": {
+          "id": "5ce4de7c-9711-4793-91e9-ccc46d288b35",
+          "title": "람지 포트폴리오",
+          "image": "/images/logo.jpg",
+          "description": "채용 담당자가 제 프로필, 기술, 그리고 제가 개발한 일부 프로젝트를 확인할 수 있는 웹 애플리케이션입니다.",
+          "technologies": {
+            "nextjs": "Next.js",
+            "typescript": "TypeScript",
+            "tailwindcss": "TailwindCSS",
+            "shadcnui": "Shadcn UI",
+            "vercel": "Vercel"
+          },
+          "gallery": [
+            "/images/projects/ramzi-portfolio/site.jpg"
+          ],
+          "dateRange": "2025년 9월",
+          "links": {
+            "repo": "https://github.com/ramyozi/ramzi-portfolio",
+            "live": "https://ramzibenmansour.com"
+          }
+        }
+      },
+      "checkOut": "자세히 보기",
+      "empty": "현재 표시할 프로젝트가 없습니다",
+      "date": "날짜",
+      "stack": "기술 스택",
+      "links": "링크",
+      "repo": "저장소",
+      "repoFrontend": "프론트엔드 저장소",
+      "repoBackend": "백엔드 저장소",
+      "liveSite": "실제 사이트",
+      "gallery": "갤러리",
+      "noImages": "사용 가능한 이미지가 없습니다.",
+      "noLinks": "사용 가능한 링크가 없습니다."
     },
     "form": {
       "error": {
@@ -153,6 +186,9 @@
     },
     "footer": {
       "copyright": "© {year} {name}. 판권 소유."
-    }
+    },
+    "viewMore": "더 보기",
+    "viewLess": "간략히 보기",
+    "viewAll": "모두 보기"
   }
 }
