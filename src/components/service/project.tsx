@@ -78,7 +78,7 @@ export function Project() {
                     </div>
                     <div className='flex justify-center'>
                       <Image
-                        src='/images/logo.jpg'
+                        src={project.image}
                         alt={project.title}
                         width={500}
                         height={500}
