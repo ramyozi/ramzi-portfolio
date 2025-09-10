@@ -146,6 +146,27 @@
             "repo": "https://github.com/ramyozi/ramzi-portfolio",
             "live": "https://ramzibenmansour.com"
           }
+        },
+        "item2": {
+          "id": "d9e3a6c2-4f5b-4a8c-9f77-92c8a9e2a1b0",
+          "title": "Memopus",
+          "image": "/images/projects/memopus/logo.png",
+          "description": "Une application Angular qui reproduit partiellement l’interface et les comportements de memopus.com. Elle permet de créer, voir, modifier et supprimer des cartes, organisées par tags et colonnes, avec connexion utilisateur et gestion via json-server.",
+          "technologies": {
+            "angular": "Angular 17",
+            "typescript": "TypeScript",
+            "rxjs": "RxJS",
+            "angularMaterial": "Angular Material",
+            "jsonserver": "JSON Server"
+          },
+          "gallery": [
+            "/images/projects/memopus/dashboard.jpg",
+            "/images/projects/memopus/cards.jpg"
+          ],
+          "dateRange": "2024",
+          "links": {
+            "repo": "https://github.com/ramyozi/memopus"
+          }
         }
       },
       "checkOut": "Voir plus",
