@@ -150,6 +150,7 @@
         "item2": {
           "id": "d9e3a6c2-4f5b-4a8c-9f77-92c8a9e2a1b0",
           "title": "ميموبوس",
+          "image": "/images/projects/memopus/logo.png",
           "description": "تطبيق Angular يحاكي جزئياً واجهة وسلوك موقع memopus.com. يتيح إنشاء وعرض وتعديل وحذف البطاقات، مرتبة حسب العلامات والأعمدة، مع تسجيل دخول المستخدم وإدارة البيانات عبر json-server.",
           "technologies": {
             "angular": "Angular 17",
@@ -169,7 +170,36 @@
           "links": {
             "repo": "https://github.com/ramyozi/memopus"
           }
+        },
+        "item3": {
+          "id": "f1c4d2b7-6e8a-4c3f-9a12-7b9d3e2f4c56",
+          "title": "Gimme What Lee Got",
+          "status": "قيد التنفيذ",
+          "image": "/images/projects/gwlg/logo.png",
+          "description": "تطبيق ويب يتكون من خلفية Django + Django REST Framework وواجهة أمامية React + TypeScript + Vite. يتيح هذا المشروع إدارة كتالوج للمنتجات/الخدمات/المحتوى، والتحقق من هوية المستخدمين، ونظام توصيات مخصص. في المستقبل، سيتم دمج الذكاء الاصطناعي لتقديم اقتراحات بناءً على تفضيلات المستخدمين واتجاهات المجتمع.",
+          "technologies": {
+            "django": "Django 5.2",
+            "djangorest": "Django REST Framework",
+            "postgresql": "PostgreSQL",
+            "simplejwt": "SimpleJWT",
+            "python": "Python 3.11.5",
+            "vite": "Vite",
+            "react": "React 19",
+            "typescript": "TypeScript",
+            "axios": "Axios",
+            "antdesign": "Ant Design",
+            "bootstrap": "Bootstrap"
+          },
+          "gallery": [
+            "/images/projects/gwlg/logo.png"
+          ],
+          "dateRange": "2025",
+          "links": {
+            "repoFrontend": "https://github.com/ramyozi/gimme-what-lee-got-front",
+            "repoBackend": "https://github.com/ramyozi/gimme-what-lee-got-back"
+          }
         }
+
       },
       "checkOut": "عرض المزيد",
       "empty": "لا توجد مشاريع حالياً",

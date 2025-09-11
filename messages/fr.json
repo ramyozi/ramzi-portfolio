@@ -151,6 +151,7 @@
           "id": "d9e3a6c2-4f5b-4a8c-9f77-92c8a9e2a1b0",
           "title": "Memopus",
           "description": "Une application Angular qui reproduit partiellement l’interface et les comportements de memopus.com. Elle permet de créer, voir, modifier et supprimer des cartes, organisées par tags et colonnes, avec connexion utilisateur et gestion via json-server.",
+          "image": "/images/projects/memopus/logo.png",
           "technologies": {
             "angular": "Angular 17",
             "typescript": "TypeScript",
@@ -169,11 +170,40 @@
           "links": {
             "repo": "https://github.com/ramyozi/memopus"
           }
+        },
+        "item3": {
+          "id": "f1c4d2b7-6e8a-4c3f-9a12-7b9d3e2f4c56",
+          "title": "Gimme What Lee Got",
+          "status": "En cours",
+          "image": "/images/projects/gwlg/logo.png",
+          "description": "Application web composée d’un backend Django + Django REST Framework et d’un frontend React + TypeScript + Vite. Ce projet permet de gérer un catalogue de produits/services/contenus, l’authentification des utilisateurs et un système de recommandations personnalisées. À terme, il intégrera l’intelligence artificielle pour proposer des suggestions basées sur les préférences des utilisateurs et les tendances de la communauté.",
+          "technologies": {
+            "django": "Django 5.2",
+            "djangorest": "Django REST Framework",
+            "postgresql": "PostgreSQL",
+            "simplejwt": "SimpleJWT",
+            "python": "Python 3.11.5",
+            "vite": "Vite",
+            "react": "React 19",
+            "typescript": "TypeScript",
+            "axios": "Axios",
+            "antdesign": "Ant Design",
+            "bootstrap": "Bootstrap"
+          },
+          "gallery": [
+            "/images/projects/gwlg/logo.png"
+          ],
+          "dateRange": "2025",
+          "links": {
+            "repoFrontend": "https://github.com/ramyozi/gimme-what-lee-got-front",
+            "repoBackend": "https://github.com/ramyozi/gimme-what-lee-got-back"
+          }
         }
       },
       "checkOut": "Voir plus",
       "empty": "Aucun projet à afficher pour le moment",
       "date": "Date",
+      "status": "Statut",
       "stack": "Stack",
       "links": "Liens",
       "repo": "Repo",
