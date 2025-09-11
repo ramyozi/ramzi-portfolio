@@ -9,10 +9,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { useState } from 'react';
-
-const getDeviconLogo = (icon: string) =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}/${icon}-original.svg`;
+import { useEffect, useState } from 'react';
+import { getTechLogo } from '@/utils/get-logo';
+import TechIcon from '@/components/service/common/tech-icon';
 
 export function Experience() {
   const t = useTranslations();
@@ -24,7 +23,7 @@ export function Experience() {
 
   if (!items || Object.keys(items).length === 0) {
     return (
-      <section id='experience' className="scroll-mt-24">
+      <section id='experience' className='scroll-mt-24'>
         <Card className='border-2 border-primary'>
           <CardHeader>
             <CardTitle className='text-2xl'>
@@ -38,7 +37,7 @@ export function Experience() {
   }
 
   return (
-    <section id='experience' className='space-y-6 scroll-mt-24'>
+    <section id='experience' className='scroll-mt-24 space-y-6'>
       <Card className='border-2 border-primary'>
         <CardHeader>
           <CardTitle className='text-2xl'>
@@ -92,11 +91,11 @@ export function Experience() {
                         <TooltipProvider key={techKey}>
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <img
-                                src={getDeviconLogo(techKey.toLowerCase())}
-                                alt={String(tech)}
+                              <TechIcon
+                                techKey={techKey.toLowerCase()}
+                                label={String(tech)}
+                                className='mx-auto h-8 w-8 object-contain transition-transform duration-200 hover:scale-110'
                                 onError={handleImgError}
-                                className='mx-auto h-10 w-10 object-contain transition-transform hover:scale-110'
                               />
                             </TooltipTrigger>
                             <TooltipContent>

@@ -34,6 +34,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 <thead>
                   <tr className='border-b'>
                     <th className='px-4 py-3 font-semibold'>{t('date')}</th>
+                    <th className='px-4 py-3 font-semibold'>{t('status')}</th>
                     <th className='px-4 py-3 font-semibold'>{t('stack')}</th>
                     <th className='px-4 py-3 font-semibold'>{t('links')}</th>
                   </tr>
@@ -42,6 +43,9 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   <tr className='border-b'>
                     <td className='px-4 py-3 align-top'>
                       {project.dateRange ?? '—'}
+                    </td>
+                    <td className='px-4 py-3 align-top'>
+                      {project.status ?? '—'}
                     </td>
                     <td className='px-4 py-3 align-top'>
                       <div className='flex flex-wrap gap-2'>

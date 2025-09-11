@@ -12,15 +12,13 @@ import {
 import { useTranslations } from 'next-intl';
 import { skills } from '@/data/skills';
 import { useState } from 'react';
+import TechIcon from '@/components/service/common/tech-icon';
 
 interface SkillWithLogo {
   name: string;
   icon: string;
   level: string;
 }
-
-const getDeviconLogo = (icon: string) =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}/${icon}-original.svg`;
 
 export function Skill() {
   const t = useTranslations();
@@ -35,10 +33,10 @@ export function Skill() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Card className='flex flex-col items-center justify-center border border-gray-200 p-4 shadow-sm transition-transform hover:scale-105'>
-                <img
-                  src={getDeviconLogo(skill.icon)}
-                  alt={skill.name}
-                  className='mb-2 h-12 w-12 object-contain'
+                <TechIcon
+                  techKey={skill.icon.toLowerCase()}
+                  label={String(skill.name)}
+                  className='mx-auto h-8 w-8 object-contain transition-transform duration-200 hover:scale-110'
                   onError={handleImgError}
                 />
                 <span className='text-center text-sm font-medium'>
@@ -64,7 +62,7 @@ export function Skill() {
   );
 
   return (
-    <section id='skills' className='relative space-y-6 scroll-mt-24'>
+    <section id='skills' className='relative scroll-mt-24 space-y-6'>
       <Card className='border-2 border-primary'>
         <CardHeader>
           <CardTitle className='text-2xl'>
