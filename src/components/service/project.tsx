@@ -8,18 +8,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
-
-const getDeviconLogo = (icon: string) =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}/${icon}-original.svg`;
+import TechIcon from '@/components/service/common/tech-icon';
 
 export function Project() {
   const t = useTranslations();
+  const locale = useLocale();
   const router = useRouter();
   const [failedLogos, setFailedLogos] = useState(false);
 
@@ -37,7 +36,13 @@ export function Project() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Carousel className='mx-2 md:mx-8'>
+          <Carousel
+            className='mx-2 md:mx-8'
+            opts={{
+              loop: true,
+              direction: locale === 'ar' ? 'rtl' : 'ltr',
+            }}
+          >
             <CarouselContent>
               {Object.entries(items).map(([key, project]) => (
                 <CarouselItem key={key}>
@@ -46,6 +51,11 @@ export function Project() {
                       <h1 className='text-xl font-semibold md:text-2xl'>
                         {project.title}
                       </h1>
+                      {project.status && (
+                        <span className={'italic text-gray-500'}>
+                          {project.status}
+                        </span>
+                      )}
                       <h2 className='text-sm text-muted-foreground md:text-base'>
                         {project.description}
                       </h2>
@@ -57,11 +67,11 @@ export function Project() {
                               variant='outline'
                               className='flex flex-col items-center px-3 py-2 text-sm md:text-base'
                             >
-                              <img
-                                src={getDeviconLogo(techKey.toLowerCase())}
-                                alt={String(tech)}
+                              <TechIcon
+                                techKey={techKey.toLowerCase()}
+                                label={String(tech)}
+                                className='mx-auto h-8 w-8 object-contain transition-transform duration-200 hover:scale-110'
                                 onError={handleImgError}
-                                className='h-10 w-10 object-contain transition-transform hover:scale-110'
                               />
                               <span>{String(tech)}</span>
                             </Badge>
@@ -78,7 +88,7 @@ export function Project() {
                     </div>
                     <div className='flex justify-center'>
                       <Image
-                        src='/images/logo.jpg'
+                        src={project.image}
                         alt={project.title}
                         width={500}
                         height={500}
