@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
@@ -18,6 +18,7 @@ import TechIcon from '@/components/service/common/tech-icon';
 
 export function Project() {
   const t = useTranslations();
+  const locale = useLocale();
   const router = useRouter();
   const [failedLogos, setFailedLogos] = useState(false);
 
@@ -35,7 +36,13 @@ export function Project() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Carousel className='mx-2 md:mx-8'>
+          <Carousel
+            className='mx-2 md:mx-8'
+            opts={{
+              loop: true,
+              direction: locale === 'ar' ? 'rtl' : 'ltr',
+            }}
+          >
             <CarouselContent>
               {Object.entries(items).map(([key, project]) => (
                 <CarouselItem key={key}>
