@@ -1,13 +1,38 @@
-import * as simpleIcons from 'simple-icons';
+/**
+ * get-logo.ts
+ * Récupère le logo SVG d'une technologie via Devicon ou SimpleIcons
+ */
 
-export function getLogo(name: string): string {
-  const iconKey = Object.keys(simpleIcons).find(
-    (key) => key.toLowerCase() === name.toLowerCase()
-  ) as keyof typeof simpleIcons | undefined;
+const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons';
+const SIMPLEICONS_BASE =
+  'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons';
 
-  if (!iconKey) return '';
+/**
+ * Teste si une URL d'icône existe
+ */
+const iconExists = async (url: string): Promise<boolean> => {
+  try {
+    const res = await fetch(url, { method: 'HEAD' });
 
-  const icon = simpleIcons[iconKey] as { svg: string };
+    return res.ok;
+  } catch {
+    return false;
+  }
+};
 
-  return `data:image/svg+xml;base64,${btoa(icon.svg)}`;
-}
+/**
+ * Récupère le logo SVG d'une technologie
+ */
+export const getTechLogo = async (tech: string): Promise<string> => {
+  const key = tech.toLowerCase().replace(/\s+/g, '-');
+
+  // Devicon
+  const deviconUrl = `${DEVICON_BASE}/${key}/${key}-original.svg`;
+
+  if (await iconExists(deviconUrl)) return deviconUrl;
+
+  // SimpleIcons fallback
+  const simpleIconsUrl = `${SIMPLEICONS_BASE}/${key}.svg`;
+
+  return simpleIconsUrl;
+};
