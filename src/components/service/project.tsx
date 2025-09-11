@@ -44,6 +44,11 @@ export function Project() {
                       <h1 className='text-xl font-semibold md:text-2xl'>
                         {project.title}
                       </h1>
+                      {project.status && (
+                        <span className={'italic text-gray-500'}>
+                          {project.status}
+                        </span>
+                      )}
                       <h2 className='text-sm text-muted-foreground md:text-base'>
                         {project.description}
                       </h2>
