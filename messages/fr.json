@@ -150,7 +150,6 @@
         "item2": {
           "id": "d9e3a6c2-4f5b-4a8c-9f77-92c8a9e2a1b0",
           "title": "Memopus",
-          "image": "/images/projects/memopus/logo.png",
           "description": "Une application Angular qui reproduit partiellement l’interface et les comportements de memopus.com. Elle permet de créer, voir, modifier et supprimer des cartes, organisées par tags et colonnes, avec connexion utilisateur et gestion via json-server.",
           "technologies": {
             "angular": "Angular 17",
@@ -160,8 +159,11 @@
             "jsonserver": "JSON Server"
           },
           "gallery": [
-            "/images/projects/memopus/dashboard.jpg",
-            "/images/projects/memopus/cards.jpg"
+            "/images/projects/memopus/login.png",
+            "/images/projects/memopus/dashboard.png",
+            "/images/projects/memopus/dashboard-admin.png",
+            "/images/projects/memopus/new-card-form.png",
+            "/images/projects/memopus/update-card-form.png"
           ],
           "dateRange": "2024",
           "links": {

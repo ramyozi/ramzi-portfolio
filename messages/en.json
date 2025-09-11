@@ -146,6 +146,29 @@
             "repo": "https://github.com/ramyozi/ramzi-portfolio",
             "live": "https://ramzibenmansour.com"
           }
+        },
+        "item2": {
+          "id": "d9e3a6c2-4f5b-4a8c-9f77-92c8a9e2a1b0",
+          "title": "Memopus",
+          "description": "An Angular application that partially replicates the interface and behavior of memopus.com. It allows creating, viewing, editing, and deleting cards, organized by tags and columns, with user login and management via json-server.",
+          "technologies": {
+            "angular": "Angular 17",
+            "typescript": "TypeScript",
+            "rxjs": "RxJS",
+            "angularMaterial": "Angular Material",
+            "jsonserver": "JSON Server"
+          },
+          "gallery": [
+            "/images/projects/memopus/login.png",
+            "/images/projects/memopus/dashboard.png",
+            "/images/projects/memopus/dashboard-admin.png",
+            "/images/projects/memopus/new-card-form.png",
+            "/images/projects/memopus/update-card-form.png"
+          ],
+          "dateRange": "2024",
+          "links": {
+            "repo": "https://github.com/ramyozi/memopus"
+          }
         }
       },
       "checkOut": "Check it out",
