@@ -150,6 +150,7 @@
         "item2": {
           "id": "d9e3a6c2-4f5b-4a8c-9f77-92c8a9e2a1b0",
           "title": "메모푸스",
+          "image": "/images/projects/memopus/logo.png",
           "description": "memopus.com의 인터페이스와 기능을 일부 재현한 Angular 애플리케이션입니다. 태그와 열별로 구성된 카드를 생성, 보기, 수정, 삭제할 수 있으며, 사용자 로그인과 json-server를 통한 관리 기능을 제공합니다.",
           "technologies": {
             "angular": "Angular 17",
@@ -168,6 +169,34 @@
           "dateRange": "2024",
           "links": {
             "repo": "https://github.com/ramyozi/memopus"
+          }
+        },
+        "item3": {
+          "id": "f1c4d2b7-6e8a-4c3f-9a12-7b9d3e2f4c56",
+          "title": "Gimme What Lee Got",
+          "status": "진행 중",
+          "image": "/images/projects/gwlg/logo.png",
+          "description": "Django + Django REST Framework 백엔드와 React + TypeScript + Vite 프론트엔드로 구성된 웹 애플리케이션입니다. 이 프로젝트는 제품/서비스/콘텐츠 카탈로그 관리, 사용자 인증, 개인화 추천 시스템을 제공합니다. 향후에는 인공지능을 통합하여 사용자 선호와 커뮤니티 트렌드에 기반한 추천 기능을 제공할 예정입니다.",
+          "technologies": {
+            "django": "Django 5.2",
+            "djangorest": "Django REST Framework",
+            "postgresql": "PostgreSQL",
+            "simplejwt": "SimpleJWT",
+            "python": "Python 3.11.5",
+            "vite": "Vite",
+            "react": "React 19",
+            "typescript": "TypeScript",
+            "axios": "Axios",
+            "antdesign": "Ant Design",
+            "bootstrap": "Bootstrap"
+          },
+          "gallery": [
+            "/images/projects/gwlg/logo.png"
+          ],
+          "dateRange": "2025",
+          "links": {
+            "repoFrontend": "https://github.com/ramyozi/gimme-what-lee-got-front",
+            "repoBackend": "https://github.com/ramyozi/gimme-what-lee-got-back"
           }
         }
       },

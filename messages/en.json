@@ -150,6 +150,7 @@
         "item2": {
           "id": "d9e3a6c2-4f5b-4a8c-9f77-92c8a9e2a1b0",
           "title": "Memopus",
+          "image": "/images/projects/memopus/logo.png",
           "description": "An Angular application that partially replicates the interface and behavior of memopus.com. It allows creating, viewing, editing, and deleting cards, organized by tags and columns, with user login and management via json-server.",
           "technologies": {
             "angular": "Angular 17",
@@ -168,6 +169,34 @@
           "dateRange": "2024",
           "links": {
             "repo": "https://github.com/ramyozi/memopus"
+          }
+        },
+        "item3": {
+          "id": "f1c4d2b7-6e8a-4c3f-9a12-7b9d3e2f4c56",
+          "title": "Gimme What Lee Got",
+          "status": "In progress",
+          "image": "/images/projects/gwlg/logo.png",
+          "description": "Web application with a Django + Django REST Framework backend and a React + TypeScript + Vite frontend. This project manages a catalog of products/services/content, user authentication, and a personalized recommendation system. In the future, it will integrate artificial intelligence to provide suggestions based on user preferences and community trends.",
+          "technologies": {
+            "django": "Django 5.2",
+            "djangorest": "Django REST Framework",
+            "postgresql": "PostgreSQL",
+            "simplejwt": "SimpleJWT",
+            "python": "Python 3.11.5",
+            "vite": "Vite",
+            "react": "React 19",
+            "typescript": "TypeScript",
+            "axios": "Axios",
+            "antdesign": "Ant Design",
+            "bootstrap": "Bootstrap"
+          },
+          "gallery": [
+            "/images/projects/gwlg/logo.png"
+          ],
+          "dateRange": "2025",
+          "links": {
+            "repoFrontend": "https://github.com/ramyozi/gimme-what-lee-got-front",
+            "repoBackend": "https://github.com/ramyozi/gimme-what-lee-got-back"
           }
         }
       },
