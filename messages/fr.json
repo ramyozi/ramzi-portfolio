@@ -198,6 +198,32 @@
             "repoFrontend": "https://github.com/ramyozi/gimme-what-lee-got-front",
             "repoBackend": "https://github.com/ramyozi/gimme-what-lee-got-back"
           }
+        },
+        "item4": {
+          "id": "3cbe3f2d-5f92-4e21-8d7d-4d92f85a7c1f",
+          "title": "Cabii",
+          "image": "/images/projects/cabii/logo2.png",
+          "description": "Cabii est une plateforme de mobilité et de livraison tout-en-un conçue pour les personnes à besoins spécifiques (handicap physique, troubles cognitifs, autisme, personnes âgées ou isolées). Elle permet de réserver des trajets adaptés avec chauffeurs formés et véhicules accessibles, tout en offrant la livraison sécurisée de courses, médicaments ou objets essentiels. Le projet est au tout début de son développement : backend posé, frontend mobile planifié.",
+          "technologies": {
+            "nestjs": "NestJS",
+            "typescript": "TypeScript",
+            "typeorm": "TypeORM",
+            "postgresql": "PostgreSQL",
+            "swagger": "Swagger",
+            "docker": "Docker (prévu)",
+            "redis": "Redis (prévu, cache & geofencing)",
+            "reactnative": "React Native (planifié)",
+            "expo": "Expo (planifié)",
+            "tailwindcss": "TailwindCSS / NativeWind (planifié)"
+          },
+          "gallery": [
+            "/images/projects/cabii/logo2.png"
+          ],
+          "dateRange": "2025 (en cours)",
+          "links": {
+            "repoFrontend": "https://github.com/ramyozi/cabii/cabii-mobile",
+            "repoBackend": "https://github.com/ramyozi/cabii/cabii-backend"
+          }
         }
       },
       "checkOut": "Voir plus",
