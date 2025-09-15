@@ -142,7 +142,9 @@ export function ContactMe() {
               required
             />
 
-            <Button type='submit'>{t('common.contactMe.form.submit')}</Button>
+            <Button type='submit' variant={'default'}>
+              {t('common.contactMe.form.submit')}
+            </Button>
           </form>
         </CardContent>
       </Card>

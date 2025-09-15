@@ -1,6 +1,5 @@
 'use client';
-
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -14,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import TechIcon from '@/components/service/common/tech-icon';
 
 export function Project() {
@@ -29,12 +29,8 @@ export function Project() {
 
   return (
     <section id='projects' className='scroll-mt-24 space-y-6'>
-      <Card className='border-2 border-primary'>
-        <CardHeader>
-          <CardTitle className='text-2xl'>
-            {t('common.header.projects')} ( WIP )
-          </CardTitle>
-        </CardHeader>
+      <Card className='border-l-4 shadow-sm'>
+        <CardHeader />
         <CardContent>
           <Carousel
             className='mx-2 md:mx-8'
@@ -46,31 +42,39 @@ export function Project() {
             <CarouselContent>
               {Object.entries(items).map(([key, project]) => (
                 <CarouselItem key={key}>
-                  <div className='grid grid-cols-1 items-center gap-6 md:grid-cols-2'>
-                    <div className='flex flex-col space-y-4'>
-                      <h1 className='text-xl font-semibold md:text-2xl'>
-                        {project.title}
-                      </h1>
-                      {project.status && (
-                        <span className={'italic text-gray-500'}>
-                          {project.status}
-                        </span>
-                      )}
-                      <h2 className='text-sm text-muted-foreground md:text-base'>
-                        {project.description}
-                      </h2>
-                      <div className='flex flex-wrap gap-2'>
+                  <div className='grid grid-cols-1 items-center gap-8 md:grid-cols-2'>
+                    <motion.div
+                      initial={{ opacity: 0, x: -18 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className='flex flex-col justify-center space-y-6'
+                    >
+                      <div className='space-y-2'>
+                        <h3 className='text-xl font-semibold md:text-2xl'>
+                          {project.title}
+                        </h3>
+                        {project.status && (
+                          <span className='italic text-gray-500'>
+                            {project.status}
+                          </span>
+                        )}
+                        <p className='text-sm text-muted-foreground md:text-base'>
+                          {project.description}
+                        </p>
+                      </div>
+
+                      <div className='flex flex-wrap gap-3'>
                         {Object.entries(project.technologies ?? {}).map(
                           ([techKey, tech]) => (
                             <Badge
                               key={techKey}
                               variant='outline'
-                              className='flex flex-col items-center px-3 py-2 text-sm md:text-base'
+                              className='flex items-center gap-2 px-3 py-2 text-sm md:text-base'
                             >
                               <TechIcon
                                 techKey={techKey.toLowerCase()}
                                 label={String(tech)}
-                                className='mx-auto h-8 w-8 object-contain transition-transform duration-200 hover:scale-110'
+                                className='h-6 w-6 object-contain'
                                 onError={handleImgError}
                               />
                               <span>{String(tech)}</span>
@@ -78,23 +82,35 @@ export function Project() {
                           )
                         )}
                       </div>
-                      <Button
-                        onClick={() => handleCheckOutProject(project.id)}
-                        variant='outline'
-                        className='justify-content-end rounded-md px-4 py-2 transition hover:bg-primary/20'
+                      <div>
+                        <Button
+                          onClick={() => handleCheckOutProject(project.id)}
+                          variant='default'
+                          className='w-full rounded-md px-4 py-2 transition hover:bg-primary/20'
+                        >
+                          {t('common.projects.checkOut')}
+                        </Button>
+                      </div>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: 18 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className='flex justify-center'
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.03 }}
+                        className='overflow-hidden rounded-2xl'
                       >
-                        {t('common.projects.checkOut')}
-                      </Button>
-                    </div>
-                    <div className='flex justify-center'>
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={500}
-                        height={500}
-                        className='h-auto max-w-full rounded-2xl object-cover shadow'
-                      />
-                    </div>
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={700}
+                          height={500}
+                          className='h-full w-full object-cover'
+                        />
+                      </motion.div>
+                    </motion.div>
                   </div>
                 </CarouselItem>
               ))}
