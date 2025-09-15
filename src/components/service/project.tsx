@@ -85,8 +85,8 @@ export function Project() {
                       <div>
                         <Button
                           onClick={() => handleCheckOutProject(project.id)}
-                          variant='outline'
-                          className='rounded-md px-4 py-2 transition hover:bg-primary/20'
+                          variant='default'
+                          className='w-full rounded-md px-4 py-2 transition hover:bg-primary/20'
                         >
                           {t('common.projects.checkOut')}
                         </Button>
