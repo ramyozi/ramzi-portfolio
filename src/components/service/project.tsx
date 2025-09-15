@@ -32,7 +32,7 @@ export function Project() {
       <Card className='border-2 border-primary'>
         <CardHeader>
           <CardTitle className='text-2xl'>
-            {t('common.header.projects')} ( WIP )
+            {t('common.header.projects')}
           </CardTitle>
         </CardHeader>
         <CardContent>
