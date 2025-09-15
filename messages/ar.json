@@ -198,8 +198,33 @@
             "repoFrontend": "https://github.com/ramyozi/gimme-what-lee-got-front",
             "repoBackend": "https://github.com/ramyozi/gimme-what-lee-got-back"
           }
+        },
+        "item4": {
+          "id": "3cbe3f2d-5f92-4e21-8d7d-4d92f85a7c1f",
+          "title": "كابي",
+          "image": "/images/projects/cabii/logo2.png",
+          "description": "كابي هي منصة شاملة للنقل والتوصيل مصممة خصيصًا للأشخاص ذوي الاحتياجات الخاصة (إعاقات جسدية، اضطرابات معرفية، التوحد، كبار السن أو الأفراد المعزولين). تتيح حجز رحلات مخصصة مع سائقين مدربين ومركبات مناسبة، بالإضافة إلى توفير خدمة توصيل آمنة للبقالة، الأدوية أو المواد الأساسية. المشروع في بداياته الأولى: تم إعداد الواجهة الخلفية، والواجهة الأمامية للهواتف المحمولة مخططة.",
+          "technologies": {
+            "nestjs": "NestJS",
+            "typescript": "TypeScript",
+            "typeorm": "TypeORM",
+            "postgresql": "PostgreSQL",
+            "swagger": "Swagger",
+            "docker": "Docker (لاحقا)",
+            "redis": "Redis (لاحقا، التخزين المؤقت والموقع الجغرافي)",
+            "reactnative": "React Native (لاحقا)",
+            "expo": "Expo (لاحقا)",
+            "tailwindcss": "TailwindCSS / NativeWind (لاحقا)"
+          },
+          "gallery": [
+            "/images/projects/cabii/logo2.png"
+          ],
+          "dateRange": "2025 (قيد التطوير)",
+          "links": {
+            "repoFrontend": "https://github.com/ramyozi/cabii/cabii-mobile",
+            "repoBackend": "https://github.com/ramyozi/cabii/cabii-backend"
+          }
         }
-
       },
       "checkOut": "عرض المزيد",
       "empty": "لا توجد مشاريع حالياً",
