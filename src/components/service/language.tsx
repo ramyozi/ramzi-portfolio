@@ -6,22 +6,18 @@ import { spokenLanguages } from '@/data/languages';
 
 const LEVEL_COLORS = [
   'bg-green-300',
-  'bg-green-400',
   'bg-green-500',
-  'bg-green-600',
+  'bg-green-700',
+  'bg-green-900',
 ];
 
 export function Language() {
   const t = useTranslations();
 
   return (
-    <section id='languages' className='space-y-4 scroll-mt-24'>
-      <Card className='border-2 border-primary'>
-        <CardHeader>
-          <CardTitle className='text-2xl'>
-            {t('common.header.languages')}
-          </CardTitle>
-        </CardHeader>
+    <section id='languages' className='scroll-mt-24 space-y-4'>
+      <Card className='border-2'>
+        <CardHeader />
         <CardContent className='space-y-3'>
           {spokenLanguages.length > 0 ? (
             spokenLanguages.map((lang, idx) => (

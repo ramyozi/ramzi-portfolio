@@ -1,10 +1,12 @@
-'use client'; // if you plan to add interactivity later
+'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Github, Globe } from 'lucide-react';
+import { Github, Globe, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 interface ProjectDetailProps {
   project: any;
@@ -12,21 +14,32 @@ interface ProjectDetailProps {
 
 export function ProjectDetail({ project }: ProjectDetailProps) {
   const t = useTranslations('common.projects');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   if (!project) return null;
 
   return (
     <div className='flex flex-col space-y-16'>
-      <header className='space-y-4 text-center'>
+      <motion.header
+        className='space-y-4 text-center'
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <h1 className='text-5xl font-extrabold tracking-tight md:text-7xl'>
           {project.title}
         </h1>
         <p className='mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl'>
           {project.description}
         </p>
-      </header>
+      </motion.header>
 
-      <section>
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <Card className='shadow-lg'>
           <CardContent>
             <div className='overflow-x-auto'>
@@ -132,16 +145,25 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             </div>
           </CardContent>
         </Card>
-      </section>
+      </motion.section>
 
-      <section className='space-y-6'>
+      <motion.section
+        className='space-y-6'
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
         <h2 className='text-2xl font-semibold'>{t('gallery')}</h2>
         {project.gallery && project.gallery.length > 0 ? (
           <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
             {project.gallery.map((src: string, i: number) => (
-              <div
+              <motion.div
                 key={i}
-                className='relative aspect-[4/3] w-full overflow-hidden rounded-xl border shadow'
+                className='relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-xl border shadow'
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setSelectedImage(src)}
               >
                 <Image
                   src={src}
@@ -149,13 +171,48 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   fill
                   className='object-cover'
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
         ) : (
           <p className='text-sm text-muted-foreground'>{t('noImages')}</p>
         )}
-      </section>
+      </motion.section>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              className='relative w-full max-w-5xl overflow-hidden rounded-2xl shadow-2xl'
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className='absolute right-3 top-3 z-10 rounded-full bg-black/60 p-2 text-white hover:bg-black/80'
+                onClick={() => setSelectedImage(null)}
+              >
+                <X className='h-5 w-5' />
+              </button>
+              <Image
+                src={selectedImage}
+                alt='Selected gallery image'
+                width={1600}
+                height={1200}
+                className='h-auto w-full object-contain'
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

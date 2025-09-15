@@ -38,12 +38,8 @@ export function Experience() {
 
   return (
     <section id='experience' className='scroll-mt-24 space-y-6'>
-      <Card className='border-2 border-primary'>
-        <CardHeader>
-          <CardTitle className='text-2xl'>
-            {t('common.header.experience')}
-          </CardTitle>
-        </CardHeader>
+      <Card className='border-2'>
+        <CardHeader></CardHeader>
         <CardContent className='grid gap-6 md:grid-cols-3'>
           {Object.entries(items).map(([key, exp]) => (
             <Card key={key} className='border bg-muted'>
