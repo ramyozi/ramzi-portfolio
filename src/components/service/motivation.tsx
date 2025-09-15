@@ -10,7 +10,7 @@ export function Motivation() {
   return (
     <section
       id='motivation'
-      className='grid grid-cols-1 items-center gap-6 md:grid-cols-2 scroll-mt-24'
+      className='grid scroll-mt-24 grid-cols-1 items-center gap-6 md:grid-cols-2'
     >
       <div className='flex justify-center'>
         <Image
@@ -22,12 +22,8 @@ export function Motivation() {
         />
       </div>
 
-      <Card className='h-full border-2 border-primary'>
-        <CardHeader>
-          <CardTitle className='text-2xl'>
-            {t('common.header.motivation')}
-          </CardTitle>
-        </CardHeader>
+      <Card className='content-around border-2'>
+        <CardHeader />
         <CardContent>
           <p className='whitespace-pre-line text-base leading-relaxed'>
             {t('common.motivation.description')}

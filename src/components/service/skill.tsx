@@ -63,12 +63,8 @@ export function Skill() {
 
   return (
     <section id='skills' className='relative scroll-mt-24 space-y-6'>
-      <Card className='border-2 border-primary'>
-        <CardHeader>
-          <CardTitle className='text-2xl'>
-            {t('common.header.skills')}
-          </CardTitle>
-        </CardHeader>
+      <Card className='border-2'>
+        <CardHeader />
         <CardContent>
           <Tabs defaultValue='languages' className='space-y-4'>
             <TabsList className='grid grid-cols-3'>
