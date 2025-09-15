@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 const sectionVariants = {
@@ -9,7 +9,7 @@ const sectionVariants = {
     y: 0,
     transition: { duration: 0.6, delay: i * 0.08, ease: 'easeOut' },
   }),
-};
+} as Variants;
 
 export default function SectionWrapper({
   children,
