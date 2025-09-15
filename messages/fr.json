@@ -202,6 +202,7 @@
         "item4": {
           "id": "3cbe3f2d-5f92-4e21-8d7d-4d92f85a7c1f",
           "title": "Cabii",
+          "status": "En cours",
           "image": "/images/projects/cabii/logo2.png",
           "description": "Cabii est une plateforme de mobilité et de livraison tout-en-un conçue pour les personnes à besoins spécifiques (handicap physique, troubles cognitifs, autisme, personnes âgées ou isolées). Elle permet de réserver des trajets adaptés avec chauffeurs formés et véhicules accessibles, tout en offrant la livraison sécurisée de courses, médicaments ou objets essentiels. Le projet est au tout début de son développement : backend posé, frontend mobile planifié.",
           "technologies": {
@@ -226,7 +227,7 @@
           }
         }
       },
-      "checkOut": "Voir plus",
+      "checkOut": "Consulter",
       "empty": "Aucun projet à afficher pour le moment",
       "date": "Date",
       "status": "Statut",
