@@ -198,6 +198,32 @@
             "repoFrontend": "https://github.com/ramyozi/gimme-what-lee-got-front",
             "repoBackend": "https://github.com/ramyozi/gimme-what-lee-got-back"
           }
+        },
+        "item4": {
+          "id": "3cbe3f2d-5f92-4e21-8d7d-4d92f85a7c1f",
+          "title": "카비 (Cabii)",
+          "image": "/images/projects/cabii/logo2.png",
+          "description": "카비는 특정 요구가 있는 사람들(신체적 장애, 인지 장애, 자폐, 노인 또는 고립된 개인)을 위해 설계된 통합 이동 및 배송 플랫폼입니다. 훈련된 운전자와 접근 가능한 차량으로 맞춤형 이동을 예약할 수 있으며, 식료품, 약품 또는 필수 물품의 안전한 배송도 제공합니다. 프로젝트는 개발 초기 단계에 있으며, 백엔드는 준비되었고 모바일 프론트엔드는 계획 중입니다.",
+          "technologies": {
+            "nestjs": "NestJS",
+            "typescript": "TypeScript",
+            "typeorm": "TypeORM",
+            "postgresql": "PostgreSQL",
+            "swagger": "Swagger",
+            "docker": "Docker (예정)",
+            "redis": "Redis (예정, 캐시 및 지리정보)",
+            "reactnative": "React Native (계획됨)",
+            "expo": "Expo (계획됨)",
+            "tailwindcss": "TailwindCSS / NativeWind (계획됨)"
+          },
+          "gallery": [
+            "/images/projects/cabii/logo2.png"
+          ],
+          "dateRange": "2025 (진행 중)",
+          "links": {
+            "repoFrontend": "https://github.com/ramyozi/cabii/cabii-mobile",
+            "repoBackend": "https://github.com/ramyozi/cabii/cabii-backend"
+          }
         }
       },
       "checkOut": "자세히 보기",
