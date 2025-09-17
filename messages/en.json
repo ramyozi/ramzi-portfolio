@@ -125,6 +125,7 @@
       "logoFallbackNote": "Some logos may not appear due to ad blockers or network restrictions."
     },
     "projects": {
+      "projectNumber": "Project #{current}/{total}",
       "items": {
         "item1": {
           "id": "5ce4de7c-9711-4793-91e9-ccc46d288b35",
@@ -222,14 +223,15 @@
           ],
           "dateRange": "2025 (in progress)",
           "links": {
-            "repoFrontend": "https://github.com/ramyozi/cabii/cabii-mobile",
-            "repoBackend": "https://github.com/ramyozi/cabii/cabii-backend"
+            "repoFrontend": "https://github.com/ramyozi/cabii-mobile",
+            "repoBackend": "https://github.com/ramyozi/cabii-backend"
           }
         }
       },
       "checkOut": "Check it out",
       "empty": "No projects to show right now",
       "date": "Date",
+      "status": "Status",
       "stack": "Stack",
       "links": "Links",
       "repo": "Repo",
@@ -268,6 +270,9 @@
     },
     "viewMore": "View More",
     "viewLess": "View Less",
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "previous": "Previous",
+    "next": "Next",
+    "back": "Back"
   }
 }
