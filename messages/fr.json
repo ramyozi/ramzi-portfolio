@@ -125,6 +125,7 @@
       "logoFallbackNote": "Certains logos peuvent ne pas apparaître en raison de bloqueurs de publicités ou de restrictions réseau."
     },
     "projects": {
+      "projectNumber": "Projet n°{current}/{total}",
       "items": {
         "item1": {
           "id": "5ce4de7c-9711-4793-91e9-ccc46d288b35",
@@ -222,8 +223,8 @@
           ],
           "dateRange": "2025 (en cours)",
           "links": {
-            "repoFrontend": "https://github.com/ramyozi/cabii/cabii-mobile",
-            "repoBackend": "https://github.com/ramyozi/cabii/cabii-backend"
+            "repoFrontend": "https://github.com/ramyozi/cabii-mobile",
+            "repoBackend": "https://github.com/ramyozi/cabii-backend"
           }
         }
       },
@@ -269,6 +270,9 @@
     },
     "viewMore": "Voir plus",
     "viewLess": "Voir moins",
-    "viewAll": "Tout voir"
+    "viewAll": "Tout voir",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "back": "Retour"
   }
 }
