@@ -125,6 +125,7 @@
       "logoFallbackNote": "قد لا تظهر بعض الشعارات بسبب مانعات الإعلانات أو قيود الشبكة"
     },
     "projects": {
+      "projectNumber": "العمل رقم {current} من {total}",
       "items": {
         "item1": {
           "id": "5ce4de7c-9711-4793-91e9-ccc46d288b35",
@@ -222,14 +223,15 @@
           ],
           "dateRange": "2025 (قيد التطوير)",
           "links": {
-            "repoFrontend": "https://github.com/ramyozi/cabii/cabii-mobile",
-            "repoBackend": "https://github.com/ramyozi/cabii/cabii-backend"
+            "repoFrontend": "https://github.com/ramyozi/cabii-mobile",
+            "repoBackend": "https://github.com/ramyozi/cabii-backend"
           }
         }
       },
       "checkOut": "عرض المزيد",
       "empty": "لا توجد مشاريع حالياً",
       "date": "التاريخ",
+      "status": "الحالة",
       "stack": "التقنيات",
       "links": "روابط",
       "repo": "المستودع",
@@ -268,7 +270,10 @@
     },
     "viewMore": "المزيد",
     "viewLess": "الأقل",
-    "viewAll": "الكل"
+    "viewAll": "الكل",
+    "previous": "السابق",
+    "next": "التالي",
+    "back": "الرجوع"
   }
 }
 
