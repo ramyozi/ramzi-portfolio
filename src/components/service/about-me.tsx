@@ -37,7 +37,7 @@ export function AboutMe() {
       >
         <div className='relative h-full min-h-[360px] w-full overflow-hidden rounded-2xl border shadow-lg'>
           <iframe
-            src='/cv-ramzi-benmansour.pdf#view=fitH'
+            src='/developpeur-fullstack-react-nodejs-de-ramzi-benmansour.pdf#view=fitH'
             className='h-full w-full'
             title={t('common.header.about')}
           />
