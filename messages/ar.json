@@ -223,7 +223,7 @@
           ],
           "dateRange": "2025 (قيد التطوير)",
           "links": {
-            "repoFrontend": "https://github.com/ramyozi/cabii-mobile",
+            "repoMobile": "https://github.com/ramyozi/cabii-mobile",
             "repoBackend": "https://github.com/ramyozi/cabii-backend"
           }
         }
@@ -236,8 +236,9 @@
       "links": "روابط",
       "repo": "المستودع",
       "repoFrontend": "مستودع الواجهة الأمامية",
+      "repoMobile": "مستودع الواجهة الأمامية الهواتف المحمولة",
       "repoBackend": "مستودع الواجهة الخلفية",
-      "liveSite": "الموقع الفعلي",
+      "live": "الموقع الفعلي",
       "gallery": "معرض الصور",
       "noImages": "لا توجد صور متاحة.",
       "noLinks": "لا توجد روابط متاحة."
