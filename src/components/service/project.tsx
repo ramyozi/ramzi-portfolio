@@ -41,8 +41,8 @@ export function Project() {
           >
             <CarouselContent>
               {Object.entries(items).map(([key, project]) => (
-                <CarouselItem key={key}>
-                  <div className='grid grid-cols-1 items-center gap-8 md:grid-cols-2'>
+                <CarouselItem key={key} className='flex items-center'>
+                  <div className='grid w-full grid-cols-1 items-center gap-8 md:grid-cols-2'>
                     <motion.div
                       initial={{ opacity: 0, x: -18 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -82,6 +82,7 @@ export function Project() {
                           )
                         )}
                       </div>
+
                       <div>
                         <Button
                           onClick={() => handleCheckOutProject(project.id)}
@@ -92,6 +93,7 @@ export function Project() {
                         </Button>
                       </div>
                     </motion.div>
+
                     <motion.div
                       initial={{ opacity: 0, x: 18 }}
                       whileInView={{ opacity: 1, x: 0 }}
