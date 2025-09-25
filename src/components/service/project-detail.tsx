@@ -111,20 +111,29 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   </td>
                   <td className='px-4 py-3 align-top'>
                     <ul className='space-y-2'>
-                      {project.links?.repo && (
-                        <li>
-                          <a
-                            href={project.links.repo}
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='flex items-center gap-2 text-primary hover:underline'
-                          >
-                            <Github className='h-4 w-4' />
-                            {t('repo')}
-                          </a>
-                        </li>
-                      )}
-                      {!project.links && (
+                      {project.links ? (
+                        Object.entries(project.links).map(([key, url]) => {
+                          const link = url as string;
+
+                          return (
+                            <li key={key}>
+                              <a
+                                href={link}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='flex items-center gap-2 text-primary hover:underline'
+                              >
+                                {key === 'live' ? (
+                                  <Globe className='h-4 w-4' />
+                                ) : (
+                                  <Github className='h-4 w-4' />
+                                )}
+                                {t(`common.projects.${key}` as any)}
+                              </a>
+                            </li>
+                          );
+                        })
+                      ) : (
                         <li className='text-sm text-muted-foreground'>
                           {t('noLinks')}
                         </li>
