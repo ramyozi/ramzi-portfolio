@@ -223,7 +223,7 @@
           ],
           "dateRange": "2025 (in progress)",
           "links": {
-            "repoFrontend": "https://github.com/ramyozi/cabii-mobile",
+            "repoMobile": "https://github.com/ramyozi/cabii-mobile",
             "repoBackend": "https://github.com/ramyozi/cabii-backend"
           }
         }
@@ -236,8 +236,9 @@
       "links": "Links",
       "repo": "Repo",
       "repoFrontend": "Frontend Repo",
+      "repoMobile": "Mobile Repo",
       "repoBackend": "Backend Repo",
-      "liveSite": "Live Site",
+      "live": "Live Site",
       "gallery": "Gallery",
       "noImages": "No images available.",
       "noLinks": "No links available."
