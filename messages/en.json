@@ -96,8 +96,20 @@
           "logo": "/logo/iqraa-logo.svg",
           "technologies": {
             "angular": "Angular",
+            "vuejs": "Vue.js",
+            "reactjs": "React.js",
+            "spring": "Spring Boot",
             "nodejs": "Node.js",
-            "express": "Express"
+            "express": "Express",
+            "symfony": "Symfony",
+            "php": "PHP",
+            "postgresql": "PostgreSQL",
+            "docker": "Docker",
+            "git": "Git",
+            "python": "Python",
+            "java": "Java",
+            "phpunit": "PHPUnit",
+            "phpstorm": "PHPStorm"
           },
           "tasks": {
             "task1": "Design and development of a management application",
