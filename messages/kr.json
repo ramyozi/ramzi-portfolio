@@ -96,8 +96,20 @@
           "logo": "/logo/iqraa-logo.svg",
           "technologies": {
             "angular": "Angular",
+            "vuejs": "Vue.js",
+            "reactjs": "React.js",
+            "spring": "Spring Boot",
             "nodejs": "Node.js",
-            "express": "Express"
+            "express": "Express",
+            "symfony": "Symfony",
+            "php": "PHP",
+            "postgresql": "PostgreSQL",
+            "docker": "Docker",
+            "git": "Git",
+            "python": "Python",
+            "java": "Java",
+            "phpunit": "PHPUnit",
+            "phpstorm": "PHPStorm"
           },
           "tasks": {
             "task1": "관리 애플리케이션 설계 및 개발",

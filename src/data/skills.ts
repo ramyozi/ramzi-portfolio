@@ -7,8 +7,9 @@ export const skills = {
     { name: 'SCSS', icon: 'sass', level: '++' },
     { name: 'SQL', icon: 'mysql', level: '++' },
     { name: 'Python', icon: 'python', level: '++' },
+    { name: 'PHP', icon: 'php', level: '++' },
     { name: 'Java', icon: 'java', level: '+++' },
-    { name: 'C++', icon: 'cplusplus', level: '+' }
+    { name: 'C++', icon: 'cplusplus', level: '+' },
   ] as const,
 
   frameworks: [
@@ -23,6 +24,11 @@ export const skills = {
     { name: 'Framer Motion', icon: 'framermotion', level: '++' },
     { name: 'Bootstrap', icon: 'bootstrap', level: '+++' },
     { name: 'SwiftUI', icon: 'swift', level: '++' },
+    { name: 'Symfony', icon: 'symfony', level: '++' },
+    { name: 'Laravel', icon: 'laravel', level: '++' },
+    { name: 'Django', icon: 'django', level: '++' },
+    { name: 'Flask', icon: 'flask', level: '++' },
+    { name: 'FastAPI', icon: 'fastapi', level: '++' },
   ] as const,
 
   tools: [
@@ -33,17 +39,25 @@ export const skills = {
     { name: 'TypeORM', icon: 'typeorm', level: '++' },
     { name: 'DBeaver', icon: 'dbeaver', level: '+++' },
     { name: 'REST API', icon: 'rest', level: '+++' },
+    { name: 'GraphQL', icon: 'graphql', level: '++' },
     { name: 'PostgreSQL', icon: 'postgresql', level: '+++' },
     { name: 'MongoDB', icon: 'mongodb', level: '++' },
     { name: 'OrientDB', icon: 'orientdb', level: '+' },
     { name: 'MySQL', icon: 'mysql', level: '+++' },
     { name: 'Jest', icon: 'jest', level: '++' },
+    { name: 'PyTest', icon: 'pytest', level: '++' },
+    { name: 'JUnit', icon: 'junit', level: '++' },
+    { name: 'PHPUnit', icon: 'phpunit', level: '++' },
     { name: 'Postman', icon: 'postman', level: '+++' },
     { name: 'Cypress', icon: 'cypressio', level: '++' },
     { name: 'ESLint', icon: 'eslint', level: '+++' },
+    { name: 'Prettier', icon: 'prettier', level: '+++' },
     { name: 'Docker', icon: 'docker', level: '++' },
+    { name: 'Kubernetes', icon: 'kubernetes', level: '+' },
     { name: 'GitLab CI/CD', icon: 'gitlab', level: '++' },
     { name: 'AWS', icon: 'amazonwebservices', level: '++' },
+    { name: 'Azure DevOps', icon: 'azuredevops', level: '+' },
+    { name: 'Heroku', icon: 'heroku', level: '++' },
     { name: 'Git', icon: 'git', level: '+++' },
     { name: 'GitHub', icon: 'github', level: '+++' },
     { name: 'GitKraken', icon: 'gitkraken', level: '+++' },
@@ -53,14 +67,15 @@ export const skills = {
     { name: 'UML', icon: 'unifiedmodelinglanguage', level: '++' },
     { name: 'Merise', icon: 'merise', level: '++' },
     { name: 'Scrum', icon: 'scrum', level: '+++' },
-  ] as const
+  ] as const,
 };
 
 export type SkillType =
-  | typeof skills.languages[number]['name']
-  | typeof skills.frameworks[number]['name']
-  | typeof skills.tools[number]['name'];
+  | (typeof skills.languages)[number]['name']
+  | (typeof skills.frameworks)[number]['name']
+  | (typeof skills.tools)[number]['name'];
 
-export type Skill = (typeof skills.languages[number] |
-                     typeof skills.frameworks[number] |
-                     typeof skills.tools[number]);
+export type Skill =
+  | (typeof skills.languages)[number]
+  | (typeof skills.frameworks)[number]
+  | (typeof skills.tools)[number];
