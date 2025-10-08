@@ -84,17 +84,17 @@ export function Project() {
                       <div className='flex flex-wrap gap-3'>
                         {project.technologies?.map((tech) => (
                           <Badge
-                            key={tech}
+                            key={tech.key}
                             variant='outline'
                             className='flex items-center gap-2 px-3 py-2 text-sm md:text-base'
                           >
                             <TechIcon
-                              techKey={tech.toLowerCase()}
-                              label={tech}
+                              techKey={tech.key.toLowerCase()}
+                              label={tech.label}
                               className='h-6 w-6 object-contain'
                               onError={handleImgError}
                             />
-                            <span>{tech}</span>
+                            <span>{tech.label}</span>
                           </Badge>
                         ))}
                       </div>
