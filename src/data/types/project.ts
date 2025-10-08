@@ -18,7 +18,9 @@ export interface Project {
   status?: string;
   dateRange?: string;
   image?: string;
+  gallery?: string[];
   technologies: Technology[];
   links?: ProjectLinks;
   locale?: string;
+  [key: string]: any;
 }
