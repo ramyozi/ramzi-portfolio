@@ -15,39 +15,31 @@ export default function HomePage() {
 
   return (
     <main className='space-y-32 py-12'>
-      <SectionWrapper id='about' titleKey='common.header.about' idx={0}>
+      <SectionWrapper id='about' titleKey='common.header.about'>
         <AboutMe />
       </SectionWrapper>
 
-      <SectionWrapper id='languages' titleKey='common.header.languages' idx={1}>
+      <SectionWrapper id='languages' titleKey='common.header.languages'>
         <Language />
       </SectionWrapper>
 
-      <SectionWrapper
-        id='motivation'
-        titleKey='common.header.motivation'
-        idx={2}
-      >
+      <SectionWrapper id='motivation' titleKey='common.header.motivation'>
         <Motivation />
       </SectionWrapper>
 
-      <SectionWrapper
-        id='experience'
-        titleKey='common.header.experience'
-        idx={3}
-      >
+      <SectionWrapper id='experience' titleKey='common.header.experience'>
         <Experience />
       </SectionWrapper>
 
-      <SectionWrapper id='skills' titleKey='common.header.skills' idx={4}>
+      <SectionWrapper id='skills' titleKey='common.header.skills'>
         <Skill />
       </SectionWrapper>
 
-      <SectionWrapper id='projects' titleKey='common.header.projects' idx={5}>
+      <SectionWrapper id='projects' titleKey='common.header.projects'>
         <Project />
       </SectionWrapper>
 
-      <SectionWrapper id='contact' titleKey='common.header.contact' idx={6}>
+      <SectionWrapper id='contact' titleKey='common.header.contact'>
         <ContactMe />
       </SectionWrapper>
     </main>
