@@ -2,13 +2,16 @@
   "name": "ramzi-portfolio",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack -p 8000 --turbo",
     "dev:turbo": "next dev -p 8000 --turbo",
     "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint --fix --quiet",
-    "ci:lint": "next lint"
+    "ci:lint": "next lint",
+    "import:data": "node src/scripts/import-all.cjs",
+    "delete:data": "node src/scripts/wipe-all.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
@@ -27,11 +30,13 @@
     "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@sanity/client": "^7.12.0",
     "@sanity/image-url": "1",
     "@sanity/vision": "4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "devicon": "^2.17.0",
+    "dotenv": "^17.2.3",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
