@@ -5,30 +5,16 @@ export const skill = defineType({
   title: 'Skills',
   type: 'document',
   fields: [
+    defineField({ name: 'name', title: 'Name', type: 'string' }),
+    defineField({ name: 'icon', title: 'Icon', type: 'string' }),
+    defineField({ name: 'level', title: 'Level', type: 'string' }),
     defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
       options: {
-        list: ['language', 'framework', 'tool'],
-      },
-    }),
-    defineField({
-      name: 'name',
-      title: 'Skill name',
-      type: 'string',
-    }),
-    defineField({
-      name: 'icon',
-      title: 'Icon key',
-      type: 'string',
-    }),
-    defineField({
-      name: 'level',
-      title: 'Proficiency level',
-      type: 'string',
-      options: {
-        list: ['+', '++', '+++'],
+        list: ['languages', 'frameworks', 'tools'],
+        layout: 'dropdown',
       },
     }),
   ],

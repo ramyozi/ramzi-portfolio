@@ -5,18 +5,25 @@ export const allProjectsQuery = `
   description,
   status,
   dateRange,
-  "image": image.asset->url,
-  technologies[] {
-    key,
-    label
-  },
-  links {
-    repo,
-    repoFrontend,
-    repoBackend,
-    repoMobile,
-    live
-  },
+  image,
+  gallery,
+  technologies[]{key, label},
+  links{repo, repoFrontend, repoBackend, repoMobile, live},
+  locale
+}
+`;
+
+export const projectByIdQuery = `
+*[_type == "project" && _id == $id][0]{
+  _id,
+  title,
+  description,
+  status,
+  dateRange,
+  image,
+  gallery,
+  technologies[]{key, label},
+  links{repo, repoFrontend, repoBackend, repoMobile, live},
   locale
 }
 `;

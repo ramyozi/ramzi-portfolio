@@ -9,27 +9,20 @@ export const project = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (R) => R.required(),
     }),
+    defineField({ name: 'description', title: 'Description', type: 'text' }),
+    defineField({ name: 'status', title: 'Status', type: 'string' }),
+    defineField({ name: 'dateRange', title: 'Date range', type: 'string' }),
+
+    defineField({ name: 'image', type: 'url', title: 'Main Image (URL)' }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      name: 'gallery',
+      type: 'array',
+      title: 'Gallery',
+      of: [{ type: 'url' }],
     }),
-    defineField({
-      name: 'status',
-      title: 'Status',
-      type: 'string',
-    }),
-    defineField({
-      name: 'dateRange',
-      title: 'Date range',
-      type: 'string',
-    }),
-    defineField({
-      name: 'image',
-      title: 'Main image',
-      type: 'image',
-    }),
+
     defineField({
       name: 'technologies',
       title: 'Technologies',
@@ -53,22 +46,34 @@ export const project = defineType({
         }),
       ],
     }),
+
     defineField({
       name: 'links',
-      title: 'Links',
       type: 'object',
+      title: 'Links',
       fields: [
-        { name: 'repo', type: 'url', title: 'Repository' },
-        { name: 'live', type: 'url', title: 'Live URL' },
+        defineField({ name: 'repo', type: 'url', title: 'Main Repository' }),
+        defineField({
+          name: 'repoFrontend',
+          type: 'url',
+          title: 'Frontend Repo',
+        }),
+        defineField({
+          name: 'repoBackend',
+          type: 'url',
+          title: 'Backend Repo',
+        }),
+        defineField({ name: 'repoMobile', type: 'url', title: 'Mobile Repo' }),
+        defineField({ name: 'live', type: 'url', title: 'Live Demo' }),
       ],
     }),
+
     defineField({
       name: 'locale',
       title: 'Locale',
       type: 'string',
-      options: {
-        list: ['fr', 'en', 'ar', 'kr'],
-      },
+      options: { list: ['fr', 'en', 'ar', 'kr'], layout: 'dropdown' },
+      validation: (R) => R.required(),
     }),
   ],
 });
