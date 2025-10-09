@@ -46,9 +46,9 @@ export function Experience() {
           {experiences.map((exp) => (
             <Card key={exp._id} className='border bg-muted'>
               <CardHeader className='flex flex-col items-center space-y-2 text-center'>
-                {exp.logo && (
+                {exp.logo?.url && (
                   <Image
-                    src={exp.logo}
+                    src={exp.logo.url}
                     alt={exp.company}
                     width={120}
                     height={120}

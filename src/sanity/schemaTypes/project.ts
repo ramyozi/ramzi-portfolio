@@ -15,14 +15,18 @@ export const project = defineType({
     defineField({ name: 'status', title: 'Status', type: 'string' }),
     defineField({ name: 'dateRange', title: 'Date range', type: 'string' }),
 
-    defineField({ name: 'image', type: 'url', title: 'Main Image (URL)' }),
+    defineField({
+      name: 'image',
+      title: 'Main Image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
     defineField({
       name: 'gallery',
-      type: 'array',
       title: 'Gallery',
-      of: [{ type: 'url' }],
+      type: 'array',
+      of: [{ type: 'image' }],
     }),
-
     defineField({
       name: 'technologies',
       title: 'Technologies',

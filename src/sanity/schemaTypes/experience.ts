@@ -12,7 +12,8 @@ export const experience = defineType({
     defineField({
       name: 'logo',
       title: 'Company Logo',
-      type: 'url',
+      type: 'image',
+      options: { hotspot: true },
     }),
     defineField({
       name: 'technologies',

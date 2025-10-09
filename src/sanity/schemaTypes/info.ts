@@ -11,12 +11,16 @@ export const aboutMe = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'cv',
+      title: 'CV File',
+      type: 'file',
+      options: { accept: '.pdf' },
+    }),
+    defineField({
       name: 'locale',
       title: 'Locale',
       type: 'string',
-      options: {
-        list: ['fr', 'en', 'ar', 'kr'],
-      },
+      options: { list: ['fr', 'en', 'ar', 'kr'] },
     }),
   ],
 });
@@ -32,12 +36,16 @@ export const motivation = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'locale',
       title: 'Locale',
       type: 'string',
-      options: {
-        list: ['fr', 'en', 'ar', 'kr'],
-      },
+      options: { list: ['fr', 'en', 'ar', 'kr'] },
     }),
   ],
 });
