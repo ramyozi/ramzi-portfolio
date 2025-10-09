@@ -49,6 +49,12 @@
       "logoFallbackNote": "قد لا تظهر بعض الشعارات بسبب مانعات الإعلانات أو قيود الشبكة"
     },
     "projects": {
+      "statusLabels": {
+          "planned": "مخطط له",
+          "in_progress": "قيد التنفيذ",
+          "completed": "مكتمل",
+          "on_hold": "مؤجل"
+      },
       "projectNumber": "العمل رقم {current} من {total}",
       "checkOut": "عرض المزيد",
       "empty": "لا توجد مشاريع حالياً",

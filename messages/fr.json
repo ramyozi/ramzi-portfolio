@@ -49,6 +49,12 @@
       "logoFallbackNote": "Certains logos peuvent ne pas apparaître en raison de bloqueurs de publicités ou de restrictions réseau."
     },
     "projects": {
+      "statusLabels": {
+        "planned": "Planifié",
+        "in_progress": "En cours",
+        "completed": "Terminé",
+        "on_hold": "En pause"
+      },
       "projectNumber": "Projet n°{current}/{total}",
       "checkOut": "Consulter",
       "empty": "Aucun projet à afficher pour le moment",
