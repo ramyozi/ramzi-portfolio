@@ -27,6 +27,22 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
     null
   );
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedImageIndex]);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (selectedImageIndex === null) return;
@@ -66,7 +82,6 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   const total = projects.length;
   const currentIndex = projects.findIndex((p) => p._id === project._id);
 
-  const goBack = () => router.push(`/#projects`);
   const goPrevProject = () => {
     if (!total) return;
 
@@ -83,32 +98,29 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   };
 
   return (
-    <div className='flex flex-col space-y-12 px-4 md:space-y-16 md:px-12 lg:px-24'>
-      <div className='flex items-center justify-between'>
-        <Button
-          onClick={goBack}
-          className='px-3 py-1 text-sm md:text-base'
-          variant='outline'
-        >
-          ← {t('common.back')}
-        </Button>
-      </div>
-
+    <div className='flex flex-col space-y-8 px-4 pt-6 md:space-y-10 md:px-12 lg:px-24'>
       {project.image?.url && (
         <motion.div
-          className='relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg'
+          className='relative mx-auto w-full max-w-2xl overflow-hidden rounded-2xl shadow-lg'
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Image
-            src={project.image.url}
-            alt={project.title}
-            fill
-            className='object-cover'
-            priority
-          />
-          <div className='absolute inset-0 bg-gradient-to-t from-black/30 to-transparent' />
+          <div className='relative mx-auto flex aspect-[3/2] max-w-lg items-center justify-center bg-muted/10'>
+            <Image
+              src={project.image.url}
+              alt={project.title}
+              fill
+              sizes='(max-width: 768px) 100vw, 600px'
+              className={`rounded-2xl transition-all duration-500 ${
+                project.title.toLowerCase().includes('memopus')
+                  ? 'object-contain p-4'
+                  : 'object-cover'
+              }`}
+              priority
+            />
+            <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
+          </div>
         </motion.div>
       )}
 
@@ -151,11 +163,9 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   <td className='px-4 py-3 align-top'>
                     {project.dateRange ?? '—'}
                   </td>
-
                   {project.status && (
                     <td className='px-4 py-3 align-top'>{project.status}</td>
                   )}
-
                   <td className='px-4 py-3 align-top'>
                     <div className='flex flex-wrap gap-2'>
                       {project.technologies?.length ? (
@@ -175,7 +185,6 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                       )}
                     </div>
                   </td>
-
                   <td className='px-4 py-3 align-top'>
                     {project.links &&
                     Object.values(project.links).some((v) => v) ? (
@@ -244,14 +253,14 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       <AnimatePresence>
         {selectedImageIndex !== null && (
           <motion.div
-            className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4'
+            className='fixed inset-0 z-[999] flex min-h-screen w-full items-center justify-center bg-black/90 backdrop-blur-sm'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImageIndex(null)}
           >
             <div
-              className='relative w-full max-w-5xl overflow-hidden rounded-2xl bg-black shadow-2xl'
+              className='relative flex h-full max-h-[100vh] w-full max-w-5xl items-center justify-center overflow-hidden rounded-2xl bg-black p-4 shadow-2xl sm:p-6'
               onClick={(e) => e.stopPropagation()}
             >
               <Button
@@ -292,13 +301,14 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
+                className='flex h-full w-full items-center justify-center'
               >
                 <Image
                   src={gallery[selectedImageIndex]}
                   alt='Gallery image'
                   width={1600}
                   height={1200}
-                  className='h-auto w-full object-contain'
+                  className='max-h-[90vh] w-auto object-contain'
                 />
               </motion.div>
             </div>
