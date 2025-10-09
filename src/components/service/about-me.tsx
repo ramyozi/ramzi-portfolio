@@ -36,14 +36,16 @@ export function AboutMe() {
       </div>
 
       <div className='flex h-full flex-col'>
-        <div className='relative h-full min-h-[360px] w-full overflow-hidden rounded-2xl border shadow-lg'>
-          <iframe
-            src='/developpeur-fullstack-react-nodejs-de-ramzi-benmansour.pdf#view=fitH'
-            className='h-full w-full'
-            title={t('common.header.about')}
-          />
-          <div className='pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-black/5' />
-        </div>
+        {about?.cv?.url && (
+          <div className='relative h-[480px] w-full overflow-hidden rounded-2xl border shadow-lg'>
+            <iframe
+              src={`${about.cv.url}#view=fitH`}
+              className='h-full w-full'
+              title={t('common.header.about')}
+            />
+            <div className='pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-black/5' />
+          </div>
+        )}
       </div>
     </section>
   );
