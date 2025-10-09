@@ -49,6 +49,12 @@
       "logoFallbackNote": "Some logos may not appear due to ad blockers or network restrictions."
     },
     "projects": {
+      "statusLabels": {
+          "planned": "Planned",
+          "in_progress": "In Progress",
+          "completed": "Completed",
+          "on_hold": "On Hold"
+      },
       "projectNumber": "Project #{current}/{total}",
       "checkOut": "Check it out",
       "empty": "No projects to show right now",
