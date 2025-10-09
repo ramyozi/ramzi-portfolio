@@ -1,29 +1,37 @@
 export const allProjectsQuery = `
-  *[_type == "project" && (!defined(locale) || locale == $locale)] | order(dateRange desc){
+*[_type == "project"]{
+  _id,
+  translations,
+  status,
+  dateRange,
+  image { "url": asset->url },
+  gallery[] { "url": asset->url },
+  technologies[]->{
     _id,
-    title,
-    description,
-    status,
-    dateRange,
-    "image": image.asset->{url},
-    "gallery": gallery[].asset->{url},
-    technologies[]{key,label},
-    links{repo,repoFrontend,repoBackend,repoMobile,live},
-    locale
-  }
+    name,
+    icon,
+    level,
+    category
+  },
+  links
+}
 `;
 
 export const projectByIdQuery = `
-  *[_type == "project" && _id == $id][0]{
+*[_type == "project" && _id == $id][0]{
+  _id,
+  translations,
+  status,
+  dateRange,
+  image { "url": asset->url },
+  gallery[] { "url": asset->url },
+  technologies[]->{
     _id,
-    title,
-    description,
-    status,
-    dateRange,
-    "image": image.asset->{url},
-    "gallery": gallery[].asset->{url},
-    technologies[]{key,label},
-    links{repo,repoFrontend,repoBackend,repoMobile,live},
-    locale
-  }
+    name,
+    icon,
+    level,
+    category
+  },
+  links
+}
 `;
