@@ -96,6 +96,7 @@
     "viewAll": "Tout voir",
     "previous": "Précédent",
     "next": "Suivant",
-    "back": "Retour"
+    "back": "Retour",
+    "noImages": "Aucune image disponible."
   }
 }
