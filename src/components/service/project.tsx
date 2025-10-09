@@ -94,11 +94,11 @@ export function Project() {
                         </div>
                       </div>
 
-                      {project.image && (
+                      {project.image?.url && (
                         <div className='flex justify-center'>
                           <div className='overflow-hidden rounded-2xl'>
                             <Image
-                              src={project.image}
+                              src={project.image.url}
                               alt={project.title}
                               width={700}
                               height={500}

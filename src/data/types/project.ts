@@ -11,16 +11,15 @@ export interface ProjectLinks {
   live?: string;
 }
 
-export interface Project {
+export type Project = {
   _id: string;
   title: string;
   description: string;
   status?: string;
   dateRange?: string;
-  image?: string;
-  gallery?: string[];
-  technologies: Technology[];
-  links?: ProjectLinks;
-  locale?: string;
-  [key: string]: any;
-}
+  image?: { url: string };
+  gallery?: { url: string }[];
+  technologies?: Technology[];
+  links?: ProjectLinks[];
+  locale: string;
+};
