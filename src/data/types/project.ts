@@ -1,7 +1,4 @@
-export interface Technology {
-  key: string;
-  label: string;
-}
+import { Skill } from '@/data/types/skill';
 
 export interface ProjectLinks {
   repo?: string;
@@ -19,7 +16,7 @@ export type Project = {
   dateRange?: string;
   image?: { url: string };
   gallery?: { url: string }[];
-  technologies?: Technology[];
+  technologies: Skill[];
   links?: ProjectLinks[];
   locale: string;
 };

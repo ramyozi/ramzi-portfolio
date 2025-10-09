@@ -1,4 +1,4 @@
-import { Technology } from '@/data/types/project';
+import { Skill } from '@/data/types/skill';
 
 export interface Experience {
   _id: string;
@@ -7,7 +7,7 @@ export interface Experience {
   location: string;
   period: string;
   logo?: { url: string };
-  technologies?: Technology[];
+  technologies?: Skill[];
   tasks?: string[];
   solution?: string;
   locale?: string;
