@@ -17,7 +17,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   if (!project) return notFound();
 
   return (
-    <main className='flex min-h-screen flex-col space-y-16 px-6 py-16 md:px-12 lg:px-24'>
+    <main className='flex min-h-screen flex-col px-6 py-4 md:px-12 lg:px-24'>
       <ProjectDetail project={project} />
     </main>
   );

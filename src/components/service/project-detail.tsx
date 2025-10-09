@@ -82,7 +82,6 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   const total = projects.length;
   const currentIndex = projects.findIndex((p) => p._id === project._id);
 
-  const goBack = () => router.push(`/#projects`);
   const goPrevProject = () => {
     if (!total) return;
 
@@ -99,17 +98,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   };
 
   return (
-    <div className='flex flex-col space-y-12 px-4 pt-6 md:space-y-16 md:px-12 lg:px-24'>
-      <div className='flex items-center justify-between'>
-        <Button
-          onClick={goBack}
-          className='px-3 py-1 text-sm md:text-base'
-          variant='outline'
-        >
-          ← {t('common.back')}
-        </Button>
-      </div>
-
+    <div className='flex flex-col space-y-8 px-4 pt-6 md:space-y-10 md:px-12 lg:px-24'>
       {project.image?.url && (
         <motion.div
           className='relative mx-auto w-full max-w-2xl overflow-hidden rounded-2xl shadow-lg'
@@ -264,14 +253,14 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       <AnimatePresence>
         {selectedImageIndex !== null && (
           <motion.div
-            className='fixed inset-0 z-[999] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm'
+            className='fixed inset-0 z-[999] flex min-h-screen w-full items-center justify-center bg-black/90 backdrop-blur-sm'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImageIndex(null)}
           >
             <div
-              className='relative flex max-h-[90vh] w-full max-w-5xl items-center justify-center overflow-hidden rounded-2xl bg-black shadow-2xl'
+              className='relative flex h-full max-h-[100vh] w-full max-w-5xl items-center justify-center overflow-hidden rounded-2xl bg-black p-4 shadow-2xl sm:p-6'
               onClick={(e) => e.stopPropagation()}
             >
               <Button
@@ -312,14 +301,14 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className='flex items-center justify-center'
+                className='flex h-full w-full items-center justify-center'
               >
                 <Image
                   src={gallery[selectedImageIndex]}
                   alt='Gallery image'
                   width={1600}
                   height={1200}
-                  className='max-h-[85vh] w-auto object-contain'
+                  className='max-h-[90vh] w-auto object-contain'
                 />
               </motion.div>
             </div>
