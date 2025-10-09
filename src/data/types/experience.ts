@@ -1,14 +1,22 @@
-import { Technology } from '@/data/types/project';
+import type { Skill } from './skill';
 
-export interface Experience {
-  _id: string;
+export interface ExperienceTranslation {
   company: string;
   role: string;
   location: string;
   period: string;
-  logo?: { url: string };
-  technologies?: Technology[];
-  tasks?: string[];
   solution?: string;
-  locale?: string;
+  tasks?: string[];
+}
+
+export interface Experience {
+  _id: string;
+  logo?: { url: string };
+  technologies: Skill[];
+  translations: {
+    fr?: ExperienceTranslation;
+    en?: ExperienceTranslation;
+    ar?: ExperienceTranslation;
+    kr?: ExperienceTranslation;
+  };
 }

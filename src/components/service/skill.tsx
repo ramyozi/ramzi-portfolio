@@ -27,9 +27,9 @@ export function Skill() {
     client.fetch(allSkillsQuery).then(setSkills);
   }, []);
 
-  const languages = skills.filter((s) => s.category === 'language');
-  const frameworks = skills.filter((s) => s.category === 'framework');
-  const tools = skills.filter((s) => s.category === 'tool');
+  const languages = skills.filter((s) => s.category === 'languages');
+  const frameworks = skills.filter((s) => s.category === 'frameworks');
+  const tools = skills.filter((s) => s.category === 'tools');
 
   const renderSkillGrid = (list: Skill[]) => (
     <div className='grid grid-cols-2 gap-4 p-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
