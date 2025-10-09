@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Github, Globe, X } from 'lucide-react';
+import { Github, Globe, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
@@ -22,34 +23,59 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   const router = useRouter();
 
   const [projects, setProjects] = useState<Project[]>([]);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null
+  );
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (selectedImageIndex === null) return;
+
+      if (e.key === 'Escape') setSelectedImageIndex(null);
+
+      if (e.key === 'ArrowRight')
+        setSelectedImageIndex((i) => (i! + 1) % (project.gallery?.length || 1));
+
+      if (e.key === 'ArrowLeft')
+        setSelectedImageIndex(
+          (i) =>
+            (i! - 1 + (project.gallery?.length || 1)) %
+            (project.gallery?.length || 1)
+        );
+    },
+    [selectedImageIndex, project.gallery?.length]
+  );
 
   useEffect(() => {
     client
       .fetch(allProjectsQuery, { locale })
-      .then((res) => setProjects(res))
+      .then(setProjects)
       .catch((err) => console.error('❌ Failed to fetch projects:', err));
   }, [locale]);
 
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [selectedImageIndex, handleKeyDown]);
+
   if (!project) return null;
 
-  const goBack = () => {
-    router.push(`/#projects`);
-  };
-
-  const currentIndex = projects.findIndex((p) => p._id === project._id);
+  const gallery = project.gallery?.map((img) => img.url) || [];
   const total = projects.length;
+  const currentIndex = projects.findIndex((p) => p._id === project._id);
 
+  const goBack = () => router.push(`/#projects`);
   const goPrevProject = () => {
-    if (total === 0) return;
+    if (!total) return;
 
     const prevIndex = (currentIndex - 1 + total) % total;
 
     router.push(`/project/${projects[prevIndex]._id}`);
   };
-
   const goNextProject = () => {
-    if (total === 0) return;
+    if (!total) return;
 
     const nextIndex = (currentIndex + 1) % total;
 
@@ -68,13 +94,35 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         </Button>
       </div>
 
-      <h1 className='text-center text-3xl font-extrabold md:text-5xl'>
-        {project.title}
-      </h1>
+      {project.image?.url && (
+        <motion.div
+          className='relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg'
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Image
+            src={project.image.url}
+            alt={project.title}
+            fill
+            className='object-cover'
+            priority
+          />
+          <div className='absolute inset-0 bg-gradient-to-t from-black/30 to-transparent' />
+        </motion.div>
+      )}
 
-      <p className='mx-auto max-w-3xl text-center text-base text-muted-foreground md:text-lg'>
-        {project.description}
-      </p>
+      <motion.div
+        className='text-center'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        <h1 className='text-3xl font-extrabold md:text-5xl'>{project.title}</h1>
+        <p className='mx-auto mt-3 max-w-3xl text-base text-muted-foreground md:text-lg'>
+          {project.description}
+        </p>
+      </motion.div>
 
       <Card className='border-2 shadow-lg'>
         <CardContent>
@@ -136,7 +184,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                           url ? (
                             <li key={key}>
                               <a
-                                href={url}
+                                href={url as string}
                                 target='_blank'
                                 rel='noopener noreferrer'
                                 className='flex items-center gap-2 text-primary hover:underline'
@@ -165,12 +213,17 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         </CardContent>
       </Card>
 
-      {project.gallery && project.gallery.length > 0 ? (
-        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-          {project.gallery.map((src, i) => (
+      {gallery.length > 0 ? (
+        <motion.div
+          className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          {gallery.map((src, i) => (
             <div
               key={i}
-              onClick={() => setSelectedImage(src)}
+              onClick={() => setSelectedImageIndex(i)}
               className='relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-xl border shadow hover:opacity-90'
             >
               <Image
@@ -181,61 +234,90 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
               />
             </div>
           ))}
-        </div>
+        </motion.div>
       ) : (
         <p className='text-center text-sm text-muted-foreground'>
           {t('common.projects.noImages')}
         </p>
       )}
 
-      {selectedImage && (
-        <div
-          className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4'
-          onClick={() => setSelectedImage(null)}
-        >
-          <div
-            className='relative w-full max-w-5xl overflow-hidden rounded-2xl bg-black shadow-2xl'
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {selectedImageIndex !== null && (
+          <motion.div
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImageIndex(null)}
           >
-            <Button
-              className='absolute right-3 top-3 z-10 rounded-full bg-black/60 p-2 text-white hover:bg-black/80'
-              onClick={() => setSelectedImage(null)}
+            <div
+              className='relative w-full max-w-5xl overflow-hidden rounded-2xl bg-black shadow-2xl'
+              onClick={(e) => e.stopPropagation()}
             >
-              <X className='h-5 w-5' />
-            </Button>
-            <Image
-              src={selectedImage}
-              alt='Selected gallery image'
-              width={1600}
-              height={1200}
-              className='h-auto w-full object-contain'
-            />
-          </div>
-        </div>
-      )}
+              <Button
+                className='absolute right-3 top-3 z-10 rounded-full bg-black/60 p-2 text-white hover:bg-black/80'
+                onClick={() => setSelectedImageIndex(null)}
+              >
+                <X className='h-5 w-5' />
+              </Button>
+
+              {gallery.length > 1 && (
+                <>
+                  <Button
+                    onClick={() =>
+                      setSelectedImageIndex(
+                        (selectedImageIndex - 1 + gallery.length) %
+                          gallery.length
+                      )
+                    }
+                    className='absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white hover:bg-black/80'
+                  >
+                    <ChevronLeft className='h-5 w-5' />
+                  </Button>
+                  <Button
+                    onClick={() =>
+                      setSelectedImageIndex(
+                        (selectedImageIndex + 1) % gallery.length
+                      )
+                    }
+                    className='absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white hover:bg-black/80'
+                  >
+                    <ChevronRight className='h-5 w-5' />
+                  </Button>
+                </>
+              )}
+
+              <motion.div
+                key={gallery[selectedImageIndex]}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src={gallery[selectedImageIndex]}
+                  alt='Gallery image'
+                  width={1600}
+                  height={1200}
+                  className='h-auto w-full object-contain'
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {projects.length > 0 && (
         <div className='flex flex-col items-center justify-center space-y-2 md:flex-row md:space-x-4 md:space-y-0'>
-          <Button
-            onClick={goPrevProject}
-            variant='outline'
-            className='px-4 py-2 md:px-6 md:py-3'
-          >
+          <Button onClick={goPrevProject} variant='outline'>
             {t('common.previous')}
           </Button>
-
           <span className='text-sm text-muted-foreground md:text-base'>
             {t('common.projects.projectNumber', {
               current: currentIndex + 1,
               total,
             })}
           </span>
-
-          <Button
-            onClick={goNextProject}
-            variant='outline'
-            className='px-4 py-2 md:px-6 md:py-3'
-          >
+          <Button onClick={goNextProject} variant='outline'>
             {t('common.next')}
           </Button>
         </div>

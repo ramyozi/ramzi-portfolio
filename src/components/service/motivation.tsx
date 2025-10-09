@@ -26,13 +26,19 @@ export function Motivation() {
       className='grid scroll-mt-24 grid-cols-1 items-center gap-6 md:grid-cols-2'
     >
       <div className='flex justify-center'>
-        <Image
-          src='/images/ramzi.jpg'
-          alt='Photo de Ramzi'
-          width={500}
-          height={500}
-          className='rounded-2xl object-cover shadow'
-        />
+        {motivation?.image?.url ? (
+          <Image
+            src={motivation.image.url}
+            alt='Photo de Ramzi'
+            width={500}
+            height={500}
+            className='rounded-2xl object-cover shadow'
+          />
+        ) : (
+          <div className='flex h-[500px] w-[500px] items-center justify-center rounded-2xl bg-muted text-muted-foreground'>
+            {t('common.noImage')}
+          </div>
+        )}
       </div>
 
       <Card className='border-2'>
