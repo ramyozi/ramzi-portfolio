@@ -1,5 +1,22 @@
 export const skills = {
   languages: [
+    {
+      name: 'TailwindCSS',
+      icon: 'tailwindcss',
+      level: '+++',
+    },
+    { name: 'Redis', icon: 'redis', level: '+' },
+    { name: 'Swagger', icon: 'swagger', level: '+' },
+    { name: 'Ant Design', icon: 'ant-design', level: '+' },
+    { name: 'Axios', icon: 'axios', level: '+' },
+    { name: 'Vite', icon: 'vite', level: '+' },
+    { name: 'SimpleJWT', icon: 'simplejwt', level: '+' },
+    { name: 'Vercel', icon: 'vercel', level: '+' },
+    { name: 'Shadcn UI', icon: 'shadcn-ui', level: '+' },
+    { name: 'PHPStorm', icon: 'phpstorm', level: '+' },
+    { name: 'Express', icon: 'express', level: '+' },
+    { name: 'ActiveMQ', icon: 'activemq', level: '+' },
+    { name: 'Expo', icon: 'expo', level: '+' },
     { name: 'JavaScript', icon: 'javascript', level: '+++' },
     { name: 'TypeScript', icon: 'typescript', level: '+++' },
     { name: 'HTML5', icon: 'html5', level: '+++' },
@@ -13,6 +30,16 @@ export const skills = {
   ] as const,
 
   frameworks: [
+    {
+      name: 'Django REST Framework',
+      icon: 'django-rest',
+      level: '++',
+    },
+    { name: 'JSON Server', icon: 'json-server', level: '+' },
+    { name: 'Angular Material', icon: 'angular-material', level: '+' },
+    { name: 'Angular 17', icon: 'angular-17', level: '+' },
+    { name: 'Vue.js', icon: 'vuejs', level: '+' },
+    { name: 'Angular 10', icon: 'angular-10', level: '+' },
     { name: 'React.js', icon: 'react', level: '+++' },
     { name: 'Next.js', icon: 'nextjs', level: '+++' },
     { name: 'React Native', icon: 'react', level: '++' },

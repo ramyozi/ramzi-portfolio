@@ -18,6 +18,12 @@ import { client } from '@/sanity/lib/client';
 import { allProjectsQuery } from '@/sanity/queries/projects';
 import TechIcon from '@/components/service/common/tech-icon';
 import type { Project } from '@/data/types/project';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '../ui/tooltip';
 
 export function Project() {
   const t = useTranslations();
@@ -65,23 +71,47 @@ export function Project() {
                           </p>
                         </div>
 
-                        <div className='flex flex-wrap gap-3'>
-                          {project.technologies?.map((tech) => (
-                            <Badge
-                              key={tech.key}
-                              variant='outline'
-                              className='flex items-center gap-2 px-3 py-2 text-sm'
-                            >
-                              <TechIcon
-                                techKey={tech.key.toLowerCase()}
-                                label={tech.label}
-                                className='h-6 w-6'
-                                onError={handleImgError}
-                              />
-                              <span>{tech.label}</span>
-                            </Badge>
-                          ))}
-                        </div>
+                        {project.technologies?.length > 0 && (
+                          <div className='flex flex-wrap gap-3'>
+                            {project.technologies.map((tech) => (
+                              <TooltipProvider key={tech._id}>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Badge
+                                      variant='outline'
+                                      className='flex items-center gap-2 px-3 py-2 text-sm transition hover:scale-105 hover:shadow-sm'
+                                    >
+                                      <TechIcon
+                                        techKey={
+                                          tech.icon?.toLowerCase() ||
+                                          tech.name.toLowerCase()
+                                        }
+                                        label={tech.name}
+                                        className='h-5 w-5 object-contain'
+                                        onError={handleImgError}
+                                      />
+                                      <span>{tech.name}</span>
+                                    </Badge>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <div className='flex flex-col items-center space-y-1'>
+                                      <span className='text-sm font-medium'>
+                                        {tech.name}
+                                      </span>
+                                      {tech.level && (
+                                        <span className='text-xs text-muted-foreground'>
+                                          {t(
+                                            `common.skills.proficiency.${tech.level}`
+                                          )}
+                                        </span>
+                                      )}
+                                    </div>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            ))}
+                          </div>
+                        )}
 
                         <div>
                           <Button
