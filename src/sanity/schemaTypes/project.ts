@@ -2,18 +2,69 @@ import { defineType, defineField, defineArrayMember } from 'sanity';
 
 export const project = defineType({
   name: 'project',
-  title: 'Projects',
+  title: 'Project',
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: (R) => R.required(),
+      name: 'translations',
+      title: 'Translations',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'en',
+          title: 'English',
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', type: 'string', title: 'Title' }),
+            defineField({
+              name: 'description',
+              type: 'text',
+              title: 'Description',
+            }),
+          ],
+        }),
+        defineField({
+          name: 'fr',
+          title: 'Français',
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', type: 'string', title: 'Titre' }),
+            defineField({
+              name: 'description',
+              type: 'text',
+              title: 'Description',
+            }),
+          ],
+        }),
+        defineField({
+          name: 'ar',
+          title: 'العربية',
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', type: 'string', title: 'العنوان' }),
+            defineField({ name: 'description', type: 'text', title: 'الوصف' }),
+          ],
+        }),
+      ],
     }),
-    defineField({ name: 'description', title: 'Description', type: 'text' }),
-    defineField({ name: 'status', title: 'Status', type: 'string' }),
-    defineField({ name: 'dateRange', title: 'Date range', type: 'string' }),
+
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Planned', value: 'planned' },
+          { title: 'In Progress', value: 'in_progress' },
+          { title: 'Completed', value: 'completed' },
+          { title: 'On Hold', value: 'on_hold' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'planned',
+    }),
+
+    defineField({ name: 'dateRange', title: 'Date Range', type: 'string' }),
 
     defineField({
       name: 'image',
@@ -27,18 +78,20 @@ export const project = defineType({
       type: 'array',
       of: [{ type: 'image' }],
     }),
+
     defineField({
       name: 'technologies',
-      title: 'Technologies Used',
+      title: 'Technologies',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'skill' }] }],
     }),
+
     defineField({
       name: 'links',
-      type: 'object',
       title: 'Links',
+      type: 'object',
       fields: [
-        defineField({ name: 'repo', type: 'url', title: 'Main Repository' }),
+        defineField({ name: 'repo', type: 'url', title: 'Repository' }),
         defineField({
           name: 'repoFrontend',
           type: 'url',
@@ -50,16 +103,8 @@ export const project = defineType({
           title: 'Backend Repo',
         }),
         defineField({ name: 'repoMobile', type: 'url', title: 'Mobile Repo' }),
-        defineField({ name: 'live', type: 'url', title: 'Live Demo' }),
+        defineField({ name: 'live', type: 'url', title: 'Live URL' }),
       ],
-    }),
-
-    defineField({
-      name: 'locale',
-      title: 'Locale',
-      type: 'string',
-      options: { list: ['fr', 'en', 'ar', 'kr'], layout: 'dropdown' },
-      validation: (R) => R.required(),
     }),
   ],
 });
