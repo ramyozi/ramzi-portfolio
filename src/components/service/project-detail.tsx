@@ -115,17 +115,18 @@ export function ProjectDetail({ project }: { project: Project }) {
     <div className='flex flex-col space-y-6 px-4 pt-4 md:px-12 lg:px-24'>
       {project.image?.url && (
         <motion.div
-          className='relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl shadow-lg'
+          className='relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl bg-muted/10 shadow-lg'
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className='relative aspect-[4/3] bg-muted/10'>
+          <div className='relative flex aspect-[16/9] items-center justify-center'>
             <Image
               src={project.image.url}
               alt={localized.title}
               fill
-              className='object-cover'
+              className='object-contain p-4'
+              sizes='(max-width: 768px) 100vw, 800px'
               priority
             />
           </div>
