@@ -7,7 +7,9 @@ export const allProjectsQuery = `
     dateRange,
     "image": image.asset->{url},
     "gallery": gallery[].asset->{url},
-    technologies[]{key,label},
+    technologies[]->{
+    _id, name, icon, level, category
+    },
     links{repo,repoFrontend,repoBackend,repoMobile,live},
     locale
   }
