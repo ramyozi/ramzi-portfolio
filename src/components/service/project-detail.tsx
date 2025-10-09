@@ -1,17 +1,27 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, JSX } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Github, Globe, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Github,
+  Globe,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  CheckCircle,
+  PauseCircle,
+  Rocket,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import { allProjectsQuery } from '@/sanity/queries/projects';
-import type { Project } from '@/data/types/project';
+import type { Project, ProjectStatus } from '@/data/types/project';
 import {
   Tooltip,
   TooltipContent,
@@ -19,6 +29,13 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import TechIcon from '@/components/service/common/tech-icon';
+
+const statusIcons: Record<ProjectStatus, JSX.Element> = {
+  planned: <Clock className='inline h-4 w-4 text-blue-400' />,
+  in_progress: <Rocket className='inline h-4 w-4 text-yellow-500' />,
+  completed: <CheckCircle className='inline h-4 w-4 text-green-500' />,
+  on_hold: <PauseCircle className='inline h-4 w-4 text-gray-400' />,
+};
 
 export function ProjectDetail({ project }: { project: Project }) {
   const t = useTranslations();
@@ -30,21 +47,45 @@ export function ProjectDetail({ project }: { project: Project }) {
     null
   );
 
+  const localized = project.translations?.[locale] ||
+    project.translations?.en || {
+      title: '',
+      description: '',
+    };
+
+  const gallery = Array.isArray(project.gallery)
+    ? project.gallery.map((img) => img.url)
+    : [];
+
+  useEffect(() => {
+    client
+      .fetch(allProjectsQuery)
+      .then((res: Project[]) => setProjects(res ?? []))
+      .catch((err) => console.error('❌ Failed to fetch projects:', err));
+  }, []);
+
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
 
-  useEffect(() => {
-    if (selectedImageIndex !== null) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+  const total = projects.length;
+  const currentIndex = projects.findIndex((p) => p._id === project._id);
 
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [selectedImageIndex]);
+  const goPrevProject = () => {
+    if (total === 0) return;
+
+    const prev = (currentIndex - 1 + total) % total;
+
+    router.push(`/project/${projects[prev]._id}`);
+  };
+
+  const goNextProject = () => {
+    if (total === 0) return;
+
+    const next = (currentIndex + 1) % total;
+
+    router.push(`/project/${projects[next]._id}`);
+  };
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -53,76 +94,40 @@ export function ProjectDetail({ project }: { project: Project }) {
       if (e.key === 'Escape') setSelectedImageIndex(null);
 
       if (e.key === 'ArrowRight')
-        setSelectedImageIndex((i) => (i! + 1) % (project.gallery?.length || 1));
+        setSelectedImageIndex((i) => ((i ?? 0) + 1) % gallery.length);
 
       if (e.key === 'ArrowLeft')
         setSelectedImageIndex(
-          (i) =>
-            (i! - 1 + (project.gallery?.length || 1)) %
-            (project.gallery?.length || 1)
+          (i) => ((i ?? 0) - 1 + gallery.length) % gallery.length
         );
     },
-    [selectedImageIndex, project.gallery?.length]
+    [selectedImageIndex, gallery.length]
   );
 
   useEffect(() => {
-    client
-      .fetch(allProjectsQuery, { locale })
-      .then(setProjects)
-      .catch((err) => console.error('❌ Failed to fetch projects:', err));
-  }, [locale]);
-
-  useEffect(() => {
-    if (selectedImageIndex !== null) {
+    if (selectedImageIndex !== null)
       window.addEventListener('keydown', handleKeyDown);
-      return () => window.removeEventListener('keydown', handleKeyDown);
-    }
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedImageIndex, handleKeyDown]);
 
-  if (!project) return null;
-
-  const gallery = project.gallery?.map((img) => img.url) || [];
-  const total = projects.length;
-  const currentIndex = projects.findIndex((p) => p._id === project._id);
-
-  const goPrevProject = () => {
-    if (!total) return;
-
-    const prevIndex = (currentIndex - 1 + total) % total;
-
-    router.push(`/project/${projects[prevIndex]._id}`);
-  };
-  const goNextProject = () => {
-    if (!total) return;
-
-    const nextIndex = (currentIndex + 1) % total;
-
-    router.push(`/project/${projects[nextIndex]._id}`);
-  };
-
   return (
-    <div className='flex flex-col space-y-8 px-4 pt-6 md:space-y-10 md:px-12 lg:px-24'>
+    <div className='flex flex-col space-y-6 px-4 pt-4 md:px-12 lg:px-24'>
       {project.image?.url && (
         <motion.div
-          className='relative mx-auto w-full max-w-2xl overflow-hidden rounded-2xl shadow-lg'
+          className='relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl shadow-lg'
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className='relative mx-auto flex aspect-[3/2] max-w-lg items-center justify-center bg-muted/10'>
+          <div className='relative aspect-[4/3] bg-muted/10'>
             <Image
               src={project.image.url}
-              alt={project.title}
+              alt={localized.title}
               fill
-              sizes='(max-width: 768px) 100vw, 600px'
-              className={`rounded-2xl transition-all duration-500 ${
-                project.title.toLowerCase().includes('memopus')
-                  ? 'object-contain p-4'
-                  : 'object-cover'
-              }`}
+              className='object-cover'
               priority
             />
-            <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
           </div>
         </motion.div>
       )}
@@ -132,9 +137,32 @@ export function ProjectDetail({ project }: { project: Project }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <h1 className='text-3xl font-extrabold md:text-5xl'>{project.title}</h1>
+        <h1 className='text-3xl font-extrabold md:text-5xl'>
+          {localized.title}
+        </h1>
+
+        {project.status && (
+          <div className='mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground'>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className='flex cursor-default items-center gap-2'>
+                    {statusIcons[project.status]}
+                    <span>
+                      {t(`common.projects.statusLabels.${project.status}`)}
+                    </span>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  {t(`common.projects.statusLabels.${project.status}`)}
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+        )}
+
         <p className='mx-auto mt-3 max-w-3xl text-base text-muted-foreground md:text-lg'>
-          {project.description}
+          {localized.description}
         </p>
       </motion.div>
 
@@ -146,11 +174,6 @@ export function ProjectDetail({ project }: { project: Project }) {
                 <th className='px-4 py-3 font-semibold'>
                   {t('common.projects.date')}
                 </th>
-                {project.status && (
-                  <th className='px-4 py-3 font-semibold'>
-                    {t('common.projects.status')}
-                  </th>
-                )}
                 <th className='px-4 py-3 font-semibold'>
                   {t('common.projects.stack')}
                 </th>
@@ -162,12 +185,11 @@ export function ProjectDetail({ project }: { project: Project }) {
             <tbody>
               <tr className='border-b'>
                 <td className='px-4 py-3'>{project.dateRange ?? '—'}</td>
-                {project.status && (
-                  <td className='px-4 py-3'>{project.status}</td>
-                )}
+
                 <td className='px-4 py-3'>
                   <div className='flex flex-wrap gap-2'>
-                    {project.technologies?.length ? (
+                    {Array.isArray(project.technologies) &&
+                    project.technologies.length > 0 ? (
                       project.technologies.map((tech) => (
                         <TooltipProvider key={tech._id}>
                           <Tooltip>
@@ -178,21 +200,13 @@ export function ProjectDetail({ project }: { project: Project }) {
                               >
                                 <TechIcon
                                   techKey={
-                                    tech.icon
-                                      ? tech.icon.toLowerCase()
-                                      : tech.name
-                                        ? tech.name.toLowerCase()
-                                        : 'unknown'
+                                    tech.icon?.toLowerCase?.() ||
+                                    tech.name?.toLowerCase?.() ||
+                                    'unknown'
                                   }
-                                  label={tech.name || 'Unknown'}
+                                  label={tech.name}
                                   className='h-5 w-5 object-contain'
-                                  onError={() =>
-                                    console.warn(
-                                      `⚠️ Missing tech icon for: ${tech.name || tech._id}`
-                                    )
-                                  }
                                 />
-
                                 <span>{tech.name}</span>
                               </Badge>
                             </TooltipTrigger>
@@ -221,13 +235,13 @@ export function ProjectDetail({ project }: { project: Project }) {
 
                 <td className='px-4 py-3'>
                   {project.links &&
-                  Object.values(project.links).some((v) => v) ? (
+                  Object.values(project.links).some(Boolean) ? (
                     <ul className='space-y-2'>
                       {Object.entries(project.links).map(([key, url]) =>
                         url ? (
                           <li key={key}>
                             <a
-                              href={url as string}
+                              href={url}
                               target='_blank'
                               rel='noopener noreferrer'
                               className='flex items-center gap-2 text-primary hover:underline'
@@ -237,7 +251,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                               ) : (
                                 <Github className='h-4 w-4' />
                               )}
-                              {t(key as any)}
+                              {t(`common.projects.${key}`)}
                             </a>
                           </li>
                         ) : null
@@ -297,6 +311,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               >
                 <X className='h-5 w-5' />
               </Button>
+
               {gallery.length > 1 && (
                 <>
                   <Button
@@ -322,6 +337,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                   </Button>
                 </>
               )}
+
               <motion.div
                 key={gallery[selectedImageIndex]}
                 initial={{ opacity: 0 }}
