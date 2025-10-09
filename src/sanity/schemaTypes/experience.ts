@@ -17,26 +17,9 @@ export const experience = defineType({
     }),
     defineField({
       name: 'technologies',
-      title: 'Technologies',
+      title: 'Technologies Used',
       type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'technology',
-          fields: [
-            defineField({
-              name: 'key',
-              type: 'string',
-              title: 'Key (for logo)',
-            }),
-            defineField({
-              name: 'label',
-              type: 'string',
-              title: 'Label (for display)',
-            }),
-          ],
-        }),
-      ],
+      of: [{ type: 'reference', to: [{ type: 'skill' }] }],
     }),
     defineField({
       name: 'tasks',

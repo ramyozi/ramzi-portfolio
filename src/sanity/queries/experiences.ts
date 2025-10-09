@@ -6,7 +6,9 @@ export const allExperiencesQuery = `
     location,
     period,
     "logo": logo.asset->{url},
-    technologies,
+    technologies[]->{
+        _id, name, icon, level, category
+    },
     tasks,
     solution,
     locale
