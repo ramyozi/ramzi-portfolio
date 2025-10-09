@@ -6,6 +6,7 @@
 const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons';
 const SIMPLEICONS_BASE =
   'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons';
+const ICONIFY_BASE = 'https://api.iconify.design';
 
 /**
  * Teste si une URL d'icône existe
@@ -31,8 +32,21 @@ export const getTechLogo = async (tech: string): Promise<string> => {
 
   if (await iconExists(deviconUrl)) return deviconUrl;
 
-  // SimpleIcons fallback
+  // SimpleIcons
   const simpleIconsUrl = `${SIMPLEICONS_BASE}/${key}.svg`;
 
-  return simpleIconsUrl;
+  if (await iconExists(simpleIconsUrl)) return simpleIconsUrl;
+
+  // Iconify
+  const iconifyUrl = `${ICONIFY_BASE}/logos:${key}.svg`;
+
+  if (await iconExists(iconifyUrl)) return iconifyUrl;
+
+  // 4Clearbit
+  const clearbitUrl = `https://logo.clearbit.com/${key}.com`;
+
+  if (await iconExists(clearbitUrl)) return clearbitUrl;
+
+  // Default placeholder
+  return '/images/default-fallback-image.png';
 };
