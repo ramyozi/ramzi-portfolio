@@ -1,16 +1,14 @@
 export const allExperiencesQuery = `
-  *[_type == "experience" && locale == $locale] | order(period desc){
+  *[_type == "experience"]{
     _id,
-    company,
-    role,
-    location,
-    period,
-    "logo": logo.asset->{url},
+    logo { "url": asset->url },
     technologies[]->{
-        _id, name, icon, level, category
+      _id,
+      name,
+      icon,
+      level,
+      category
     },
-    tasks,
-    solution,
-    locale
-  }
+    translations
+  } | order(translations.en.period desc)
 `;

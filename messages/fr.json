@@ -103,6 +103,7 @@
     "previous": "Précédent",
     "next": "Suivant",
     "back": "Retour",
-    "noImages": "Aucune image disponible."
+    "noImages": "Aucune image disponible.",
+    "noImage": "Aucune image disponible."
   }
 }
