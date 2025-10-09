@@ -96,6 +96,7 @@
     "viewAll": "View All",
     "previous": "Previous",
     "next": "Next",
-    "back": "Back"
+    "back": "Back",
+    "noImages": "No images available."
   }
 }
