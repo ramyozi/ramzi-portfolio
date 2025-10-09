@@ -1,7 +1,4 @@
-export interface Technology {
-  key: string;
-  label: string;
-}
+import { Skill } from './skill';
 
 export interface ProjectLinks {
   repo?: string;
@@ -11,15 +8,20 @@ export interface ProjectLinks {
   live?: string;
 }
 
-export type Project = {
-  _id: string;
+export interface ProjectTranslation {
   title: string;
   description: string;
-  status?: string;
+}
+
+export type ProjectStatus = 'planned' | 'in_progress' | 'completed' | 'on_hold';
+
+export interface Project {
+  _id: string;
+  translations: Record<string, ProjectTranslation>;
+  status?: ProjectStatus;
   dateRange?: string;
   image?: { url: string };
   gallery?: { url: string }[];
-  technologies?: Technology[];
-  links?: ProjectLinks[];
-  locale: string;
-};
+  technologies?: Skill[];
+  links?: ProjectLinks;
+}
