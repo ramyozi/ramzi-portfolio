@@ -46,6 +46,8 @@
       }
     },
     "skills": {
+      "intro": "Un aperçu de mes compétences techniques et des outils que j’utilise au quotidien",
+      "content": "Au fil de mes expériences, j’ai eu l’occasion d’explorer un large éventail de technologies - du développement frontend à la conception backend, en passant par la gestion de bases de données, le cloud et l’intégration continue. Chaque outil et chaque langage que j’apprends est une opportunité d’améliorer ma manière de concevoir, de structurer et d’optimiser un projet. Je cherche toujours à choisir la bonne technologie pour le bon contexte, afin d’assurer performance, stabilité et évolutivité.",
       "tab": {
         "languages": "Langages de programmation",
         "frameworks": "Frameworks",
@@ -60,6 +62,8 @@
       "logoFallbackNote": "Certains logos peuvent ne pas apparaître en raison de bloqueurs de publicités ou de restrictions réseau."
     },
     "projects": {
+      "intro": "Une sélection de projets qui reflètent ma vision du développement",
+      "content": "Chaque projet est une nouvelle aventure, un mélange d’idées, de défis techniques et de collaboration. J’aime concevoir des solutions concrètes, utiles et centrées sur l’humain. Des outils qui allient performance, design et sens. Ces projets représentent ma manière d’aborder la création : apprendre, expérimenter et livrer avec exigence et passion.",
       "statusLabels": {
         "planned": "Planifié",
         "in_progress": "En cours",
@@ -105,7 +109,7 @@
       "success": "Message envoyé avec succès !",
       "error": "Échec de l'envoi du message. Veuillez réessayer plus tard."
     },
-  "footer": {
+    "footer": {
       "copyright": "© {year} {name}. Tous droits réservés."
     },
     "viewMore": "Voir plus",

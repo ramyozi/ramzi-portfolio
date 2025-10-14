@@ -46,6 +46,8 @@
       }
     },
     "skills": {
+      "intro": "An overview of my technical skills and the tools I use every day",
+      "content": "Throughout my journey, I’ve had the chance to explore a wide range of technologies - from frontend development to backend architecture, including databases, cloud infrastructure, and CI/CD pipelines. Every tool and language I learn helps me refine how I design, structure, and scale a project. My approach is to always choose the right technology for the right context, ensuring performance, reliability, and long-term maintainability.",
       "tab": {
         "languages": "Programming Languages",
         "frameworks": "Frameworks",
@@ -60,6 +62,8 @@
       "logoFallbackNote": "Some logos may not appear due to ad blockers or network restrictions."
     },
     "projects": {
+      "intro": "A selection of projects that represent my approach to development",
+      "content": "Each project is a new journey, a mix of ideas, technical challenges, and collaboration. I love creating practical, human-centered solutions that combine performance, clarity, and purpose. These projects reflect how I approach creation: learning, experimenting, and delivering with precision and passion.",
       "statusLabels": {
         "planned": "Planned",
         "in_progress": "In Progress",
