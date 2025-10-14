@@ -50,10 +50,10 @@
     },
     "projects": {
       "statusLabels": {
-          "planned": "Planned",
-          "in_progress": "In Progress",
-          "completed": "Completed",
-          "on_hold": "On Hold"
+        "planned": "Planned",
+        "in_progress": "In Progress",
+        "completed": "Completed",
+        "on_hold": "On Hold"
       },
       "projectNumber": "Project #{current}/{total}",
       "checkOut": "Check it out",
@@ -94,7 +94,7 @@
       "success": "Message sent successfully!",
       "error": "Failed to send message. Please try again later."
     },
-  "footer": {
+    "footer": {
       "copyright": "© {year} {name}. All rights reserved."
     },
     "viewMore": "View More",
@@ -104,6 +104,10 @@
     "next": "Next",
     "back": "Back",
     "noImages": "No images available.",
-    "noImage": "No image available."
+    "noImage": "No image available.",
+    "actions": {
+      "download": "Download",
+      "share": "Share"
+    }
   }
 }

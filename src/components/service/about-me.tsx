@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from 'react';
 import { client } from '@/sanity/lib/client';
 import { aboutMeQuery } from '@/sanity/queries/info';
 import type { AboutMe } from '@/data/types/info';
+import { Button } from '@/components/ui/button';
+import { Download, Share2 } from 'lucide-react';
 
 export function AboutMe() {
   const t = useTranslations();
@@ -33,6 +35,35 @@ export function AboutMe() {
     return () => observer.disconnect();
   }, [about?.content]);
 
+  const handleDownload = () => {
+    if (about?.cv?.url) {
+      const link = document.createElement('a');
+
+      link.href = about.cv.url;
+      link.download = `CV_Ramzi_Benmansour.pdf`;
+      link.click();
+    }
+  };
+
+  const handleShare = async () => {
+    if (!about?.cv?.url) return;
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: t('common.header.about'),
+          text: t('common.share.cv'),
+          url: about.cv.url,
+        });
+      } else {
+        await navigator.clipboard.writeText(about.cv.url);
+        alert(t('common.share.copied'));
+      }
+    } catch (err) {
+      console.error('❌ Share failed:', err);
+    }
+  };
+
   return (
     <section
       id='about'
@@ -48,12 +79,32 @@ export function AboutMe() {
           </CardContent>
         </Card>
       </div>
-      <div
-        className='flex flex-col'
-        style={{ height: contentHeight ? `${contentHeight}px` : 'auto' }}
-      >
-        {about?.cv?.url && (
-          <div className='relative h-full w-full overflow-hidden rounded-2xl border shadow-lg'>
+
+      {about?.cv?.url && (
+        <div
+          className='flex flex-col gap-4 md:gap-2'
+          style={{ height: contentHeight ? `${contentHeight}px` : 'auto' }}
+        >
+          <div className='flex items-center justify-center gap-3'>
+            <Button
+              onClick={handleDownload}
+              variant='outline'
+              className='flex items-center gap-2'
+            >
+              <Download className='h-4 w-4' />
+              {t('common.actions.download')}
+            </Button>
+            <Button
+              onClick={handleShare}
+              variant='default'
+              className='flex items-center gap-2'
+            >
+              <Share2 className='h-4 w-4' />
+              {t('common.actions.share')}
+            </Button>
+          </div>
+
+          <div className='relative hidden h-full w-full overflow-hidden rounded-2xl border shadow-lg md:block'>
             <iframe
               src={`${about.cv.url}#view=fitH`}
               className='h-full w-full'
@@ -61,8 +112,8 @@ export function AboutMe() {
             />
             <div className='pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-black/5' />
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </section>
   );
 }
