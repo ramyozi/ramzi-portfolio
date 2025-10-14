@@ -2,13 +2,24 @@
   "common": {
     "header": {
       "siteName": "Portfolio de Ramzi",
-      "about": "À propos",
+      "about": "Qui suis-je ?",
       "motivation": "Motivation",
       "experience": "Expériences",
       "skills": "Compétences",
       "projects": "Projets",
       "contact": "Contactez-moi",
       "languages": "Langues parlées"
+    },
+    "hero": {
+      "ctaPrimary": "Voir mes projets",
+      "ctaSecondary": "Me contacter"
+    },
+    "about": {
+      "cvTitle": "Curriculum Vitae - Télécharger ou Partager",
+      "share": {
+        "cv": "Découvrez mon CV !",
+        "copied": "Lien du CV copié dans le presse-papiers !"
+      }
     },
     "languages": {
       "levels": {

@@ -2,13 +2,24 @@
   "common": {
     "header": {
       "siteName": "Ramzi's Portfolio",
-      "about": "About",
+      "about": "Who am I?",
       "motivation": "Motivation",
       "experience": "Experience",
       "skills": "Skills",
       "projects": "Projects",
       "contact": "Contact",
       "languages": "Languages Spoken"
+    },
+    "hero": {
+      "ctaPrimary": "View my projects",
+      "ctaSecondary": "Contact me"
+    },
+    "about": {
+      "cvTitle": "Curriculum Vitae - Download or Share",
+      "share": {
+        "cv": "Check out my CV!",
+        "copied": "CV link copied to clipboard!"
+      }
     },
     "languages": {
       "levels": {

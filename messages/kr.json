@@ -10,6 +10,17 @@
       "contact": "연락하기",
       "languages": "사용 가능한 언어"
     },
+    "hero": {
+      "ctaPrimary": "프로젝트 보기",
+      "ctaSecondary": "연락하기"
+    },
+    "about": {
+      "cvTitle": "이력서  다운로드 또는 공유",
+      "share": {
+        "cv": "제 이력서를 확인하세요!",
+        "copied": "이력서 링크가 복사되었습니다!"
+      }
+    },
     "languages": {
       "levels": {
         "1": "초급",
