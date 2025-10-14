@@ -26,13 +26,24 @@ export function AboutMe() {
   useEffect(() => {
     if (!textRef.current) return;
 
-    const observer = new ResizeObserver(([entry]) => {
-      setContentHeight(entry.contentRect.height);
-    });
+    const handleResize = () => {
+      const isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
-    observer.observe(textRef.current);
+      if (isDesktop && textRef.current) {
+        const observer = new ResizeObserver(([entry]) => {
+          setContentHeight(entry.contentRect.height);
+        });
 
-    return () => observer.disconnect();
+        observer.observe(textRef.current);
+        return () => observer.disconnect();
+      } else {
+        setContentHeight(null);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [about?.content]);
 
   const handleDownload = () => {
@@ -67,10 +78,11 @@ export function AboutMe() {
   return (
     <section
       id='about'
-      className='grid grid-cols-1 items-start gap-6 md:grid-cols-2'
+      className='flex flex-col gap-6 md:grid md:grid-cols-2 md:items-start md:gap-6'
     >
       <div ref={textRef} className='h-full'>
-        <Card className='h-full border-2 shadow-lg'>
+        <Card className='h-full rounded-xl border border-border p-2 shadow-sm sm:p-4 md:border-2 md:shadow-lg'>
+          {' '}
           <CardHeader />
           <CardContent>
             <p className='whitespace-pre-line text-base leading-relaxed text-muted-foreground'>
@@ -82,26 +94,37 @@ export function AboutMe() {
 
       {about?.cv?.url && (
         <div
-          className='flex flex-col gap-4 md:gap-2'
-          style={{ height: contentHeight ? `${contentHeight}px` : 'auto' }}
+          className={`flex flex-col gap-4 md:gap-2 ${
+            contentHeight ? '' : 'h-auto'
+          }`}
+          style={
+            contentHeight && window.innerWidth >= 768
+              ? { height: `${contentHeight}px` }
+              : undefined
+          }
         >
-          <div className='flex items-center justify-center gap-3'>
-            <Button
-              onClick={handleDownload}
-              variant='outline'
-              className='flex items-center gap-2'
-            >
-              <Download className='h-4 w-4' />
-              {t('common.actions.download')}
-            </Button>
-            <Button
-              onClick={handleShare}
-              variant='default'
-              className='flex items-center gap-2'
-            >
-              <Share2 className='h-4 w-4' />
-              {t('common.actions.share')}
-            </Button>
+          <div className='flex flex-col items-center justify-center gap-3 text-center md:mb-0'>
+            <p className='text-sm font-medium text-muted-foreground md:hidden'>
+              {t('common.about.cvTitle')}
+            </p>
+            <div className='flex flex-wrap items-center justify-center gap-3'>
+              <Button
+                onClick={handleDownload}
+                variant='outline'
+                className='flex items-center gap-2'
+              >
+                <Download className='h-4 w-4' />
+                {t('common.actions.download')}
+              </Button>
+              <Button
+                onClick={handleShare}
+                variant='default'
+                className='flex items-center gap-2'
+              >
+                <Share2 className='h-4 w-4' />
+                {t('common.actions.share')}
+              </Button>
+            </div>
           </div>
 
           <div className='relative hidden h-full w-full overflow-hidden rounded-2xl border shadow-lg md:block'>
