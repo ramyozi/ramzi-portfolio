@@ -9,12 +9,14 @@ import { Project } from '@/components/service/project';
 import { Skill } from '@/components/service/skill';
 import { useTranslations } from 'next-intl';
 import SectionWrapper from '@/components/layout/section-wrapper';
+import { Hero } from '@/components/service/hero';
 
 export default function HomePage() {
   const t = useTranslations();
 
   return (
     <main className='space-y-32 py-12'>
+      <Hero />
       <SectionWrapper id='about' titleKey='common.header.about'>
         <AboutMe />
       </SectionWrapper>
