@@ -37,6 +37,8 @@
       "empty": "No languages defined"
     },
     "experience": {
+      "intro": "A look at my journey and the projects that shaped me.",
+      "content": "Every experience has helped me grow, explore new technologies, and refine my way of building useful and lasting solutions. Whether in a company, as a freelancer, or through personal projects, I’ve always focused on understanding the need before coding, designing before delivering, and learning above all.",
       "empty": "No experience to display at the moment.",
       "labels": {
         "technologies": "Technologies",
