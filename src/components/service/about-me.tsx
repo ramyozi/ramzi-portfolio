@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useLocale, useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { client } from '@/sanity/lib/client';
 import { aboutMeQuery } from '@/sanity/queries/info';
 import type { AboutMe } from '@/data/types/info';
@@ -11,6 +11,8 @@ export function AboutMe() {
   const t = useTranslations();
   const locale = useLocale();
   const [about, setAbout] = useState<AboutMe | null>(null);
+  const [contentHeight, setContentHeight] = useState<number | null>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     client
@@ -19,12 +21,24 @@ export function AboutMe() {
       .catch((err) => console.error('❌ Failed to fetch About Me:', err));
   }, [locale]);
 
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    const observer = new ResizeObserver(([entry]) => {
+      setContentHeight(entry.contentRect.height);
+    });
+
+    observer.observe(textRef.current);
+
+    return () => observer.disconnect();
+  }, [about?.content]);
+
   return (
     <section
       id='about'
       className='grid grid-cols-1 items-start gap-6 md:grid-cols-2'
     >
-      <div className='h-full'>
+      <div ref={textRef} className='h-full'>
         <Card className='h-full border-2 shadow-lg'>
           <CardHeader />
           <CardContent>
@@ -34,10 +48,12 @@ export function AboutMe() {
           </CardContent>
         </Card>
       </div>
-
-      <div className='flex h-full flex-col'>
+      <div
+        className='flex flex-col'
+        style={{ height: contentHeight ? `${contentHeight}px` : 'auto' }}
+      >
         {about?.cv?.url && (
-          <div className='relative h-[480px] w-full overflow-hidden rounded-2xl border shadow-lg'>
+          <div className='relative h-full w-full overflow-hidden rounded-2xl border shadow-lg'>
             <iframe
               src={`${about.cv.url}#view=fitH`}
               className='h-full w-full'
