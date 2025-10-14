@@ -185,7 +185,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             </thead>
             <tbody>
               <tr className='border-b'>
-                <td className='px-4 py-3'>{project.dateRange ?? '—'}</td>
+                <td className='px-4 py-3'>{project.dateRange ?? '-'}</td>
 
                 <td className='px-4 py-3'>
                   <div className='flex flex-wrap gap-2'>

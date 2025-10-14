@@ -2,13 +2,24 @@
   "common": {
     "header": {
       "siteName": "Ramzi's Portfolio",
-      "about": "About",
+      "about": "Who am I?",
       "motivation": "Motivation",
       "experience": "Experience",
       "skills": "Skills",
       "projects": "Projects",
       "contact": "Contact",
       "languages": "Languages Spoken"
+    },
+    "hero": {
+      "ctaPrimary": "View my projects",
+      "ctaSecondary": "Contact me"
+    },
+    "about": {
+      "cvTitle": "Curriculum Vitae - Download or Share",
+      "share": {
+        "cv": "Check out my CV!",
+        "copied": "CV link copied to clipboard!"
+      }
     },
     "languages": {
       "levels": {
@@ -26,6 +37,8 @@
       "empty": "No languages defined"
     },
     "experience": {
+      "intro": "A look at my journey and the projects that shaped me.",
+      "content": "Every experience has helped me grow, explore new technologies, and refine my way of building useful and lasting solutions. Whether in a company, as a freelancer, or through personal projects, I’ve always focused on understanding the need before coding, designing before delivering, and learning above all.",
       "empty": "No experience to display at the moment.",
       "labels": {
         "technologies": "Technologies",
@@ -35,6 +48,8 @@
       }
     },
     "skills": {
+      "intro": "An overview of my technical skills and the tools I use every day",
+      "content": "Throughout my journey, I’ve had the chance to explore a wide range of technologies - from frontend development to backend architecture, including databases, cloud infrastructure, and CI/CD pipelines. Every tool and language I learn helps me refine how I design, structure, and scale a project. My approach is to always choose the right technology for the right context, ensuring performance, reliability, and long-term maintainability.",
       "tab": {
         "languages": "Programming Languages",
         "frameworks": "Frameworks",
@@ -49,11 +64,13 @@
       "logoFallbackNote": "Some logos may not appear due to ad blockers or network restrictions."
     },
     "projects": {
+      "intro": "A selection of projects that represent my approach to development",
+      "content": "Each project is a new journey, a mix of ideas, technical challenges, and collaboration. I love creating practical, human-centered solutions that combine performance, clarity, and purpose. These projects reflect how I approach creation: learning, experimenting, and delivering with precision and passion.",
       "statusLabels": {
-          "planned": "Planned",
-          "in_progress": "In Progress",
-          "completed": "Completed",
-          "on_hold": "On Hold"
+        "planned": "Planned",
+        "in_progress": "In Progress",
+        "completed": "Completed",
+        "on_hold": "On Hold"
       },
       "projectNumber": "Project #{current}/{total}",
       "checkOut": "Check it out",
@@ -94,7 +111,10 @@
       "success": "Message sent successfully!",
       "error": "Failed to send message. Please try again later."
     },
-  "footer": {
+    "footer": {
+      "title": "Ramzi’s Portfolio",
+      "subtitle": "Built with passion, curiosity, and a bit of coffee ☕",
+      "madeWith": "Made with",
       "copyright": "© {year} {name}. All rights reserved."
     },
     "viewMore": "View More",
@@ -104,6 +124,10 @@
     "next": "Next",
     "back": "Back",
     "noImages": "No images available.",
-    "noImage": "No image available."
+    "noImage": "No image available.",
+    "actions": {
+      "download": "Download",
+      "share": "Share"
+    }
   }
 }
