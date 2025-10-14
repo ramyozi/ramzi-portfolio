@@ -110,6 +110,9 @@
       "error": "Échec de l'envoi du message. Veuillez réessayer plus tard."
     },
     "footer": {
+      "title": "Portfolio de Ramzi",
+      "subtitle": "Conçu avec passion, curiosité et une touche de café ☕",
+      "madeWith": "Développé avec",
       "copyright": "© {year} {name}. Tous droits réservés."
     },
     "viewMore": "Voir plus",
