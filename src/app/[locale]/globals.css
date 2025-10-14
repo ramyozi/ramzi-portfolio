@@ -121,6 +121,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body.ltr {
   direction: ltr;
   text-align: left;

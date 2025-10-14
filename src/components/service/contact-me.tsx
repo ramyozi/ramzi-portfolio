@@ -9,8 +9,9 @@ import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormValidator } from '@/hooks/use-form-validator';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import { motion } from 'framer-motion';
 
 export function ContactMe() {
   const t = useTranslations();
@@ -28,7 +29,6 @@ export function ContactMe() {
   );
 
   type FormData = z.infer<typeof formSchema>;
-
   const resolver: Resolver<FormData> = zodResolver(formSchema) as any;
 
   const form = useForm<FormData>({
@@ -61,18 +61,11 @@ export function ContactMe() {
       });
 
       if (!res.ok) throw new Error('Failed to send message');
-
-      toast.success(
-        t('common.toast.success', { default: 'Message sent successfully!' })
-      );
+      toast.success(t('common.toast.success'));
       form.reset();
     } catch (err) {
       console.error(err);
-      toast.error(
-        t('common.toast.error', {
-          default: 'Failed to send message. Please try again later.',
-        })
-      );
+      toast.error(t('common.toast.error'));
     }
   };
 
@@ -82,72 +75,110 @@ export function ContactMe() {
 
   return (
     <section id='contact' className='scroll-mt-24'>
-      <Card>
-        <CardHeader className='flex flex-col items-center gap-3'>
-          <div className='flex items-center justify-center gap-6'>
-            <a href={mailLink} target='_blank' rel='noopener noreferrer'>
-              <Mail className='h-6 w-6 transition-colors hover:text-blue-500' />
-            </a>
-            <a href={githubLink} target='_blank' rel='noopener noreferrer'>
-              <Github className='h-6 w-6 transition-colors hover:text-gray-700' />
-            </a>
-            <a href={linkedinLink} target='_blank' rel='noopener noreferrer'>
-              <Linkedin className='h-6 w-6 transition-colors hover:text-blue-600' />
-            </a>
-          </div>
-          <div className='relative my-4 flex w-full items-center'>
-            <div className='flex-grow border-t border-gray-300'></div>
-            <span className='px-3 text-sm text-gray-500'>
-              {t('common.contactMe.or')}
-            </span>
-            <div className='flex-grow border-t border-gray-300'></div>
-          </div>
-          <CardTitle>{t('common.header.contact')}</CardTitle>
-        </CardHeader>
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Card className='rounded-2xl border border-border/60 bg-card/80 shadow-lg backdrop-blur-md'>
+          <CardHeader className='flex flex-col items-center gap-4'>
+            <motion.div
+              className='flex items-center justify-center gap-6'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <a
+                href={mailLink}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='Email'
+              >
+                <Mail className='h-6 w-6 text-muted-foreground transition-colors hover:text-primary' />
+              </a>
+              <a
+                href={githubLink}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='GitHub'
+              >
+                <Github className='h-6 w-6 text-muted-foreground transition-colors hover:text-primary' />
+              </a>
+              <a
+                href={linkedinLink}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='LinkedIn'
+              >
+                <Linkedin className='h-6 w-6 text-muted-foreground transition-colors hover:text-primary' />
+              </a>
+            </motion.div>
 
-        <CardContent>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className='flex flex-col gap-4'
-          >
-            <div className='flex items-center justify-between gap-4'>
-              <Input
-                label={t('common.contactMe.form.senderName')}
-                placeholder={t('common.contactMe.form.senderName')}
-                {...form.register('senderName')}
-                formHook={form}
-                required
-              />
-              <Input
-                label={t('common.contactMe.form.email')}
-                placeholder={t('common.contactMe.form.email')}
-                {...form.register('email')}
-                formHook={form}
-                required
-              />
+            <div className='relative my-2 flex w-full items-center'>
+              <div className='flex-grow border-t border-border'></div>
+              <span className='px-3 text-sm text-muted-foreground'>
+                {t('common.contactMe.or')}
+              </span>
+              <div className='flex-grow border-t border-border'></div>
             </div>
 
-            <Input
-              label={t('common.contactMe.form.title')}
-              placeholder={t('common.contactMe.form.title')}
-              {...form.register('title')}
-              formHook={form}
-            />
+            <CardTitle className='text-2xl font-semibold text-primary'>
+              {t('common.header.contact')}
+            </CardTitle>
+          </CardHeader>
 
-            <TextArea
-              label={t('common.contactMe.form.message')}
-              placeholder={t('common.contactMe.form.message')}
-              {...form.register('message')}
-              formHook={form}
-              required
-            />
+          <CardContent>
+            <motion.form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className='flex flex-col gap-4'
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <div className='flex flex-col gap-4 md:flex-row'>
+                <Input
+                  label={t('common.contactMe.form.senderName')}
+                  placeholder={t('common.contactMe.form.senderName')}
+                  {...form.register('senderName')}
+                  formHook={form}
+                  required
+                />
+                <Input
+                  label={t('common.contactMe.form.email')}
+                  placeholder={t('common.contactMe.form.email')}
+                  {...form.register('email')}
+                  formHook={form}
+                  required
+                />
+              </div>
 
-            <Button type='submit' variant={'default'}>
-              {t('common.contactMe.form.submit')}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+              <Input
+                label={t('common.contactMe.form.title')}
+                placeholder={t('common.contactMe.form.title')}
+                {...form.register('title')}
+                formHook={form}
+              />
+
+              <TextArea
+                label={t('common.contactMe.form.message')}
+                placeholder={t('common.contactMe.form.message')}
+                {...form.register('message')}
+                formHook={form}
+                required
+              />
+
+              <Button
+                type='submit'
+                variant='default'
+                className='flex items-center justify-center gap-2 py-2 transition-transform hover:scale-105'
+              >
+                <Send className='h-4 w-4' />
+                {t('common.contactMe.form.submit')}
+              </Button>
+            </motion.form>
+          </CardContent>
+        </Card>
+      </motion.div>
     </section>
   );
 }
