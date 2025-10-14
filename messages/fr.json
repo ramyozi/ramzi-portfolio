@@ -37,6 +37,8 @@
       "empty": "Aucune langue définie"
     },
     "experience": {
+      "intro": "Un regard sur mon parcours et les projets qui m'ont façonné.",
+      "content": "Chaque expérience m’a permis de grandir, d’explorer de nouvelles technologies et de perfectionner ma manière de concevoir des solutions utiles et durables. Que ce soit en entreprise, en freelance ou sur des projets personnels, j’ai toujours cherché à comprendre le besoin avant de coder, à concevoir avant de livrer, et à apprendre avant tout.",
       "empty": "Aucune expérience à afficher pour le moment.",
       "labels": {
         "technologies": "Technologies",
