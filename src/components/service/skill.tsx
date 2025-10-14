@@ -120,14 +120,13 @@ export function Skill() {
               <ScrollArea className='h-72'>{renderSkillGrid(tools)}</ScrollArea>
             </TabsContent>
           </Tabs>
+          {failedLogos && (
+            <p className='text-center text-xs text-gray-400'>
+              {t('common.skills.logoFallbackNote')}
+            </p>
+          )}
         </CardContent>
       </Card>
-
-      {failedLogos && (
-        <p className='text-center text-xs text-gray-400'>
-          {t('common.skills.logoFallbackNote')}
-        </p>
-      )}
     </section>
   );
 }
