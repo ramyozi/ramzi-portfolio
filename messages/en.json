@@ -110,6 +110,9 @@
       "error": "Failed to send message. Please try again later."
     },
     "footer": {
+      "title": "Ramzi’s Portfolio",
+      "subtitle": "Built with passion, curiosity, and a bit of coffee ☕",
+      "madeWith": "Made with",
       "copyright": "© {year} {name}. All rights reserved."
     },
     "viewMore": "View More",
