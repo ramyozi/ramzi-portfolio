@@ -47,13 +47,25 @@ export function AboutMe() {
     return () => window.removeEventListener('resize', handleResize);
   }, [about?.content]);
 
-  const handleDownload = () => {
-    if (about?.cv?.url) {
+  const handleDownload = async () => {
+    if (!about?.cv?.url) return;
+
+    try {
+      const response = await fetch(about.cv.url);
+      const blob = await response.blob();
+
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
 
-      link.href = about.cv.url;
+      link.href = url;
       link.download = 'CV_Ramzi_Benmansour.pdf';
+      document.body.appendChild(link);
       link.click();
+
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('❌ Erreur lors du téléchargement du CV :', err);
     }
   };
 
