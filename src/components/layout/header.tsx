@@ -47,6 +47,24 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
     { label: t('common.header.contact'), href: `/${locale}#contact` },
   ];
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.includes('#')) {
+      e.preventDefault();
+      const targetId = href.split('#')[1];
+      const element = document.getElementById(targetId);
+
+      if (element) {
+        window.history.pushState(null, '', href);
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      router.push(href);
+    }
+  };
+
   return (
     <header className='sticky top-0 z-50 w-full bg-background text-foreground'>
       <div
@@ -104,6 +122,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
                   <DropdownMenuItem>
                     <Link
                       href={item.href}
+                      onClick={(e) => handleSmoothScroll(e, item.href)}
                       className='px-3 py-2 hover:text-primary'
                     >
                       {item.label}
