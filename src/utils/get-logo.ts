@@ -27,6 +27,13 @@ const iconExists = async (url: string): Promise<boolean> => {
 export const getTechLogo = async (tech: string): Promise<string> => {
   const key = tech.toLowerCase().replace(/\s+/g, '-');
 
+  // Cas spéciaux : tu fournis toi-même un prefix type "mdi/", "logos/", etc.
+  if (key.includes('/')) {
+    const directIconifyUrl = `${ICONIFY_BASE}/${key}.svg`;
+
+    if (await iconExists(directIconifyUrl)) return directIconifyUrl;
+  }
+
   // Devicon
   const deviconUrl = `${DEVICON_BASE}/${key}/${key}-original.svg`;
 
@@ -37,12 +44,12 @@ export const getTechLogo = async (tech: string): Promise<string> => {
 
   if (await iconExists(simpleIconsUrl)) return simpleIconsUrl;
 
-  // Iconify
+  // Iconify default logos
   const iconifyUrl = `${ICONIFY_BASE}/logos:${key}.svg`;
 
   if (await iconExists(iconifyUrl)) return iconifyUrl;
 
-  // 4Clearbit
+  // Clearbit
   const clearbitUrl = `https://logo.clearbit.com/${key}.com`;
 
   if (await iconExists(clearbitUrl)) return clearbitUrl;
