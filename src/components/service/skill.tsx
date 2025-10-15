@@ -28,9 +28,22 @@ export function Skill() {
 
   const handleImgError = () => setFailedLogos(true);
 
-  const languages = skills.filter((s) => s.category === 'languages');
-  const frameworks = skills.filter((s) => s.category === 'frameworks');
-  const tools = skills.filter((s) => s.category === 'tools');
+  const LEVEL_ORDER: Record<Skill['level'], number> = {
+    '+++': 3,
+    '++': 2,
+    '+': 1,
+  };
+
+  const sortByLevel = (a: Skill, b: Skill) =>
+    LEVEL_ORDER[b.level] - LEVEL_ORDER[a.level];
+
+  const languages = skills
+    .filter((s) => s.category === 'languages')
+    .sort(sortByLevel);
+  const frameworks = skills
+    .filter((s) => s.category === 'frameworks')
+    .sort(sortByLevel);
+  const tools = skills.filter((s) => s.category === 'tools').sort(sortByLevel);
 
   const renderSkillGrid = (list: Skill[]) => (
     <motion.div
