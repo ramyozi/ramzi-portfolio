@@ -45,6 +45,15 @@ export const project = defineType({
             defineField({ name: 'description', type: 'text', title: 'الوصف' }),
           ],
         }),
+        defineField({
+          name: 'kr',
+          title: '한국어',
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', type: 'string', title: '제목' }),
+            defineField({ name: 'description', type: 'text', title: '설명' }),
+          ],
+        }),
       ],
     }),
 
