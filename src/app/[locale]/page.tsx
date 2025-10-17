@@ -15,7 +15,7 @@ export default function HomePage() {
   const t = useTranslations();
 
   return (
-    <main className='space-y-32 py-12'>
+    <main className='space-y-32'>
       <Hero />
       <SectionWrapper id='about' titleKey='common.header.about'>
         <AboutMe />
