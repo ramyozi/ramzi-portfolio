@@ -30,6 +30,7 @@ export function Motivation() {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.3 }}
         className='flex justify-center'
       >
         {motivation?.image?.url ? (
@@ -57,7 +58,7 @@ export function Motivation() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <Card className='rounded-2xl border border-border/60 bg-card/70 shadow-lg backdrop-blur-md transition hover:shadow-xl'>
