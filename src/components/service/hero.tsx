@@ -8,7 +8,7 @@ import Image from 'next/image';
 import {useEffect, useState} from "react";
 import type {Hero} from "@/data/types/info";
 import {client} from "@/sanity/lib/client";
-import {aboutMeQuery, heroQuery} from "@/sanity/queries/info";
+import {heroQuery} from "@/sanity/queries/info";
 
 export function Hero() {
     const t = useTranslations();
@@ -17,15 +17,26 @@ export function Hero() {
 
     useEffect(() => {
         client
-            .fetch(heroQuery, { locale })
+            .fetch(heroQuery, {locale})
             .then(setHero)
             .catch((err) => console.error('❌ Failed to fetch Hero:', err));
     }, [locale]);
 
     return (
         <section
-            id='hero'
-            className='relative flex flex-col items-center justify-center space-y-6 overflow-hidden bg-gradient-to-b from-primary/10 via-background to-background py-24 text-center sm:py-32 md:py-40'
+            id="hero"
+            className="
+                relative
+                flex min-h-[calc(100svh-var(--header-h))]
+                flex-col items-center justify-center
+                gap-6
+                overflow-hidden
+                bg-gradient-to-b from-primary/10 via-background to-background
+                py-24 sm:py-32 md:py-40
+                pb-[calc(env(safe-area-inset-bottom)+1rem)]
+                mb-20 md:mb-28
+                after:block after:h-6 sm:after:h-8 after:content-['']
+              "
         >
             <motion.div
                 className='absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl'

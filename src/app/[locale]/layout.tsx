@@ -8,11 +8,12 @@ import { notFound } from 'next/navigation';
 import './globals.css';
 import { Toaster } from 'sonner';
 import { Footer } from '@/components/layout/footer';
+import { ActiveSectionProvider } from '@/hooks/use-active-section';
 
-type Params = Promise<{ locale: string }>
+type Params = Promise<{ locale: string }>;
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const locale  = await params
+  const locale = await params;
 
   return {
     title: "Ramzi's Portfolio",
@@ -51,14 +52,16 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            <Header
-              logoSrc={'/images/logo.jpg'}
-              logoAlt={'Logo'}
-              locale={locale as Locale}
-            />
-            <div className='flex min-h-screen flex-col'>{children}</div>
-            <Toaster richColors position='top-center' />
-            <Footer />
+            <ActiveSectionProvider>
+              <Header
+                logoSrc={'/images/logo.jpg'}
+                logoAlt={'Logo'}
+                locale={locale as Locale}
+              />
+              <div className='flex min-h-screen flex-col'>{children}</div>
+              <Toaster richColors position='top-center' />
+              <Footer />
+            </ActiveSectionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

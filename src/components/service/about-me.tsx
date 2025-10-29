@@ -1,5 +1,4 @@
 'use client';
-
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
@@ -18,68 +17,48 @@ export function AboutMe() {
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    client
-      .fetch(aboutMeQuery, { locale })
-      .then(setAbout)
-      .catch((err) => console.error('❌ Failed to fetch About Me:', err));
+    client.fetch(aboutMeQuery, { locale }).then(setAbout).catch(console.error);
   }, [locale]);
 
   useEffect(() => {
     if (!textRef.current) return;
 
-    const handleResize = () => {
-      const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const el = textRef.current;
 
-      if (isDesktop && textRef.current) {
-        const observer = new ResizeObserver(([entry]) => {
-          setContentHeight(entry.contentRect.height);
-        });
+    const resizeObs = new ResizeObserver(([entry]) =>
+      setContentHeight(entry.contentRect.height)
+    );
 
-        observer.observe(textRef.current);
-        return () => observer.disconnect();
-      } else {
-        setContentHeight(null);
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    resizeObs.observe(el);
+    return () => resizeObs.disconnect();
   }, [about?.content]);
 
   const handleDownload = async () => {
     if (!about?.cv?.url) return;
 
-    try {
-      const response = await fetch(about.cv.url);
-      const blob = await response.blob();
+    const res = await fetch(about.cv.url);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
 
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-
-      link.href = url;
-      link.download = 'CV_Ramzi_Benmansour.pdf';
-      document.body.appendChild(link);
-      link.click();
-
-      link.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error('❌ Erreur lors du téléchargement du CV :', err);
-    }
+    a.href = url;
+    a.download = 'CV_Ramzi_Benmansour.pdf';
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
   };
 
   const handleShare = async () => {
     if (!about?.cv?.url) return;
 
     try {
-      if (navigator.share) {
+      if (navigator.share)
         await navigator.share({
           title: t('common.header.about'),
           text: t('common.about.share.cv'),
           url: about.cv.url,
         });
-      } else {
+      else {
         await navigator.clipboard.writeText(about.cv.url);
         alert(t('common.about.share.copied'));
       }
@@ -97,7 +76,7 @@ export function AboutMe() {
         ref={textRef}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.25 }} // 👈
         transition={{ duration: 0.6 }}
         className='h-full'
       >
@@ -106,6 +85,7 @@ export function AboutMe() {
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.4 }}
               className='text-sm uppercase tracking-wide text-primary/70'
             >
@@ -117,6 +97,7 @@ export function AboutMe() {
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ delay: 0.15, duration: 0.5 }}
               className='whitespace-pre-line text-base leading-relaxed text-muted-foreground'
             >
@@ -130,7 +111,7 @@ export function AboutMe() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.25 }} // 👈
           transition={{ duration: 0.6 }}
           className='flex flex-col gap-4'
           style={
@@ -166,6 +147,7 @@ export function AboutMe() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className='relative hidden h-full w-full overflow-hidden rounded-2xl border shadow-lg md:block'
           >
