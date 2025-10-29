@@ -49,12 +49,11 @@ export function Skill() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.3 }}
       transition={{ duration: 0.5 }}
     >
       <div className='grid grid-cols-2 gap-4 p-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
         {list.map((skill) => (
-          <TooltipProvider key={skill._id}>
+          <TooltipProvider key={`${skill._id}-${skill.icon}-${skill.name}`}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Card className='flex flex-col items-center justify-center border border-border/60 bg-card/60 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md'>
