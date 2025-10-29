@@ -10,9 +10,26 @@ import { Skill } from '@/components/service/skill';
 import { useTranslations } from 'next-intl';
 import SectionWrapper from '@/components/layout/section-wrapper';
 import { Hero } from '@/components/service/hero';
+import { useEffect } from 'react';
 
 export default function HomePage() {
   const t = useTranslations();
+
+  useEffect(() => {
+    const targetId = sessionStorage.getItem('scrollTarget');
+
+    if (targetId) {
+      sessionStorage.removeItem('scrollTarget');
+
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 800);
+    } else {
+      sessionStorage.removeItem('scrollTarget');
+    }
+  }, []);
 
   return (
     <main className='space-y-32'>
