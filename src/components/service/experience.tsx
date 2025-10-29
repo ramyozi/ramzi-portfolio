@@ -44,7 +44,7 @@ export function Experience() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6 }}
         className='mx-auto max-w-3xl text-center'
       >
@@ -67,7 +67,7 @@ export function Experience() {
               key={exp._id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
             >
               <Card className='group h-full rounded-2xl border border-border/60 bg-card/70 shadow-lg backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl'>
