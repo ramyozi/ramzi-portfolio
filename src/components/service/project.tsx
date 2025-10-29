@@ -50,7 +50,7 @@ export function Project() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6 }}
         className='mx-auto max-w-3xl text-center'
       >
@@ -76,7 +76,7 @@ export function Project() {
                       <motion.div
                         initial={{ opacity: 0, scale: 0.97 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.3 }}
                         transition={{ delay: idx * 0.1, duration: 0.5 }}
                         className='flex min-h-[500px] flex-col items-center justify-center md:grid md:grid-cols-2 md:gap-10'
                       >
@@ -104,6 +104,7 @@ export function Project() {
                               initial={{ opacity: 0, y: 20 }}
                               whileInView={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.6 }}
+                              viewport={{ once: false, amount: 0.3 }}
                               className='relative mt-4 flex w-full justify-center md:hidden'
                             >
                               <div className='w-[95%] max-w-[640px] overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl sm:w-[90%]'>
@@ -182,6 +183,7 @@ export function Project() {
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6 }}
+                            viewport={{ once: false, amount: 0.3 }}
                             className='relative hidden justify-center md:flex'
                           >
                             <div className='w-[95%] max-w-[640px] overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl sm:w-[90%] md:w-full'>
