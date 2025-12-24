@@ -56,7 +56,7 @@ export function Experience() {
         </p>
       </motion.div>
 
-      <div className='grid gap-8 md:grid-cols-3'>
+      <div className='grid gap-8 sm:grid-cols-2'>
         {experiences.map((exp, idx) => {
           const tr = exp.translations?.[locale] || exp.translations?.fr;
 
