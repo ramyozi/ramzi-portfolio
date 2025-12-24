@@ -85,7 +85,7 @@ export function Skill() {
   );
 
   return (
-    <section id='skills' className='scroll-mt-24 space-y-10'>
+    <section id='skills' className='scroll-mt-24 space-y-16'>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -117,19 +117,21 @@ export function Skill() {
             </TabsList>
 
             <TabsContent value='languages'>
-              <ScrollArea className='h-72'>
+              <ScrollArea className='h-[400px]'>
                 {renderSkillGrid(languages)}
               </ScrollArea>
             </TabsContent>
 
             <TabsContent value='frameworks'>
-              <ScrollArea className='h-72'>
+              <ScrollArea className='h-[600px]'>
                 {renderSkillGrid(frameworks)}
               </ScrollArea>
             </TabsContent>
 
             <TabsContent value='tools'>
-              <ScrollArea className='h-72'>{renderSkillGrid(tools)}</ScrollArea>
+              <ScrollArea className='h-[600px]'>
+                {renderSkillGrid(tools)}
+              </ScrollArea>
             </TabsContent>
           </Tabs>
           {failedLogos && (
