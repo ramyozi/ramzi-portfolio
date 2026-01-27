@@ -14,13 +14,6 @@
       "ctaPrimary": "Voir mes projets",
       "ctaSecondary": "Me contacter"
     },
-    "about": {
-      "cvTitle": "Curriculum Vitae - Télécharger ou Partager",
-      "share": {
-        "cv": "Découvrez mon CV !",
-        "copied": "Lien du CV copié dans le presse-papiers !"
-      }
-    },
     "languages": {
       "levels": {
         "1": "Débutant",
