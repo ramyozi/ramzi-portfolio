@@ -14,21 +14,6 @@
       "ctaPrimary": "Voir mes projets",
       "ctaSecondary": "Me contacter"
     },
-    "about": {
-      "currentStatus": {
-        "title": "En ce moment",
-        "availability": "Ouvert aux opportunités",
-        "description": "Actuellement disponible pour des missions en CDI ou CDD dans le sud de la France, notamment en Occitanie et en région PACA.",
-        "lookingFor": "Je recherche des projets ou des équipes avec une vraie vision produit, un esprit collaboratif et un impact concret.",
-        "contractTypes": "CDI & CDD",
-        "regions": "Occitanie • PACA",
-        "regionDetails": "Toulouse, Montpellier, Nîmes, Aix-en-Provence, Marseille",
-        "links": {
-          "github": "GitHub",
-          "linkedin": "LinkedIn"
-        }
-      }
-    },
     "languages": {
       "levels": {
         "1": "Débutant",

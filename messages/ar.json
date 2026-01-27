@@ -14,21 +14,6 @@
       "ctaPrimary": "عرض مشاريعي",
       "ctaSecondary": "تواصل معي"
     },
-    "about": {
-      "currentStatus": {
-        "title": "حالياً",
-        "availability": "متاح للفرص",
-        "description": "متاح حالياً لوظائف دائمة أو محددة المدة في جنوب فرنسا، خاصة في منطقتي أوكسيتاني وباكا.",
-        "lookingFor": "أبحث عن مشاريع أو فرق برؤية منتج حقيقية وعقلية تعاونية وتأثير ملموس.",
-        "contractTypes": "عقود دائمة ومحددة المدة",
-        "regions": "أوكسيتاني • باكا",
-        "regionDetails": "تولوز، مونبلييه، نيم، إكس أون بروفانس، مارسيليا",
-        "links": {
-          "github": "GitHub",
-          "linkedin": "LinkedIn"
-        }
-      }
-    },
     "languages": {
       "levels": {
         "1": "مبتدئ",

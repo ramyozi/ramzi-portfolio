@@ -49,10 +49,60 @@ export const aboutMe = defineType({
       type: 'text',
     }),
     defineField({
-      name: 'cv',
-      title: 'CV File',
-      type: 'file',
-      options: { accept: '.pdf' },
+      name: 'locale',
+      title: 'Locale',
+      type: 'string',
+      options: { list: ['fr', 'en', 'ar', 'kr'] },
+    }),
+  ],
+});
+
+export const currentStatus = defineType({
+  name: 'currentStatus',
+  title: 'Current Status',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Section Title',
+      type: 'string',
+      description: 'Title of the section, e.g., "Right Now" or "En ce moment"',
+    }),
+    defineField({
+      name: 'availability',
+      title: 'Availability Badge',
+      type: 'string',
+      description: 'Short text for the availability badge, e.g., "Open to opportunities"',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      description: 'Main description about current availability',
+    }),
+    defineField({
+      name: 'lookingFor',
+      title: 'Looking For',
+      type: 'text',
+      description: 'What kind of projects/teams you are looking for',
+    }),
+    defineField({
+      name: 'contractTypes',
+      title: 'Contract Types',
+      type: 'string',
+      description: 'Types of contracts, e.g., "Permanent & Fixed-term"',
+    }),
+    defineField({
+      name: 'regions',
+      title: 'Regions',
+      type: 'string',
+      description: 'Target regions, e.g., "Occitanie • PACA"',
+    }),
+    defineField({
+      name: 'regionDetails',
+      title: 'Region Details',
+      type: 'string',
+      description: 'Specific cities, e.g., "Toulouse, Montpellier, Nîmes..."',
     }),
     defineField({
       name: 'locale',
