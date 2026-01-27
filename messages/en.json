@@ -14,21 +14,6 @@
       "ctaPrimary": "View my projects",
       "ctaSecondary": "Contact me"
     },
-    "about": {
-      "currentStatus": {
-        "title": "Right Now",
-        "availability": "Open to opportunities",
-        "description": "Currently available for permanent or fixed-term positions in the south of France, particularly in Occitanie and PACA regions.",
-        "lookingFor": "I'm looking for projects or teams with a real product vision, a collaborative mindset, and tangible impact.",
-        "contractTypes": "Permanent & Fixed-term",
-        "regions": "Occitanie • PACA",
-        "regionDetails": "Toulouse, Montpellier, Nîmes, Aix-en-Provence, Marseille",
-        "links": {
-          "github": "GitHub",
-          "linkedin": "LinkedIn"
-        }
-      }
-    },
     "languages": {
       "levels": {
         "1": "Beginner",

@@ -12,9 +12,18 @@ export interface AboutMe {
   intro: string;
   content: string;
   locale: string;
-  cv?: {
-    url: string;
-  };
+}
+
+export interface CurrentStatus {
+  _id: string;
+  title: string;
+  availability: string;
+  description: string;
+  lookingFor: string;
+  contractTypes: string;
+  regions: string;
+  regionDetails: string;
+  locale: string;
 }
 
 export interface Motivation {
