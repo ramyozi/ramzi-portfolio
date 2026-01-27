@@ -1,17 +1,17 @@
 'use client';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { client } from '@/sanity/lib/client';
-import { aboutMeQuery } from '@/sanity/queries/info';
-import type { AboutMe as AboutMeType } from '@/data/types/info';
+import { aboutMeQuery, currentStatusQuery } from '@/sanity/queries/info';
+import type { AboutMe as AboutMeType, CurrentStatus } from '@/data/types/info';
 import { Github, Linkedin, MapPin, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function AboutMe() {
-  const t = useTranslations();
   const locale = useLocale();
   const [about, setAbout] = useState<AboutMeType | null>(null);
+  const [status, setStatus] = useState<CurrentStatus | null>(null);
   const [contentHeight, setContentHeight] = useState<number | null>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +19,15 @@ export function AboutMe() {
   const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL || '#';
 
   useEffect(() => {
-    client.fetch(aboutMeQuery, { locale }).then(setAbout).catch(console.error);
+    Promise.all([
+      client.fetch(aboutMeQuery, { locale }),
+      client.fetch(currentStatusQuery, { locale }),
+    ])
+      .then(([aboutData, statusData]) => {
+        setAbout(aboutData);
+        setStatus(statusData);
+      })
+      .catch(console.error);
   }, [locale]);
 
   useEffect(() => {
@@ -37,14 +45,14 @@ export function AboutMe() {
 
   const socialLinks = [
     {
-      name: t('common.about.currentStatus.links.github'),
+      name: 'GitHub',
       url: githubUrl,
       icon: Github,
       color: 'hover:border-[#333] dark:hover:border-[#f0f0f0]',
       bgHover: 'hover:bg-[#333]/5 dark:hover:bg-[#f0f0f0]/5',
     },
     {
-      name: t('common.about.currentStatus.links.linkedin'),
+      name: 'LinkedIn',
       url: linkedinUrl,
       icon: Linkedin,
       color: 'hover:border-[#0077b5]',
@@ -120,7 +128,7 @@ export function AboutMe() {
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-green-500'></span>
               </span>
               <p className='text-sm uppercase tracking-wide text-primary/70'>
-                {t('common.about.currentStatus.title')}
+                {status?.title}
               </p>
             </motion.div>
           </CardHeader>
@@ -137,15 +145,15 @@ export function AboutMe() {
               <div className='flex flex-wrap items-center gap-3'>
                 <span className='inline-flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-sm font-medium text-green-600 dark:text-green-400'>
                   <Briefcase className='h-3.5 w-3.5' />
-                  {t('common.about.currentStatus.availability')}
+                  {status?.availability}
                 </span>
                 <span className='inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-sm text-muted-foreground'>
-                  {t('common.about.currentStatus.contractTypes')}
+                  {status?.contractTypes}
                 </span>
               </div>
 
               <p className='text-base leading-relaxed text-muted-foreground'>
-                {t('common.about.currentStatus.description')}
+                {status?.description}
               </p>
 
               {/* Regions */}
@@ -153,16 +161,16 @@ export function AboutMe() {
                 <MapPin className='mt-0.5 h-4 w-4 flex-shrink-0 text-primary/60' />
                 <div>
                   <p className='font-medium text-foreground/80'>
-                    {t('common.about.currentStatus.regions')}
+                    {status?.regions}
                   </p>
                   <p className='text-xs text-muted-foreground/70'>
-                    {t('common.about.currentStatus.regionDetails')}
+                    {status?.regionDetails}
                   </p>
                 </div>
               </div>
 
               <p className='text-sm italic text-muted-foreground/80'>
-                {t('common.about.currentStatus.lookingFor')}
+                {status?.lookingFor}
               </p>
             </motion.div>
 
