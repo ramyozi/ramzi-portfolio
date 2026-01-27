@@ -14,13 +14,6 @@
       "ctaPrimary": "View my projects",
       "ctaSecondary": "Contact me"
     },
-    "about": {
-      "cvTitle": "Curriculum Vitae - Download or Share",
-      "share": {
-        "cv": "Check out my CV!",
-        "copied": "CV link copied to clipboard!"
-      }
-    },
     "languages": {
       "levels": {
         "1": "Beginner",

@@ -13,7 +13,20 @@ export const aboutMeQuery = `
     _id,
     intro,
     content,
-    "cv": cv.asset->{url},
+    locale
+  }
+`;
+
+export const currentStatusQuery = `
+  *[_type == "currentStatus" && locale == $locale][0]{
+    _id,
+    title,
+    availability,
+    description,
+    lookingFor,
+    contractTypes,
+    regions,
+    regionDetails,
     locale
   }
 `;
