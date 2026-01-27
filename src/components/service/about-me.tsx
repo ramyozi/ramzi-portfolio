@@ -4,19 +4,17 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { client } from '@/sanity/lib/client';
 import { aboutMeQuery } from '@/sanity/queries/info';
-import type { AboutMe as AboutMeType } from '@/data/types/info';
-import { Github, Linkedin, MapPin, Briefcase } from 'lucide-react';
+import type { AboutMe } from '@/data/types/info';
+import { Button } from '@/components/ui/button';
+import { Download, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function AboutMe() {
   const t = useTranslations();
   const locale = useLocale();
-  const [about, setAbout] = useState<AboutMeType | null>(null);
+  const [about, setAbout] = useState<AboutMe | null>(null);
   const [contentHeight, setContentHeight] = useState<number | null>(null);
   const textRef = useRef<HTMLDivElement>(null);
-
-  const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL || '#';
-  const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL || '#';
 
   useEffect(() => {
     client.fetch(aboutMeQuery, { locale }).then(setAbout).catch(console.error);
@@ -35,34 +33,50 @@ export function AboutMe() {
     return () => resizeObs.disconnect();
   }, [about?.content]);
 
-  const socialLinks = [
-    {
-      name: t('common.about.currentStatus.links.github'),
-      url: githubUrl,
-      icon: Github,
-      color: 'hover:border-[#333] dark:hover:border-[#f0f0f0]',
-      bgHover: 'hover:bg-[#333]/5 dark:hover:bg-[#f0f0f0]/5',
-    },
-    {
-      name: t('common.about.currentStatus.links.linkedin'),
-      url: linkedinUrl,
-      icon: Linkedin,
-      color: 'hover:border-[#0077b5]',
-      bgHover: 'hover:bg-[#0077b5]/5',
-    },
-  ];
+  const handleDownload = async () => {
+    if (!about?.cv?.url) return;
+
+    const res = await fetch(about.cv.url);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+
+    a.href = url;
+    a.download = 'CV_Ramzi_Benmansour.pdf';
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleShare = async () => {
+    if (!about?.cv?.url) return;
+
+    try {
+      if (navigator.share)
+        await navigator.share({
+          title: t('common.header.about'),
+          text: t('common.about.share.cv'),
+          url: about.cv.url,
+        });
+      else {
+        await navigator.clipboard.writeText(about.cv.url);
+        alert(t('common.about.share.copied'));
+      }
+    } catch (err) {
+      console.error('❌ Share failed:', err);
+    }
+  };
 
   return (
     <section
       id='about'
       className='flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-8'
     >
-      {/* Left column - About me text */}
       <motion.div
         ref={textRef}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.25 }}
+        viewport={{ once: false, amount: 0.25 }} // 👈
         transition={{ duration: 0.6 }}
         className='h-full'
       >
@@ -93,109 +107,59 @@ export function AboutMe() {
         </Card>
       </motion.div>
 
-      {/* Right column - Current status */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.25 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className='flex h-full flex-col'
-        style={
-          contentHeight && typeof window !== 'undefined' && window.innerWidth >= 768
-            ? { minHeight: `${contentHeight}px` }
-            : undefined
-        }
-      >
-        <Card className='flex h-full flex-col rounded-2xl border border-border/60 bg-card/70 shadow-lg backdrop-blur-md transition hover:shadow-xl'>
-          <CardHeader className='space-y-3'>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.4 }}
-              className='flex items-center gap-2'
-            >
-              <span className='relative flex h-3 w-3'>
-                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75'></span>
-                <span className='relative inline-flex h-3 w-3 rounded-full bg-green-500'></span>
-              </span>
-              <p className='text-sm uppercase tracking-wide text-primary/70'>
-                {t('common.about.currentStatus.title')}
-              </p>
-            </motion.div>
-          </CardHeader>
+      {about?.cv?.url && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.25 }} // 👈
+          transition={{ duration: 0.6 }}
+          className='flex flex-col gap-4'
+          style={
+            contentHeight && window.innerWidth >= 768
+              ? { height: `${contentHeight}px` }
+              : undefined
+          }
+        >
+          <div className='flex flex-col items-center justify-center gap-3 text-center md:mb-0'>
+            <p className='text-sm font-medium text-muted-foreground md:hidden'>
+              {t('common.about.cvTitle')}
+            </p>
+            <div className='flex flex-wrap items-center justify-center gap-3'>
+              <Button
+                onClick={handleDownload}
+                variant='outline'
+                className='flex items-center gap-2'
+              >
+                <Download className='h-4 w-4' />
+                {t('common.actions.download')}
+              </Button>
+              <Button
+                onClick={handleShare}
+                variant='default'
+                className='flex items-center gap-2'
+              >
+                <Share2 className='h-4 w-4' />
+                {t('common.actions.share')}
+              </Button>
+            </div>
+          </div>
 
-          <CardContent className='flex flex-1 flex-col space-y-5'>
-            {/* Availability status */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ delay: 0.15, duration: 0.5 }}
-              className='space-y-4'
-            >
-              <div className='flex flex-wrap items-center gap-3'>
-                <span className='inline-flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-sm font-medium text-green-600 dark:text-green-400'>
-                  <Briefcase className='h-3.5 w-3.5' />
-                  {t('common.about.currentStatus.availability')}
-                </span>
-                <span className='inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-sm text-muted-foreground'>
-                  {t('common.about.currentStatus.contractTypes')}
-                </span>
-              </div>
-
-              <p className='text-base leading-relaxed text-muted-foreground'>
-                {t('common.about.currentStatus.description')}
-              </p>
-
-              {/* Regions */}
-              <div className='flex items-start gap-2 text-sm text-muted-foreground'>
-                <MapPin className='mt-0.5 h-4 w-4 flex-shrink-0 text-primary/60' />
-                <div>
-                  <p className='font-medium text-foreground/80'>
-                    {t('common.about.currentStatus.regions')}
-                  </p>
-                  <p className='text-xs text-muted-foreground/70'>
-                    {t('common.about.currentStatus.regionDetails')}
-                  </p>
-                </div>
-              </div>
-
-              <p className='text-sm italic text-muted-foreground/80'>
-                {t('common.about.currentStatus.lookingFor')}
-              </p>
-            </motion.div>
-
-            {/* Social links */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ delay: 0.25, duration: 0.5 }}
-              className='mt-auto flex flex-wrap gap-3 pt-4'
-            >
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`group flex flex-1 items-center justify-center gap-2 rounded-xl border border-border/60 bg-background/50 px-4 py-3 text-sm font-medium text-muted-foreground backdrop-blur-sm transition-all duration-200 ${link.color} ${link.bgHover} hover:text-foreground`}
-                >
-                  <link.icon className='h-5 w-5 transition-transform duration-200 group-hover:scale-110' />
-                  <span>{link.name}</span>
-                </motion.a>
-              ))}
-            </motion.div>
-          </CardContent>
-        </Card>
-      </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className='relative hidden h-full w-full overflow-hidden rounded-2xl border shadow-lg md:block'
+          >
+            <iframe
+              src={`${about.cv.url}#view=fitH`}
+              className='h-full w-full'
+              title={t('common.header.about')}
+            />
+            <div className='pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-black/5' />
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 }

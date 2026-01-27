@@ -15,18 +15,10 @@
       "ctaSecondary": "연락하기"
     },
     "about": {
-      "currentStatus": {
-        "title": "현재 상태",
-        "availability": "기회에 열려 있습니다",
-        "description": "현재 프랑스 남부, 특히 옥시타니와 파카 지역에서 정규직 또는 계약직 포지션을 찾고 있습니다.",
-        "lookingFor": "진정한 제품 비전, 협업 정신, 그리고 실질적인 영향력을 가진 프로젝트나 팀을 찾고 있습니다.",
-        "contractTypes": "정규직 & 계약직",
-        "regions": "옥시타니 • 파카",
-        "regionDetails": "툴루즈, 몽펠리에, 님, 엑상프로방스, 마르세유",
-        "links": {
-          "github": "GitHub",
-          "linkedin": "LinkedIn"
-        }
+      "cvTitle": "이력서  다운로드 또는 공유",
+      "share": {
+        "cv": "제 이력서를 확인하세요!",
+        "copied": "이력서 링크가 복사되었습니다!"
       }
     },
     "languages": {
