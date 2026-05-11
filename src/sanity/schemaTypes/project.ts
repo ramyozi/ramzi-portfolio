@@ -58,6 +58,14 @@ export const project = defineType({
     }),
 
     defineField({
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description:
+        'Lower values appear first. Leave empty for default ordering.',
+    }),
+
+    defineField({
       name: 'status',
       title: 'Status',
       type: 'string',
