@@ -74,7 +74,7 @@ export async function generateMetadata({
       follow: true,
       googleBot: { index: true, follow: true },
     },
-    icons: { icon: { url: '/logo.svg', type: 'image/svg+xml' } },
+    icons: { icon: '/images/logo.jpg' },
   };
 }
 
@@ -128,7 +128,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <ActiveSectionProvider>
               <ScrollProgress />
               <Header
-                logoSrc={'/logo.svg'}
+                logoSrc={'/images/logo.jpg'}
                 logoAlt={'Ramzi Benmansour'}
                 locale={locale as Locale}
               />
