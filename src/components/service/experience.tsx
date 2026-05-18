@@ -1,10 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
-import { client } from '@/sanity/lib/client';
-import { allExperiencesQuery } from '@/sanity/queries/experiences';
 import Image from 'next/image';
 import TechIcon from '@/components/service/common/tech-icon';
 import {
@@ -16,18 +14,14 @@ import {
 import type { Experience } from '@/data/types/experience';
 import { motion } from 'framer-motion';
 
-export function Experience() {
+export function Experience({
+  experiences,
+}: {
+  experiences: Experience[];
+}) {
   const t = useTranslations();
   const locale = useLocale() as 'fr' | 'en' | 'ar' | 'kr';
-  const [experiences, setExperiences] = useState<Experience[]>([]);
   const [failedLogos, setFailedLogos] = useState(false);
-
-  useEffect(() => {
-    client
-      .fetch(allExperiencesQuery)
-      .then(setExperiences)
-      .catch((err) => console.error('❌ Failed to fetch experiences:', err));
-  }, []);
 
   if (!experiences.length)
     return (
