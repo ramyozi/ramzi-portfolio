@@ -1,0 +1,91 @@
+{"_id":"i18n-common-a11y-backToTop","_type":"translation","key":"common.a11y.backToTop","group":"a11y","en":"Back to top","fr":"Retour en haut","ar":"العودة إلى الأعلى","kr":"맨 위로"}
+{"_id":"i18n-common-a11y-close","_type":"translation","key":"common.a11y.close","group":"a11y","en":"Close","fr":"Fermer","ar":"إغلاق","kr":"닫기"}
+{"_id":"i18n-common-a11y-nextImage","_type":"translation","key":"common.a11y.nextImage","group":"a11y","en":"Next image","fr":"Image suivante","ar":"الصورة التالية","kr":"다음 이미지"}
+{"_id":"i18n-common-a11y-prevImage","_type":"translation","key":"common.a11y.prevImage","group":"a11y","en":"Previous image","fr":"Image précédente","ar":"الصورة السابقة","kr":"이전 이미지"}
+{"_id":"i18n-common-a11y-scrollToContent","_type":"translation","key":"common.a11y.scrollToContent","group":"a11y","en":"Scroll to content","fr":"Aller au contenu","ar":"الانتقال إلى المحتوى","kr":"콘텐츠로 이동"}
+{"_id":"i18n-common-actions-download","_type":"translation","key":"common.actions.download","group":"actions","en":"Download","fr":"Télécharger","ar":"تحميل","kr":"다운로드"}
+{"_id":"i18n-common-actions-share","_type":"translation","key":"common.actions.share","group":"actions","en":"Share","fr":"Partager","ar":"مشاركة","kr":"공유"}
+{"_id":"i18n-common-back","_type":"translation","key":"common.back","group":"back","en":"Back","fr":"Retour","ar":"الرجوع","kr":"뒤로"}
+{"_id":"i18n-common-contactMe-form-companyName","_type":"translation","key":"common.contactMe.form.companyName","group":"contactMe","en":"Company Name","fr":"Nom de l'entreprise","ar":"اسم الشركة","kr":"회사명"}
+{"_id":"i18n-common-contactMe-form-email","_type":"translation","key":"common.contactMe.form.email","group":"contactMe","en":"Email","fr":"E-mail","ar":"البريد الإلكتروني","kr":"이메일"}
+{"_id":"i18n-common-contactMe-form-message","_type":"translation","key":"common.contactMe.form.message","group":"contactMe","en":"Message","fr":"Message","ar":"الرسالة","kr":"메시지"}
+{"_id":"i18n-common-contactMe-form-senderName","_type":"translation","key":"common.contactMe.form.senderName","group":"contactMe","en":"Name","fr":"Nom","ar":"الاسم","kr":"이름"}
+{"_id":"i18n-common-contactMe-form-submit","_type":"translation","key":"common.contactMe.form.submit","group":"contactMe","en":"Send","fr":"Envoyer","ar":"إرسال","kr":"전송"}
+{"_id":"i18n-common-contactMe-form-title","_type":"translation","key":"common.contactMe.form.title","group":"contactMe","en":"Subject","fr":"Objet","ar":"الموضوع","kr":"제목"}
+{"_id":"i18n-common-contactMe-or","_type":"translation","key":"common.contactMe.or","group":"contactMe","en":"OR","fr":"OU","ar":"أو","kr":"또는"}
+{"_id":"i18n-common-experience-empty","_type":"translation","key":"common.experience.empty","group":"experience","en":"No experience to display at the moment.","fr":"Aucune expérience à afficher pour le moment.","ar":"لا توجد خبرات حالياً للعرض","kr":"현재 표시할 경험이 없습니다."}
+{"_id":"i18n-common-experience-intro","_type":"translation","key":"common.experience.intro","group":"experience","en":"A look at my journey and the projects that shaped me.","fr":"Un regard sur mon parcours et les projets qui m'ont façonné.","ar":"نظرة على مسيرتي والمشاريع التي شكّلت تجربتي.","kr":"지금의 나를 만들어 준 여정과 프로젝트들."}
+{"_id":"i18n-common-experience-labels-partners","_type":"translation","key":"common.experience.labels.partners","group":"experience","en":"Partners","fr":"Collaborateurs","ar":"الشركاء","kr":"협업자"}
+{"_id":"i18n-common-experience-labels-solution","_type":"translation","key":"common.experience.labels.solution","group":"experience","en":"Solution","fr":"Solution","ar":"الحل","kr":"솔루션"}
+{"_id":"i18n-common-experience-labels-tasks","_type":"translation","key":"common.experience.labels.tasks","group":"experience","en":"Tasks","fr":"Tâches","ar":"المهام المنجزة","kr":"업무"}
+{"_id":"i18n-common-experience-labels-technologies","_type":"translation","key":"common.experience.labels.technologies","group":"experience","en":"Technologies","fr":"Technologies","ar":"التقنيات المستخدمة","kr":"기술"}
+{"_id":"i18n-common-footer-copyright","_type":"translation","key":"common.footer.copyright","group":"footer","en":"© {year} {name}. All rights reserved.","fr":"© {year} {name}. Tous droits réservés.","ar":"© {year} {name}. جميع الحقوق محفوظة.","kr":"© {year} {name}. 모든 권리 보유."}
+{"_id":"i18n-common-footer-madeWith","_type":"translation","key":"common.footer.madeWith","group":"footer","en":"Made with","fr":"Développé avec","ar":"تم تطويره باستخدام","kr":"만든 기술:"}
+{"_id":"i18n-common-footer-subtitle","_type":"translation","key":"common.footer.subtitle","group":"footer","en":"Selected work, experience and skills.","fr":"Projets, expériences et compétences.","ar":"مشاريع وخبرات ومهارات.","kr":"프로젝트, 경력, 기술 역량."}
+{"_id":"i18n-common-footer-title","_type":"translation","key":"common.footer.title","group":"footer","en":"Ramzi’s Portfolio","fr":"Portfolio de Ramzi","ar":"ملف Ramzi الشخصي","kr":"람지의 포트폴리오"}
+{"_id":"i18n-common-form-error-invalidEmail","_type":"translation","key":"common.form.error.invalidEmail","group":"form","en":"Invalid email address","fr":"Adresse e-mail invalide","ar":"البريد الإلكتروني غير صالح","kr":"잘못된 이메일 주소"}
+{"_id":"i18n-common-form-error-maxLength","_type":"translation","key":"common.form.error.maxLength","group":"form","en":"Maximum length is {n} characters","fr":"La longueur maximale est de {n} caractères","ar":"الحد الأقصى للطول هو {n} أحرف","kr":"최대 길이는 {n}자입니다"}
+{"_id":"i18n-common-form-error-minLength","_type":"translation","key":"common.form.error.minLength","group":"form","en":"Minimum length is {n} characters","fr":"La longueur minimale est de {n} caractères","ar":"الحد الأدنى للطول هو {n} أحرف","kr":"최소 길이는 {n}자입니다"}
+{"_id":"i18n-common-form-error-required","_type":"translation","key":"common.form.error.required","group":"form","en":"This field is required","fr":"Ce champ est requis","ar":"هذا الحقل مطلوب","kr":"이 필드는 필수입니다"}
+{"_id":"i18n-common-header-about","_type":"translation","key":"common.header.about","group":"header","en":"Who am I?","fr":"Qui suis-je ?","ar":"من أنا","kr":"소개"}
+{"_id":"i18n-common-header-contact","_type":"translation","key":"common.header.contact","group":"header","en":"Contact","fr":"Contactez-moi","ar":"تواصل معي","kr":"연락하기"}
+{"_id":"i18n-common-header-experience","_type":"translation","key":"common.header.experience","group":"header","en":"Experience","fr":"Expériences","ar":"خبرتي","kr":"경험"}
+{"_id":"i18n-common-header-languages","_type":"translation","key":"common.header.languages","group":"header","en":"Languages Spoken","fr":"Langues parlées","ar":"اللغات التي أتكلمها","kr":"사용 가능한 언어"}
+{"_id":"i18n-common-header-motivation","_type":"translation","key":"common.header.motivation","group":"header","en":"Motivation","fr":"Motivation","ar":"ما يحفزني","kr":"동기"}
+{"_id":"i18n-common-header-projects","_type":"translation","key":"common.header.projects","group":"header","en":"Projects","fr":"Projets","ar":"مشاريعي","kr":"프로젝트"}
+{"_id":"i18n-common-header-siteName","_type":"translation","key":"common.header.siteName","group":"header","en":"Ramzi's Portfolio","fr":"Portfolio de Ramzi","ar":"بورتفوليو رمزي","kr":"Ramzi 포트폴리오"}
+{"_id":"i18n-common-header-skills","_type":"translation","key":"common.header.skills","group":"header","en":"Skills","fr":"Compétences","ar":"مهاراتي","kr":"기술"}
+{"_id":"i18n-common-hero-ctaPrimary","_type":"translation","key":"common.hero.ctaPrimary","group":"hero","en":"View my projects","fr":"Voir mes projets","ar":"عرض مشاريعي","kr":"프로젝트 보기"}
+{"_id":"i18n-common-hero-ctaSecondary","_type":"translation","key":"common.hero.ctaSecondary","group":"hero","en":"Contact me","fr":"Me contacter","ar":"تواصل معي","kr":"연락하기"}
+{"_id":"i18n-common-languages-empty","_type":"translation","key":"common.languages.empty","group":"languages","en":"No languages defined","fr":"Aucune langue définie","ar":"لم أضف أي لغات بعد","kr":"정의된 언어가 없습니다"}
+{"_id":"i18n-common-languages-levels-1","_type":"translation","key":"common.languages.levels.1","group":"languages","en":"Beginner","fr":"Débutant","ar":"مبتدئ","kr":"초급"}
+{"_id":"i18n-common-languages-levels-2","_type":"translation","key":"common.languages.levels.2","group":"languages","en":"Intermediate","fr":"Intermédiaire","ar":"متوسط","kr":"중급"}
+{"_id":"i18n-common-languages-levels-3","_type":"translation","key":"common.languages.levels.3","group":"languages","en":"Advanced","fr":"Avancé","ar":"متقدم","kr":"고급"}
+{"_id":"i18n-common-languages-levels-4","_type":"translation","key":"common.languages.levels.4","group":"languages","en":"Native","fr":"Natif","ar":"اللغة الأم","kr":"원어민"}
+{"_id":"i18n-common-languages-list-ar","_type":"translation","key":"common.languages.list.ar","group":"languages","en":"Arabic","fr":"Arabe","ar":"العربية","kr":"아랍어"}
+{"_id":"i18n-common-languages-list-en","_type":"translation","key":"common.languages.list.en","group":"languages","en":"English","fr":"Anglais","ar":"الإنجليزية","kr":"영어"}
+{"_id":"i18n-common-languages-list-fr","_type":"translation","key":"common.languages.list.fr","group":"languages","en":"French","fr":"Français","ar":"الفرنسية","kr":"프랑스어"}
+{"_id":"i18n-common-languages-list-kr","_type":"translation","key":"common.languages.list.kr","group":"languages","en":"Korean","fr":"Coréen","ar":"الكورية","kr":"한국어"}
+{"_id":"i18n-common-next","_type":"translation","key":"common.next","group":"next","en":"Next","fr":"Suivant","ar":"التالي","kr":"다음"}
+{"_id":"i18n-common-noImage","_type":"translation","key":"common.noImage","group":"noImage","en":"No image available.","fr":"Aucune image disponible.","ar":"لا توجد صورة متاحة.","kr":"사용 가능한 이미지가 없습니다."}
+{"_id":"i18n-common-noImages","_type":"translation","key":"common.noImages","group":"noImages","en":"No images available.","fr":"Aucune image disponible.","ar":"لا توجد صور متاحة.","kr":"사용 가능한 이미지가 없습니다."}
+{"_id":"i18n-common-previous","_type":"translation","key":"common.previous","group":"previous","en":"Previous","fr":"Précédent","ar":"السابق","kr":"이전"}
+{"_id":"i18n-common-projects-checkOut","_type":"translation","key":"common.projects.checkOut","group":"projects","en":"Check it out","fr":"Consulter","ar":"عرض المزيد","kr":"자세히 보기"}
+{"_id":"i18n-common-projects-context","_type":"translation","key":"common.projects.context","group":"projects","en":"Context","fr":"Contexte","ar":"السياق","kr":"배경"}
+{"_id":"i18n-common-projects-date","_type":"translation","key":"common.projects.date","group":"projects","en":"Date","fr":"Date","ar":"التاريخ","kr":"날짜"}
+{"_id":"i18n-common-projects-empty","_type":"translation","key":"common.projects.empty","group":"projects","en":"No projects to show right now","fr":"Aucun projet à afficher pour le moment","ar":"لا توجد مشاريع حالياً","kr":"현재 표시할 프로젝트가 없습니다"}
+{"_id":"i18n-common-projects-gallery","_type":"translation","key":"common.projects.gallery","group":"projects","en":"Gallery","fr":"Galerie","ar":"معرض الصور","kr":"갤러리"}
+{"_id":"i18n-common-projects-intro","_type":"translation","key":"common.projects.intro","group":"projects","en":"A selection of projects that represent my approach to development","fr":"Une sélection de projets qui reflètent ma vision du développement","ar":"مجموعة من المشاريع التي تعبّر عن رؤيتي في تطوير البرمجيات","kr":"제가 추구하는 개발 철학이 담긴 프로젝트 모음"}
+{"_id":"i18n-common-projects-links","_type":"translation","key":"common.projects.links","group":"projects","en":"Links","fr":"Liens","ar":"روابط","kr":"링크"}
+{"_id":"i18n-common-projects-live","_type":"translation","key":"common.projects.live","group":"projects","en":"Live Site","fr":"Site web","ar":"الموقع الفعلي","kr":"실제 사이트"}
+{"_id":"i18n-common-projects-noImages","_type":"translation","key":"common.projects.noImages","group":"projects","en":"No images available.","fr":"Aucune image disponible.","ar":"لا توجد صور متاحة.","kr":"사용 가능한 이미지가 없습니다."}
+{"_id":"i18n-common-projects-noLinks","_type":"translation","key":"common.projects.noLinks","group":"projects","en":"No links available.","fr":"Aucun lien disponible.","ar":"لا توجد روابط متاحة.","kr":"사용 가능한 링크가 없습니다."}
+{"_id":"i18n-common-projects-projectNumber","_type":"translation","key":"common.projects.projectNumber","group":"projects","en":"Project #{current}/{total}","fr":"Projet n°{current}/{total}","ar":"العمل رقم {current} من {total}","kr":"{total}개 중 {current}번째 프로젝트"}
+{"_id":"i18n-common-projects-repo","_type":"translation","key":"common.projects.repo","group":"projects","en":"Repo","fr":"Répertoire","ar":"المستودع","kr":"저장소"}
+{"_id":"i18n-common-projects-repoBackend","_type":"translation","key":"common.projects.repoBackend","group":"projects","en":"Backend Repo","fr":"Répertoire Backend","ar":"مستودع الواجهة الخلفية","kr":"백엔드 저장소"}
+{"_id":"i18n-common-projects-repoFrontend","_type":"translation","key":"common.projects.repoFrontend","group":"projects","en":"Frontend Repo","fr":"Répertoire Web","ar":"مستودع الواجهة الأمامية","kr":"프론트엔드 저장소"}
+{"_id":"i18n-common-projects-repoMobile","_type":"translation","key":"common.projects.repoMobile","group":"projects","en":"Mobile Repo","fr":"Répertoire Mobile","ar":"مستودع الواجهة الأمامية الهواتف المحمولة","kr":"모바일 저장소"}
+{"_id":"i18n-common-projects-stack","_type":"translation","key":"common.projects.stack","group":"projects","en":"Stack","fr":"Stack","ar":"التقنيات","kr":"기술 스택"}
+{"_id":"i18n-common-projects-status","_type":"translation","key":"common.projects.status","group":"projects","en":"Status","fr":"Statut","ar":"الحالة","kr":"상태"}
+{"_id":"i18n-common-projects-statusLabels-completed","_type":"translation","key":"common.projects.statusLabels.completed","group":"projects","en":"Completed","fr":"Terminé","ar":"مكتمل","kr":"완료됨"}
+{"_id":"i18n-common-projects-statusLabels-in-progress","_type":"translation","key":"common.projects.statusLabels.in_progress","group":"projects","en":"In Progress","fr":"En cours","ar":"قيد التنفيذ","kr":"진행 중"}
+{"_id":"i18n-common-projects-statusLabels-on-hold","_type":"translation","key":"common.projects.statusLabels.on_hold","group":"projects","en":"On Hold","fr":"En pause","ar":"مؤجل","kr":"보류 중"}
+{"_id":"i18n-common-projects-statusLabels-planned","_type":"translation","key":"common.projects.statusLabels.planned","group":"projects","en":"Planned","fr":"Planifié","ar":"مخطط له","kr":"계획됨"}
+{"_id":"i18n-common-skills-empty","_type":"translation","key":"common.skills.empty","group":"skills","en":"No skills to display.","fr":"Aucune compétence à afficher.","ar":"لا توجد مهارات للعرض","kr":"표시할 기술이 없습니다."}
+{"_id":"i18n-common-skills-intro","_type":"translation","key":"common.skills.intro","group":"skills","en":"An overview of my technical skills and the tools I use every day","fr":"Un aperçu de mes compétences techniques et des outils que j’utilise au quotidien","ar":"نظرة شاملة على مهاراتي التقنية والأدوات التي أستخدمها يوميًا","kr":"제가 매일 사용하는 기술과 도구에 대한 개요"}
+{"_id":"i18n-common-skills-logoFallbackNote","_type":"translation","key":"common.skills.logoFallbackNote","group":"skills","en":"Some logos may not appear due to ad blockers or network restrictions.","fr":"Certains logos peuvent ne pas apparaître en raison de bloqueurs de publicités ou de restrictions réseau.","ar":"قد لا تظهر بعض الشعارات بسبب مانعات الإعلانات أو قيود الشبكة","kr":"광고 차단기나 네트워크 제한으로 일부 로고가 표시되지 않을 수 있습니다."}
+{"_id":"i18n-common-skills-proficiency--","_type":"translation","key":"common.skills.proficiency.+","group":"skills","en":"Apprentice","fr":"Apprenti","ar":"مبتدئ","kr":"초급"}
+{"_id":"i18n-common-skills-proficiency---","_type":"translation","key":"common.skills.proficiency.++","group":"skills","en":"Intermediate","fr":"Moyen","ar":"متوسط","kr":"중급"}
+{"_id":"i18n-common-skills-proficiency----","_type":"translation","key":"common.skills.proficiency.+++","group":"skills","en":"Expert","fr":"Expert","ar":"متقدم","kr":"전문가"}
+{"_id":"i18n-common-skills-tab-frameworks","_type":"translation","key":"common.skills.tab.frameworks","group":"skills","en":"Frameworks","fr":"Frameworks","ar":"الأطر","kr":"프레임워크"}
+{"_id":"i18n-common-skills-tab-languages","_type":"translation","key":"common.skills.tab.languages","group":"skills","en":"Programming Languages","fr":"Langages de programmation","ar":"لغات البرمجة","kr":"프로그래밍 언어"}
+{"_id":"i18n-common-skills-tab-tools","_type":"translation","key":"common.skills.tab.tools","group":"skills","en":"Tools","fr":"Outils","ar":"الأدوات","kr":"도구"}
+{"_id":"i18n-common-theme-dark","_type":"translation","key":"common.theme.dark","group":"theme","en":"Dark","fr":"Sombre","ar":"داكن","kr":"다크"}
+{"_id":"i18n-common-theme-light","_type":"translation","key":"common.theme.light","group":"theme","en":"Light","fr":"Clair","ar":"فاتح","kr":"라이트"}
+{"_id":"i18n-common-theme-system","_type":"translation","key":"common.theme.system","group":"theme","en":"System","fr":"Système","ar":"النظام","kr":"시스템"}
+{"_id":"i18n-common-theme-toggle","_type":"translation","key":"common.theme.toggle","group":"theme","en":"Toggle theme","fr":"Changer de thème","ar":"تبديل السمة","kr":"테마 전환"}
+{"_id":"i18n-common-toast-error","_type":"translation","key":"common.toast.error","group":"toast","en":"Failed to send message. Please try again later.","fr":"Échec de l'envoi du message. Veuillez réessayer plus tard.","ar":"حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة لاحقاً.","kr":"메시지 전송에 실패했습니다. 나중에 다시 시도해주세요."}
+{"_id":"i18n-common-toast-success","_type":"translation","key":"common.toast.success","group":"toast","en":"Message sent successfully!","fr":"Message envoyé avec succès !","ar":"تم إرسال الرسالة بنجاح!","kr":"메시지가 성공적으로 전송되었습니다!"}
+{"_id":"i18n-common-viewAll","_type":"translation","key":"common.viewAll","group":"viewAll","en":"View All","fr":"Tout voir","ar":"الكل","kr":"모두 보기"}
+{"_id":"i18n-common-viewLess","_type":"translation","key":"common.viewLess","group":"viewLess","en":"View Less","fr":"Voir moins","ar":"الأقل","kr":"간략히 보기"}
+{"_id":"i18n-common-viewMore","_type":"translation","key":"common.viewMore","group":"viewMore","en":"View More","fr":"Voir plus","ar":"المزيد","kr":"더 보기"}

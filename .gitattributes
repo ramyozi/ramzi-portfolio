@@ -1,0 +1,2 @@
+# Keep the Sanity import seed LF-only so `sanity dataset import` parses it.
+*.ndjson text eol=lf

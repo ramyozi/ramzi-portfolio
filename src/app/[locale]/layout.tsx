@@ -14,6 +14,7 @@ import { BackToTop } from '@/components/layout/back-to-top';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { getBaseUrl, ogLocale, seoContent, siteName } from '@/lib/seo';
+import { getMessages } from '@/i18n/messages';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -89,9 +90,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale);
 
-  const messages: Record<string, string> = (
-    await import(`../../../messages/${locale}.json`)
-  ).default;
+  const messages = await getMessages(locale as Locale);
 
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
