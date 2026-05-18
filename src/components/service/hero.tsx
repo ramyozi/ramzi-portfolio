@@ -109,7 +109,7 @@ export function Hero({
       {/* Scroll cue */}
       <motion.a
         href='#about'
-        aria-label='Scroll to content'
+        aria-label={t('common.a11y.scrollToContent')}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.6 }}

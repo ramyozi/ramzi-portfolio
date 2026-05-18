@@ -104,7 +104,7 @@
     },
     "footer": {
       "title": "Portfolio de Ramzi",
-      "subtitle": "Conçu avec passion, curiosité et une touche de café ☕",
+      "subtitle": "Projets, expériences et compétences.",
       "madeWith": "Développé avec",
       "copyright": "© {year} {name}. Tous droits réservés."
     },
@@ -119,6 +119,19 @@
     "actions": {
       "download": "Télécharger",
       "share": "Partager"
+    },
+    "theme": {
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système",
+      "toggle": "Changer de thème"
+    },
+    "a11y": {
+      "backToTop": "Retour en haut",
+      "scrollToContent": "Aller au contenu",
+      "close": "Fermer",
+      "prevImage": "Image précédente",
+      "nextImage": "Image suivante"
     }
   }
 }
