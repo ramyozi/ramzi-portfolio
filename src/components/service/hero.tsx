@@ -1,29 +1,16 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { ArrowDown, ArrowRight } from 'lucide-react';
-import type { Hero } from '@/data/types/info';
-import { client } from '@/sanity/lib/client';
-import { heroQuery } from '@/sanity/queries/info';
+import type { Hero as HeroType } from '@/data/types/info';
 
-export function Hero() {
+export function Hero({ hero }: { hero: HeroType | null }) {
   const t = useTranslations();
-  const locale = useLocale();
   const reduceMotion = useReducedMotion();
-  const [hero, setHero] = useState<Hero | null>(null);
-
-  useEffect(() => {
-    client
-      .fetch(heroQuery, { locale })
-      .then(setHero)
-      .catch((err) => console.error('Failed to fetch Hero:', err));
-  }, [locale]);
 
   const fadeUp = {
     initial: { opacity: 0, y: reduceMotion ? 0 : 16 },
@@ -47,11 +34,7 @@ export function Hero() {
       </div>
 
       <div className='flex max-w-3xl flex-col items-center text-center'>
-        <motion.div
-          {...fadeUp}
-          transition={{ duration: 0.5 }}
-          className='relative'
-        >
+        <motion.div {...fadeUp} transition={{ duration: 0.5 }} className='relative'>
           <div className='absolute -inset-1.5 rounded-full bg-brand/20 blur-md' />
           <Image
             src={hero?.profileImage?.url ?? '/images/ramzi.jpg'}
@@ -66,31 +49,17 @@ export function Hero() {
         <motion.h1
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.08 }}
-          className='mt-8 min-h-[2.75rem] text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl'
+          className='mt-8 text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl'
         >
-          {hero ? (
-            hero.title
-          ) : (
-            <span className='mx-auto flex max-w-md flex-col gap-3'>
-              <Skeleton className='h-10 w-full' />
-              <Skeleton className='mx-auto h-10 w-2/3' />
-            </span>
-          )}
+          {hero?.title}
         </motion.h1>
 
         <motion.p
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.16 }}
-          className='mt-5 min-h-[3.5rem] max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg'
+          className='mt-5 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg'
         >
-          {hero ? (
-            hero.subtitle
-          ) : (
-            <span className='mx-auto flex max-w-xl flex-col gap-2'>
-              <Skeleton className='h-5 w-full' />
-              <Skeleton className='mx-auto h-5 w-4/5' />
-            </span>
-          )}
+          {hero?.subtitle}
         </motion.p>
 
         <motion.div
