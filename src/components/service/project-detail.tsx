@@ -321,7 +321,7 @@ export function ProjectDetail({
               size='icon'
               className='absolute right-4 top-4 z-10 rounded-full'
               onClick={() => setLightbox(null)}
-              aria-label='Close'
+              aria-label={t('common.a11y.close')}
             >
               <X className='size-5' />
             </Button>
@@ -338,7 +338,7 @@ export function ProjectDetail({
                       (lightbox - 1 + gallery.length) % gallery.length
                     );
                   }}
-                  aria-label='Previous image'
+                  aria-label={t('common.a11y.prevImage')}
                 >
                   <ChevronLeft className='size-5' />
                 </Button>
@@ -350,7 +350,7 @@ export function ProjectDetail({
                     e.stopPropagation();
                     setLightbox((lightbox + 1) % gallery.length);
                   }}
-                  aria-label='Next image'
+                  aria-label={t('common.a11y.nextImage')}
                 >
                   <ChevronRight className='size-5' />
                 </Button>

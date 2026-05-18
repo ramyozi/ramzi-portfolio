@@ -104,7 +104,7 @@
     },
     "footer": {
       "title": "람지의 포트폴리오",
-      "subtitle": "열정과 호기심, 그리고 커피 한 잔으로 만든 포트폴리오 ☕",
+      "subtitle": "프로젝트, 경력, 기술 역량.",
       "madeWith": "만든 기술:",
       "copyright": "© {year} {name}. 모든 권리 보유."
     },
@@ -119,6 +119,19 @@
     "actions": {
       "download": "다운로드",
       "share": "공유"
+    },
+    "theme": {
+      "light": "라이트",
+      "dark": "다크",
+      "system": "시스템",
+      "toggle": "테마 전환"
+    },
+    "a11y": {
+      "backToTop": "맨 위로",
+      "scrollToContent": "콘텐츠로 이동",
+      "close": "닫기",
+      "prevImage": "이전 이미지",
+      "nextImage": "다음 이미지"
     }
   }
 }
