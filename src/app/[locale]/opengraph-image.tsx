@@ -33,20 +33,13 @@ export default function OpengraphImage() {
         >
           <div
             style={{
+              width: 48,
+              height: 6,
+              background: '#6366f1',
+              borderRadius: 4,
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 66,
-              height: 66,
-              borderRadius: 16,
-              background: '#4F46E5',
-              color: '#ffffff',
-              fontSize: 38,
-              fontWeight: 700,
             }}
-          >
-            R
-          </div>
+          />
           PORTFOLIO
         </div>
 
