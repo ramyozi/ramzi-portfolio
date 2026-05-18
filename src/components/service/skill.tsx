@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,20 +11,13 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useTranslations } from 'next-intl';
-import { client } from '@/sanity/lib/client';
-import { allSkillsQuery } from '@/sanity/queries/skills';
 import TechIcon from '@/components/service/common/tech-icon';
 import { motion } from 'framer-motion';
 import type { Skill } from '@/data/types/skill';
 
-export function Skill() {
+export function Skill({ skills }: { skills: Skill[] }) {
   const t = useTranslations();
-  const [skills, setSkills] = useState<Skill[]>([]);
   const [failedLogos, setFailedLogos] = useState(false);
-
-  useEffect(() => {
-    client.fetch(allSkillsQuery).then(setSkills).catch(console.error);
-  }, []);
 
   const handleImgError = () => setFailedLogos(true);
 
@@ -85,21 +78,10 @@ export function Skill() {
   );
 
   return (
-    <section id='skills' className='scroll-mt-24 space-y-16'>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        className='mx-auto max-w-3xl text-center'
-      >
-        <p className='text-sm font-medium uppercase tracking-wide text-primary/80'>
-          {t('common.skills.intro')}
-        </p>
-        <p className='mt-3 text-base leading-relaxed text-muted-foreground'>
-          {t('common.skills.content')}
-        </p>
-      </motion.div>
+    <div className='space-y-8'>
+      <p className='mx-auto max-w-2xl text-center text-base leading-relaxed text-muted-foreground'>
+        {t('common.skills.intro')}
+      </p>
 
       <Card className='border border-border/60 bg-card/70 shadow-lg backdrop-blur-md'>
         <CardContent className='pt-6'>
@@ -135,12 +117,12 @@ export function Skill() {
             </TabsContent>
           </Tabs>
           {failedLogos && (
-            <p className='text-center text-xs text-gray-400'>
+            <p className='text-center text-xs text-muted-foreground'>
               {t('common.skills.logoFallbackNote')}
             </p>
           )}
         </CardContent>
       </Card>
-    </section>
+    </div>
   );
 }

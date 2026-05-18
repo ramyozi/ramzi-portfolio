@@ -1,10 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
-import { client } from '@/sanity/lib/client';
-import { allExperiencesQuery } from '@/sanity/queries/experiences';
 import Image from 'next/image';
 import TechIcon from '@/components/service/common/tech-icon';
 import {
@@ -16,45 +14,28 @@ import {
 import type { Experience } from '@/data/types/experience';
 import { motion } from 'framer-motion';
 
-export function Experience() {
+export function Experience({
+  experiences,
+}: {
+  experiences: Experience[];
+}) {
   const t = useTranslations();
   const locale = useLocale() as 'fr' | 'en' | 'ar' | 'kr';
-  const [experiences, setExperiences] = useState<Experience[]>([]);
   const [failedLogos, setFailedLogos] = useState(false);
-
-  useEffect(() => {
-    client
-      .fetch(allExperiencesQuery)
-      .then(setExperiences)
-      .catch((err) => console.error('❌ Failed to fetch experiences:', err));
-  }, []);
 
   if (!experiences.length)
     return (
-      <section id='experience' className='scroll-mt-24'>
-        <Card className='border-2 border-primary'>
-          <CardHeader />
-          <CardContent>{t('common.experience.empty')}</CardContent>
-        </Card>
-      </section>
+      <Card className='border-border/60'>
+        <CardHeader />
+        <CardContent>{t('common.experience.empty')}</CardContent>
+      </Card>
     );
 
   return (
-    <section id='experience' className='scroll-mt-24 space-y-10'>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        className='mx-auto max-w-3xl text-center'
-      >
-        <p className='text-sm font-medium uppercase tracking-wide text-primary/80'>
-          {t('common.experience.intro')}
-        </p>
-        <p className='mt-3 text-base leading-relaxed text-muted-foreground'>
-          {t('common.experience.content')}
-        </p>
-      </motion.div>
+    <div className='space-y-10'>
+      <p className='mx-auto max-w-2xl text-center text-base leading-relaxed text-muted-foreground'>
+        {t('common.experience.intro')}
+      </p>
 
       <div className='grid gap-8 sm:grid-cols-2'>
         {experiences.map((exp, idx) => {
@@ -67,8 +48,8 @@ export function Experience() {
               key={exp._id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: Math.min(idx * 0.08, 0.32), duration: 0.5 }}
             >
               <Card className='group h-full rounded-2xl border border-border/60 bg-card/70 shadow-lg backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl'>
                 <CardHeader className='flex flex-col items-center space-y-2 text-center'>
@@ -150,6 +131,6 @@ export function Experience() {
           {t('common.skills.logoFallbackNote')}
         </p>
       )}
-    </section>
+    </div>
   );
 }
