@@ -85,21 +85,10 @@ export function Skill() {
   );
 
   return (
-    <section id='skills' className='scroll-mt-24 space-y-16'>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        className='mx-auto max-w-3xl text-center'
-      >
-        <p className='text-sm font-medium uppercase tracking-wide text-primary/80'>
-          {t('common.skills.intro')}
-        </p>
-        <p className='mt-3 text-base leading-relaxed text-muted-foreground'>
-          {t('common.skills.content')}
-        </p>
-      </motion.div>
+    <div className='space-y-8'>
+      <p className='mx-auto max-w-2xl text-center text-base leading-relaxed text-muted-foreground'>
+        {t('common.skills.intro')}
+      </p>
 
       <Card className='border border-border/60 bg-card/70 shadow-lg backdrop-blur-md'>
         <CardContent className='pt-6'>
@@ -135,12 +124,12 @@ export function Skill() {
             </TabsContent>
           </Tabs>
           {failedLogos && (
-            <p className='text-center text-xs text-gray-400'>
+            <p className='text-center text-xs text-muted-foreground'>
               {t('common.skills.logoFallbackNote')}
             </p>
           )}
         </CardContent>
       </Card>
-    </section>
+    </div>
   );
 }

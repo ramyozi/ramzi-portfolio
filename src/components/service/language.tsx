@@ -31,7 +31,7 @@ export function Language() {
   }, []);
 
   return (
-    <section id='languages' className='scroll-mt-24 space-y-4'>
+    <div className='space-y-4'>
       <Card className='border-2 p-4'>
         <CardContent className='space-y-3'>
           {languages.length > 0 ? (
@@ -58,6 +58,6 @@ export function Language() {
           )}
         </CardContent>
       </Card>
-    </section>
+    </div>
   );
 }
