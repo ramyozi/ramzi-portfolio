@@ -47,8 +47,6 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
     e.preventDefault();
 
     if (isHome) {
-      console.log('in home and scrolling to:', id);
-
       const el = document.getElementById(id);
 
       if (el) {
@@ -57,7 +55,6 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
         sessionStorage.removeItem('scrollTarget');
       }
     } else {
-      console.log('Navigating to home and scrolling to:', id);
       sessionStorage.setItem('scrollTarget', id);
       router.push(`/`);
     }
@@ -89,7 +86,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
                 className={clsx(
                   'relative text-sm font-medium transition-colors duration-200',
                   isActive
-                    ? 'text-primary'
+                    ? 'text-brand'
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
@@ -98,7 +95,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
                 {isActive && activeId && (
                   <motion.span
                     layoutId='activeUnderline'
-                    className='absolute -bottom-1 left-0 h-[2px] w-full rounded-full bg-primary'
+                    className='absolute -bottom-1 left-0 h-[2px] w-full rounded-full bg-brand'
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -135,7 +132,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
                       className={clsx(
                         'block rounded-md px-3 py-2 transition',
                         isActive
-                          ? 'bg-primary/10 font-semibold text-primary'
+                          ? 'bg-brand/10 font-semibold text-brand'
                           : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                       )}
                     >
