@@ -106,7 +106,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   };
 
   return (
-    <html lang={locale} dir={direction} className={inter.variable}>
+    <html
+      lang={locale}
+      dir={direction}
+      className={inter.variable}
+      suppressHydrationWarning
+    >
       <body className='font-sans antialiased'>
         <script
           type='application/ld+json'
