@@ -105,9 +105,9 @@ export function Footer() {
             })}
           </p>
           <p className='text-muted-foreground/70'>
-            {t('common.footer.madeWith')} ❤️{' '}
-            <span className='font-medium text-primary'>Next.js</span> +{' '}
-            <span className='font-medium text-primary'>Sanity</span>
+            {t('common.footer.madeWith')}{' '}
+            <span className='font-medium text-foreground/80'>Next.js</span> +{' '}
+            <span className='font-medium text-foreground/80'>Sanity</span>
           </p>
         </div>
       </motion.div>
