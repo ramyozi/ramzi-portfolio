@@ -12,7 +12,6 @@
     "ci:lint": "next lint",
     "import:data": "node src/scripts/import-all.cjs",
     "delete:data": "node src/scripts/wipe-all.cjs",
-    "i18n:seed": "node src/sanity/i18n-seed.mjs",
     "i18n:check": "node src/sanity/i18n-check.mjs"
   },
   "dependencies": {
