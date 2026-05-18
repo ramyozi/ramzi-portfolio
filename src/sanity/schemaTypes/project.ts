@@ -73,7 +73,20 @@ export const project = defineType({
       initialValue: 'planned',
     }),
 
-    defineField({ name: 'dateRange', title: 'Date Range', type: 'string' }),
+    defineField({
+      name: 'dateRange',
+      title: 'Date Range (display label)',
+      type: 'string',
+      description: 'Human-readable period shown on the project, e.g. "2024".',
+    }),
+
+    defineField({
+      name: 'date',
+      title: 'Project Date (sorting)',
+      type: 'date',
+      description:
+        'Used to order projects from newest to oldest. If left empty, the document creation date is used as a fallback.',
+    }),
 
     defineField({
       name: 'image',
