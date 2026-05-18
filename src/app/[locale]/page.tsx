@@ -38,10 +38,6 @@ export default function HomePage() {
         <AboutMe />
       </SectionWrapper>
 
-      <SectionWrapper id='languages' titleKey='common.header.languages'>
-        <Language />
-      </SectionWrapper>
-
       <SectionWrapper id='motivation' titleKey='common.header.motivation'>
         <Motivation />
       </SectionWrapper>
@@ -56,6 +52,10 @@ export default function HomePage() {
 
       <SectionWrapper id='projects' titleKey='common.header.projects'>
         <Project />
+      </SectionWrapper>
+
+      <SectionWrapper id='languages' titleKey='common.header.languages'>
+        <Language />
       </SectionWrapper>
 
       <SectionWrapper id='contact' titleKey='common.header.contact'>

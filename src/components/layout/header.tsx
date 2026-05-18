@@ -37,11 +37,11 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
 
   const items = [
     { id: 'about', label: t('common.header.about') },
-    { id: 'languages', label: t('common.header.languages') },
     { id: 'motivation', label: t('common.header.motivation') },
     { id: 'experience', label: t('common.header.experience') },
     { id: 'skills', label: t('common.header.skills') },
     { id: 'projects', label: t('common.header.projects') },
+    { id: 'languages', label: t('common.header.languages') },
     { id: 'contact', label: t('common.header.contact') },
   ];
 
