@@ -1,36 +1,25 @@
 'use client';
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { useEffect, useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import { client } from '@/sanity/lib/client';
-import { motivationQuery } from '@/sanity/queries/info';
-import type { Motivation } from '@/data/types/info';
+import { useTranslations } from 'next-intl';
+import type { Motivation as MotivationType } from '@/data/types/info';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-export function Motivation() {
+export function Motivation({
+  motivation,
+}: {
+  motivation: MotivationType | null;
+}) {
   const t = useTranslations();
-  const locale = useLocale();
-  const [motivation, setMotivation] = useState<Motivation | null>(null);
-
-  useEffect(() => {
-    client
-      .fetch(motivationQuery, { locale })
-      .then(setMotivation)
-      .catch((err) => console.error('❌ Failed to fetch Motivation:', err));
-  }, [locale]);
 
   return (
-    <section
-      id='motivation'
-      className='grid scroll-mt-24 grid-cols-1 items-center gap-12 md:grid-cols-2'
-    >
+    <div className='grid grid-cols-1 items-center gap-12 md:grid-cols-2'>
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         className='flex justify-center'
       >
         {motivation?.image?.url ? (
@@ -58,33 +47,23 @@ export function Motivation() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <Card className='rounded-2xl border border-border/60 bg-card/70 shadow-lg backdrop-blur-md transition hover:shadow-xl'>
           <CardHeader className='space-y-3'>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className='text-sm font-medium uppercase tracking-wider text-primary/80'
-            >
+            <p className='text-sm font-medium uppercase tracking-wider text-brand/80'>
               {motivation?.intro}
-            </motion.p>
+            </p>
           </CardHeader>
 
           <CardContent>
-            <motion.blockquote
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className='border-l-4 border-primary/30 pl-4 text-base italic leading-relaxed text-muted-foreground'
-            >
+            <blockquote className='border-l-4 border-brand/30 pl-4 text-base italic leading-relaxed text-muted-foreground'>
               {motivation?.content}
-            </motion.blockquote>
+            </blockquote>
           </CardContent>
         </Card>
       </motion.div>
-    </section>
+    </div>
   );
 }
