@@ -72,7 +72,7 @@ export default async function HomePage({ params }: { params: Params }) {
     <main className='space-y-32'>
       <ScrollRestoration />
 
-      <Hero hero={hero} />
+      <Hero hero={hero} status={status} />
 
       <SectionWrapper id='about' titleKey='common.header.about'>
         <AboutMe about={about} status={status} />
