@@ -76,7 +76,8 @@
       "live": "Live Site",
       "gallery": "Gallery",
       "noImages": "No images available.",
-      "noLinks": "No links available."
+      "noLinks": "No links available.",
+      "context": "Context"
     },
     "form": {
       "error": {
