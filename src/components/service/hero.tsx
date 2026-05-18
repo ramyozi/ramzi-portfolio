@@ -6,11 +6,22 @@ import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowDown, ArrowRight } from 'lucide-react';
-import type { Hero as HeroType } from '@/data/types/info';
+import type { CurrentStatus, Hero as HeroType } from '@/data/types/info';
+import { siteName } from '@/lib/seo';
+import { stripEmoji } from '@/lib/utils';
 
-export function Hero({ hero }: { hero: HeroType | null }) {
+export function Hero({
+  hero,
+  status,
+}: {
+  hero: HeroType | null;
+  status: CurrentStatus | null;
+}) {
   const t = useTranslations();
   const reduceMotion = useReducedMotion();
+
+  const tagline = stripEmoji(hero?.subtitle);
+  const availability = stripEmoji(status?.availability);
 
   const fadeUp = {
     initial: { opacity: 0, y: reduceMotion ? 0 : 16 },
@@ -38,7 +49,7 @@ export function Hero({ hero }: { hero: HeroType | null }) {
           <div className='absolute -inset-1.5 rounded-full bg-brand/20 blur-md' />
           <Image
             src={hero?.profileImage?.url ?? '/images/ramzi.jpg'}
-            alt='Ramzi'
+            alt={siteName}
             width={112}
             height={112}
             priority
@@ -46,25 +57,41 @@ export function Hero({ hero }: { hero: HeroType | null }) {
           />
         </motion.div>
 
+        {availability && (
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.5, delay: 0.06 }}
+            className='mt-7 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3 py-1 text-sm font-medium text-muted-foreground backdrop-blur-sm'
+          >
+            <span className='relative flex size-2'>
+              <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75' />
+              <span className='relative inline-flex size-2 rounded-full bg-emerald-500' />
+            </span>
+            {availability}
+          </motion.div>
+        )}
+
         <motion.h1
           {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.08 }}
-          className='mt-8 text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl'
+          transition={{ duration: 0.5, delay: 0.12 }}
+          className='mt-6 text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl'
         >
-          {hero?.title}
+          {siteName}
         </motion.h1>
 
-        <motion.p
-          {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.16 }}
-          className='mt-5 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg'
-        >
-          {hero?.subtitle}
-        </motion.p>
+        {tagline && (
+          <motion.p
+            {...fadeUp}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className='mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg'
+          >
+            {tagline}
+          </motion.p>
+        )}
 
         <motion.div
           {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.24 }}
+          transition={{ duration: 0.5, delay: 0.28 }}
           className='mt-9 flex flex-col gap-3 sm:flex-row'
         >
           <Button variant='brand' size='lg' asChild>
