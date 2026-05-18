@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { Locale } from '@/i18n/routing';
@@ -13,11 +14,13 @@ import { Menu } from 'lucide-react';
 import LanguageSelector from '@/components/layout/language-selector';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
 
 interface HeaderProps {
   logoSrc?: string;
@@ -30,6 +33,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { id: activeId } = useActiveSection();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const items = [
     { id: 'about', label: t('common.header.about') },
@@ -43,9 +47,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
 
   const isHome = !pathname.startsWith(`/project`);
 
-  const handleNavClick = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-
+  const goToSection = (id: string) => {
     if (isHome) {
       const el = document.getElementById(id);
 
@@ -60,10 +62,14 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
     }
   };
 
+  const handleNavClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    goToSection(id);
+  };
+
   return (
     <header className='sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md transition-all'>
       <div className='container mx-auto flex items-center justify-between px-4 py-3 md:py-4'>
-        {/* Logo */}
         <Link href={`/${locale}`} className='flex items-center gap-2'>
           {logoSrc && (
             <Image src={logoSrc} alt={logoAlt} width={40} height={40} />
@@ -73,7 +79,6 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className='hidden items-center gap-8 lg:flex'>
           {items.map((item) => {
             const isActive = activeId === item.id;
@@ -91,7 +96,6 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
                 )}
               >
                 {item.label}
-                {/* underline */}
                 {isActive && activeId && (
                   <motion.span
                     layoutId='activeUnderline'
@@ -104,45 +108,56 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
           })}
         </nav>
 
-        {/* Controls: Lang / Theme / Menu */}
-        <div className='flex items-center gap-3'>
+        <div className='flex items-center gap-2 sm:gap-3'>
           <LanguageSelector />
           <ThemeToggle />
 
-          {/* Mobile Menu */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+          <Drawer open={mobileOpen} onOpenChange={setMobileOpen}>
+            <DrawerTrigger asChild>
               <Button
                 variant='outline'
-                className='block flex items-center gap-2 lg:hidden'
+                size='icon'
+                aria-label={t('common.header.siteName')}
+                className='size-11 lg:hidden'
               >
-                <Menu className='h-5 w-5' />
+                <Menu className='size-5' />
               </Button>
-            </DropdownMenuTrigger>
+            </DrawerTrigger>
 
-            <DropdownMenuContent align='end' className='w-52'>
-              {items.map((item) => {
-                const isActive = activeId === item.id;
+            <DrawerContent className='pb-[env(safe-area-inset-bottom)]'>
+              <DrawerHeader className='text-left'>
+                <DrawerTitle className='text-sm font-medium uppercase tracking-wide text-muted-foreground'>
+                  {t('common.header.siteName')}
+                </DrawerTitle>
+              </DrawerHeader>
 
-                return (
-                  <DropdownMenuItem key={item.id} asChild>
-                    <Link
-                      href={`/${locale}#${item.id}`}
-                      onClick={(e) => handleNavClick(e, item.id)}
-                      className={clsx(
-                        'block rounded-md px-3 py-2 transition',
-                        isActive
-                          ? 'bg-brand/10 font-semibold text-brand'
-                          : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </DropdownMenuItem>
-                );
-              })}
-            </DropdownMenuContent>
-          </DropdownMenu>
+              <nav className='flex flex-col gap-1 px-3 pb-8'>
+                {items.map((item) => {
+                  const isActive = activeId === item.id;
+
+                  return (
+                    <DrawerClose asChild key={item.id}>
+                      <Link
+                        href={`/${locale}#${item.id}`}
+                        onClick={(e) => handleNavClick(e, item.id)}
+                        className={clsx(
+                          'flex items-center justify-between rounded-lg px-4 py-3.5 text-base font-medium transition-colors',
+                          isActive
+                            ? 'bg-brand/10 text-brand'
+                            : 'text-foreground/80 hover:bg-accent hover:text-foreground'
+                        )}
+                      >
+                        {item.label}
+                        {isActive && (
+                          <span className='size-2 rounded-full bg-brand' />
+                        )}
+                      </Link>
+                    </DrawerClose>
+                  );
+                })}
+              </nav>
+            </DrawerContent>
+          </Drawer>
         </div>
       </div>
     </header>
