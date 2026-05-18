@@ -71,7 +71,7 @@ export async function generateMetadata({
       follow: true,
       googleBot: { index: true, follow: true },
     },
-    icons: { icon: '/images/logo.jpg' },
+    icons: { icon: { url: '/logo.svg', type: 'image/svg+xml' } },
   };
 }
 
@@ -126,8 +126,8 @@ export default async function LocaleLayout({ children, params }: Props) {
           >
             <ActiveSectionProvider>
               <Header
-                logoSrc={'/images/logo.jpg'}
-                logoAlt={'Logo'}
+                logoSrc={'/logo.svg'}
+                logoAlt={'Ramzi Benmansour'}
                 locale={locale as Locale}
               />
               <div className='flex min-h-screen flex-col'>{children}</div>
