@@ -1,15 +1,12 @@
 'use client';
 
-import { JSX, useEffect, useState } from 'react';
+import { JSX } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle, Clock, PauseCircle, Rocket } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { client } from '@/sanity/lib/client';
-import { allProjectsQuery } from '@/sanity/queries/projects';
 import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
 import TechIcon from '@/components/service/common/tech-icon';
 import type { Project as ProjectType, ProjectStatus } from '@/data/types/project';
 
@@ -130,37 +127,8 @@ function ProjectCard({
   );
 }
 
-function ProjectCardSkeleton() {
-  return (
-    <div className='flex flex-col overflow-hidden rounded-xl border border-border/70 bg-card'>
-      <Skeleton className='aspect-[16/10] w-full rounded-none' />
-      <div className='flex flex-col gap-3 p-5'>
-        <Skeleton className='h-3 w-20' />
-        <Skeleton className='h-5 w-3/4' />
-        <Skeleton className='h-16 w-full' />
-        <div className='flex gap-1.5'>
-          <Skeleton className='h-6 w-16' />
-          <Skeleton className='h-6 w-16' />
-          <Skeleton className='h-6 w-16' />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export function Project() {
+export function Project({ projects }: { projects: ProjectType[] }) {
   const t = useTranslations();
-  const [projects, setProjects] = useState<ProjectType[] | null>(null);
-
-  useEffect(() => {
-    client
-      .fetch(allProjectsQuery)
-      .then((res: ProjectType[]) => setProjects(res ?? []))
-      .catch((err) => {
-        console.error('Failed to fetch projects:', err);
-        setProjects([]);
-      });
-  }, []);
 
   return (
     <div className='space-y-8'>
@@ -168,13 +136,7 @@ export function Project() {
         {t('common.projects.intro')}
       </p>
 
-      {projects === null ? (
-        <div className='grid gap-6 sm:grid-cols-2'>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <ProjectCardSkeleton key={i} />
-          ))}
-        </div>
-      ) : projects.length === 0 ? (
+      {projects.length === 0 ? (
         <p className='text-center text-muted-foreground'>
           {t('common.projects.empty')}
         </p>

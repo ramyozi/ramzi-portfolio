@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,20 +11,13 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useTranslations } from 'next-intl';
-import { client } from '@/sanity/lib/client';
-import { allSkillsQuery } from '@/sanity/queries/skills';
 import TechIcon from '@/components/service/common/tech-icon';
 import { motion } from 'framer-motion';
 import type { Skill } from '@/data/types/skill';
 
-export function Skill() {
+export function Skill({ skills }: { skills: Skill[] }) {
   const t = useTranslations();
-  const [skills, setSkills] = useState<Skill[]>([]);
   const [failedLogos, setFailedLogos] = useState(false);
-
-  useEffect(() => {
-    client.fetch(allSkillsQuery).then(setSkills).catch(console.error);
-  }, []);
 
   const handleImgError = () => setFailedLogos(true);
 
