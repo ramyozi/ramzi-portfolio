@@ -76,7 +76,8 @@
       "live": "Site web",
       "gallery": "Galerie",
       "noImages": "Aucune image disponible.",
-      "noLinks": "Aucun lien disponible."
+      "noLinks": "Aucun lien disponible.",
+      "context": "Contexte"
     },
     "form": {
       "error": {
