@@ -20,22 +20,22 @@ export function getBaseUrl(): string {
 export const seoContent: Record<Locale, { title: string; description: string }> =
   {
     en: {
-      title: `${siteName} — Portfolio`,
+      title: 'Ramzi - Portfolio',
       description:
         'Portfolio of Ramzi Benmansour: selected projects, professional experience and technical skills in web development.',
     },
     fr: {
-      title: `${siteName} — Portfolio`,
+      title: 'Ramzi - Portfolio',
       description:
         'Portfolio de Ramzi Benmansour : projets, expériences professionnelles et compétences techniques en développement web.',
     },
     ar: {
-      title: `${siteName} — أعمالي`,
+      title: 'Ramzi - أعمالي',
       description:
         'أعمال رمزي بن منصور: مشاريع مختارة وخبرات مهنية ومهارات تقنية في تطوير الويب.',
     },
     kr: {
-      title: `${siteName} — 포트폴리오`,
+      title: 'Ramzi - 포트폴리오',
       description:
         '람지 벤만수르의 포트폴리오: 웹 개발 프로젝트, 경력, 기술 역량을 소개합니다.',
     },
