@@ -39,7 +39,10 @@ export default function LanguageSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' className='flex items-center gap-2'>
+        <Button
+          variant='outline'
+          className='h-11 items-center gap-2 sm:h-9'
+        >
           <GlobeIcon className='h-5 w-5' />
           <span className='hidden md:inline'>
             {t(`common.languages.list.${currentLocale}`)}

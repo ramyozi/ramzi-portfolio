@@ -53,7 +53,7 @@ export function Footer() {
         style={{
           opacity: glowOpacity,
         }}
-        className='pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/30 via-primary/10 to-transparent blur-3xl'
+        className='pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand/20 via-brand/5 to-transparent blur-3xl'
       />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className='transition-colors hover:text-primary'
+                className='transition-colors hover:text-brand'
               >
                 {link.label}
               </Link>
@@ -89,7 +89,7 @@ export function Footer() {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label={label}
-                className='text-muted-foreground transition-transform hover:scale-110 hover:text-primary'
+                className='text-muted-foreground transition-all hover:scale-110 hover:text-brand'
               >
                 <Icon className='h-5 w-5' />
               </a>
@@ -105,9 +105,9 @@ export function Footer() {
             })}
           </p>
           <p className='text-muted-foreground/70'>
-            {t('common.footer.madeWith')} ❤️{' '}
-            <span className='font-medium text-primary'>Next.js</span> +{' '}
-            <span className='font-medium text-primary'>Sanity</span>
+            {t('common.footer.madeWith')}{' '}
+            <span className='font-medium text-foreground/80'>Next.js</span> +{' '}
+            <span className='font-medium text-foreground/80'>Sanity</span>
           </p>
         </div>
       </motion.div>
