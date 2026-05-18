@@ -5,7 +5,7 @@ import { hasLocale } from 'next-intl';
 import { ProjectDetail } from '@/components/service/project-detail';
 import { client } from '@/sanity/lib/client';
 import type { Project } from '@/data/types/project';
-import { projectByIdQuery } from '@/sanity/queries/projects';
+import { allProjectsQuery, projectByIdQuery } from '@/sanity/queries/projects';
 import { routing } from '@/i18n/routing';
 import { getBaseUrl, seoContent, siteName } from '@/lib/seo';
 
@@ -53,13 +53,18 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: { params: Params }) {
   const { id } = await params;
-  const project = await getProject(id);
+  const [project, siblings] = await Promise.all([
+    getProject(id),
+    client
+      .fetch<Project[]>(allProjectsQuery)
+      .catch(() => [] as Project[]),
+  ]);
 
   if (!project) return notFound();
 
   return (
     <main className='min-h-screen px-5 py-10 sm:px-6 md:py-14'>
-      <ProjectDetail project={project} />
+      <ProjectDetail project={project} siblings={siblings} />
     </main>
   );
 }

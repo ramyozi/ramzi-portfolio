@@ -20,8 +20,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { client } from '@/sanity/lib/client';
-import { allProjectsQuery } from '@/sanity/queries/projects';
 import type { Project, ProjectStatus } from '@/data/types/project';
 import TechIcon from '@/components/service/common/tech-icon';
 
@@ -34,13 +32,18 @@ const statusIcon: Record<ProjectStatus, JSX.Element> = {
 
 const repoKeys = ['repo', 'repoFrontend', 'repoBackend', 'repoMobile'];
 
-export function ProjectDetail({ project }: { project: Project }) {
+export function ProjectDetail({
+  project,
+  siblings,
+}: {
+  project: Project;
+  siblings: Project[];
+}) {
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
 
-  const [projects, setProjects] = useState<Project[]>([]);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const localized = project.translations?.[locale] ||
@@ -55,21 +58,14 @@ export function ProjectDetail({ project }: { project: Project }) {
     : [];
 
   useEffect(() => {
-    client
-      .fetch(allProjectsQuery)
-      .then((res: Project[]) => setProjects(res ?? []))
-      .catch((err) => console.error('Failed to fetch projects:', err));
-  }, []);
-
-  useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [project._id]);
 
-  const currentIndex = projects.findIndex((p) => p._id === project._id);
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const currentIndex = siblings.findIndex((p) => p._id === project._id);
+  const prevProject = currentIndex > 0 ? siblings[currentIndex - 1] : null;
   const nextProject =
-    currentIndex >= 0 && currentIndex < projects.length - 1
-      ? projects[currentIndex + 1]
+    currentIndex >= 0 && currentIndex < siblings.length - 1
+      ? siblings[currentIndex + 1]
       : null;
 
   const titleOf = (p: Project) =>

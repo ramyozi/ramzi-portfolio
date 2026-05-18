@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslations } from 'next-intl';
-import { client } from '@/sanity/lib/client';
-import { allLanguagesQuery } from '@/sanity/queries/languages';
 
 const LEVEL_COLORS = [
   'bg-green-300',
@@ -13,26 +10,18 @@ const LEVEL_COLORS = [
   'bg-green-900',
 ];
 
-interface Language {
+export interface Language {
   _id: string;
   key: string;
   level: number;
 }
 
-export function Language() {
+export function Language({ languages }: { languages: Language[] }) {
   const t = useTranslations();
-  const [languages, setLanguages] = useState<Language[]>([]);
-
-  useEffect(() => {
-    client
-      .fetch(allLanguagesQuery)
-      .then((res) => setLanguages(res))
-      .catch((err) => console.error('❌ Failed to fetch languages:', err));
-  }, []);
 
   return (
     <div className='space-y-4'>
-      <Card className='border-2 p-4'>
+      <Card className='p-4'>
         <CardContent className='space-y-3'>
           {languages.length > 0 ? (
             languages.map((lang) => (
@@ -45,7 +34,9 @@ export function Language() {
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
-                      className={`h-3 flex-1 rounded-full ${i <= lang.level ? LEVEL_COLORS[i - 1] : 'bg-gray-300'}`}
+                      className={`h-3 flex-1 rounded-full ${
+                        i <= lang.level ? LEVEL_COLORS[i - 1] : 'bg-muted'
+                      }`}
                     />
                   ))}
                 </div>
