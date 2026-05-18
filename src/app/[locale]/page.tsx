@@ -1,4 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
+import type { Locale } from '@/i18n/routing';
 import SectionWrapper from '@/components/layout/section-wrapper';
 import { ScrollRestoration } from '@/components/layout/scroll-restoration';
 import { Hero } from '@/components/service/hero';
@@ -38,7 +39,7 @@ type Params = Promise<{ locale: string }>;
 export default async function HomePage({ params }: { params: Params }) {
   const { locale } = await params;
 
-  setRequestLocale(locale);
+  setRequestLocale(locale as Locale);
 
   const [hero, about, status, motivation, experiences, skills, projects, languages] =
     await Promise.all([
