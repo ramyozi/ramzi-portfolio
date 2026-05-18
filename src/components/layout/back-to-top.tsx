@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function BackToTop() {
+  const t = useTranslations();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export function BackToTop() {
       {visible && (
         <motion.button
           type='button'
-          aria-label='Back to top'
+          aria-label={t('common.a11y.backToTop')}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}

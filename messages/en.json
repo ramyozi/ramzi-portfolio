@@ -104,7 +104,7 @@
     },
     "footer": {
       "title": "Ramzi’s Portfolio",
-      "subtitle": "Built with passion, curiosity, and a bit of coffee ☕",
+      "subtitle": "Selected work, experience and skills.",
       "madeWith": "Made with",
       "copyright": "© {year} {name}. All rights reserved."
     },
@@ -119,6 +119,19 @@
     "actions": {
       "download": "Download",
       "share": "Share"
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "toggle": "Toggle theme"
+    },
+    "a11y": {
+      "backToTop": "Back to top",
+      "scrollToContent": "Scroll to content",
+      "close": "Close",
+      "prevImage": "Previous image",
+      "nextImage": "Next image"
     }
   }
 }
