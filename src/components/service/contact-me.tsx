@@ -74,12 +74,12 @@ export function ContactMe() {
   const linkedinLink = process.env.NEXT_PUBLIC_LINKEDIN_URL || '#';
 
   return (
-    <section id='contact' className='scroll-mt-24'>
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
         <Card className='rounded-2xl border border-border/60 bg-card/80 shadow-lg backdrop-blur-md'>
           <CardHeader className='flex flex-col items-center gap-4'>
             <motion.div
@@ -178,7 +178,6 @@ export function ContactMe() {
             </motion.form>
           </CardContent>
         </Card>
-      </motion.div>
-    </section>
+    </motion.div>
   );
 }
