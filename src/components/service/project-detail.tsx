@@ -156,6 +156,18 @@ export function ProjectDetail({
         </motion.div>
       )}
 
+      {/* Context */}
+      {localized.context && (
+        <section className='space-y-3'>
+          <h2 className='text-sm font-semibold uppercase tracking-wide text-muted-foreground'>
+            {t('common.projects.context')}
+          </h2>
+          <p className='max-w-3xl whitespace-pre-line text-base leading-relaxed text-muted-foreground'>
+            {localized.context}
+          </p>
+        </section>
+      )}
+
       {/* Meta: stack + links */}
       <div className='grid gap-6 sm:grid-cols-2'>
         <section className='rounded-xl border border-border/70 bg-card p-5'>
@@ -217,6 +229,20 @@ export function ProjectDetail({
           )}
         </section>
       </div>
+
+      {/* Case study note */}
+      {localized.noteBody && (
+        <section className='space-y-3'>
+          {localized.noteLabel && (
+            <h2 className='text-sm font-semibold uppercase tracking-wide text-muted-foreground'>
+              {localized.noteLabel}
+            </h2>
+          )}
+          <p className='max-w-3xl whitespace-pre-line text-base leading-relaxed text-muted-foreground'>
+            {localized.noteBody}
+          </p>
+        </section>
+      )}
 
       {/* Gallery */}
       {gallery.length > 0 && (
