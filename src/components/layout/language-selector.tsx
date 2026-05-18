@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import { GlobeIcon, CheckIcon } from 'lucide-react';
 
 export default function LanguageSelector() {
@@ -18,7 +18,7 @@ export default function LanguageSelector() {
   const pathname = usePathname();
   const currentLocale = useLocale();
 
-  const switchLocale = (locale: string) => {
+  const switchLocale = (locale: Locale) => {
     if (locale === currentLocale) return;
 
     // Clean locale prefix manually (just for ID adjustment)
