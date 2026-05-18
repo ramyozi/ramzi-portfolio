@@ -194,7 +194,7 @@ export function ProjectDetail({
               ))}
             </div>
           ) : (
-            <p className='text-sm text-muted-foreground'>—</p>
+            <p className='text-sm text-muted-foreground'>-</p>
           )}
         </section>
 
