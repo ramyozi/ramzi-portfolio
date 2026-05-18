@@ -61,10 +61,7 @@ export function AboutMe() {
   ];
 
   return (
-    <section
-      id='about'
-      className='flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-8'
-    >
+    <div className='flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-8'>
       {/* Left column - About me text */}
       <motion.div
         ref={textRef}
@@ -204,6 +201,6 @@ export function AboutMe() {
           </CardContent>
         </Card>
       </motion.div>
-    </section>
+    </div>
   );
 }
