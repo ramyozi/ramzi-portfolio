@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useActiveSection } from '@/hooks/use-active-section';
 import { useTranslations } from 'next-intl';
 
@@ -18,6 +18,7 @@ export default function SectionWrapper({
   const t = useTranslations();
   const ref = useRef<HTMLElement | null>(null);
   const { setId } = useActiveSection();
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const el = ref.current;
@@ -62,15 +63,18 @@ export default function SectionWrapper({
       id={id}
       ref={ref}
       className={className + ' scroll-mt-24'}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.3 }} // 👈 key part
-      transition={{ duration: 0.6 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className='mx-auto max-w-7xl px-6'>
-        <h2 className='mb-6 text-center text-3xl font-extrabold md:text-4xl'>
-          {t(titleKey)}
-        </h2>
+        <div className='mb-10 flex flex-col items-center gap-3 text-center'>
+          <h2 className='text-3xl font-bold tracking-tight md:text-4xl'>
+            {t(titleKey)}
+          </h2>
+          <span className='h-1 w-10 rounded-full bg-brand/70' />
+        </div>
         <div>{children}</div>
       </div>
     </motion.section>
