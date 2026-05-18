@@ -9,6 +9,8 @@ import './globals.css';
 import { Toaster } from 'sonner';
 import { Footer } from '@/components/layout/footer';
 import { ActiveSectionProvider } from '@/hooks/use-active-section';
+import { ScrollProgress } from '@/components/layout/scroll-progress';
+import { BackToTop } from '@/components/layout/back-to-top';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { getBaseUrl, ogLocale, seoContent, siteName } from '@/lib/seo';
@@ -125,6 +127,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             disableTransitionOnChange
           >
             <ActiveSectionProvider>
+              <ScrollProgress />
               <Header
                 logoSrc={'/logo.svg'}
                 logoAlt={'Ramzi Benmansour'}
@@ -133,6 +136,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               <div className='flex min-h-screen flex-col'>{children}</div>
               <Toaster richColors position='top-center' />
               <Footer />
+              <BackToTop />
             </ActiveSectionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
