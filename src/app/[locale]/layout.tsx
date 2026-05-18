@@ -9,6 +9,13 @@ import './globals.css';
 import { Toaster } from 'sonner';
 import { Footer } from '@/components/layout/footer';
 import { ActiveSectionProvider } from '@/hooks/use-active-section';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 type Params = Promise<{ locale: string }>;
 
@@ -43,8 +50,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={direction}>
-      <body>
+    <html lang={locale} dir={direction} className={inter.variable}>
+      <body className='font-sans antialiased'>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProvider
             attribute='class'
