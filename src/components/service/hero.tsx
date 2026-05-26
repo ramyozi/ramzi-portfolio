@@ -31,7 +31,7 @@ export function Hero({
   return (
     <section
       id='hero'
-      className='relative flex min-h-[calc(100svh-var(--header-h,4rem))] flex-col items-center justify-center overflow-hidden px-4 py-24 sm:py-32'
+      className='relative flex min-h-[calc(100svh-var(--header-h,4rem))] flex-col items-center justify-center overflow-hidden px-4 py-16 sm:py-24 md:py-32'
     >
       {/* Ambient background */}
       <div className='pointer-events-none absolute inset-0 -z-10'>
