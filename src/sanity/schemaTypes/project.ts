@@ -149,15 +149,28 @@ export const project = defineType({
     }),
 
     defineField({
+      name: 'featured',
+      title: 'Featured rank',
+      type: 'number',
+      description:
+        'Optional pinning rank. Lower numbers come first (1 = top of the list). Leave empty for default chronological ordering.',
+      validation: (Rule) => Rule.min(1).integer(),
+    }),
+
+    defineField({
       name: 'image',
       title: 'Main Image',
       type: 'image',
+      description:
+        'Hero visual displayed on the project card and on top of the detail page. Prefer a wide screenshot or banner — the logo lives in the gallery.',
       options: { hotspot: true },
     }),
     defineField({
       name: 'gallery',
       title: 'Gallery',
       type: 'array',
+      description:
+        'Add the project logo as the first image, then screenshots in narrative order. The first item is rendered with extra padding so logos breathe.',
       of: [{ type: 'image' }],
     }),
 
