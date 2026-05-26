@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { Locale } from '@/i18n/routing';
@@ -15,7 +15,6 @@ import LanguageSelector from '@/components/layout/language-selector';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
@@ -34,6 +33,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
   const pathname = usePathname();
   const { id: activeId } = useActiveSection();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pendingTargetRef = useRef<string | null>(null);
 
   const items = [
     { id: 'about', label: t('common.header.about') },
@@ -47,7 +47,7 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
 
   const isHome = !pathname.startsWith(`/project`);
 
-  const goToSection = (id: string) => {
+  const scrollToId = (id: string) => {
     if (isHome) {
       const el = document.getElementById(id);
 
@@ -62,10 +62,31 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
     }
   };
 
+  // Desktop nav: scroll right away.
   const handleNavClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
-    goToSection(id);
+    scrollToId(id);
   };
+
+  // Mobile nav: store the target, close the drawer, then scroll once the
+  // drawer is fully closed (vaul releases the body scroll lock on close).
+  const handleMobileNavClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    pendingTargetRef.current = id;
+    setMobileOpen(false);
+  };
+
+  useEffect(() => {
+    if (mobileOpen) return;
+    const id = pendingTargetRef.current;
+
+    if (!id) return;
+    pendingTargetRef.current = null;
+    // vaul close animation lands within ~250ms; give it a small margin so the
+    // body scroll lock is fully released before we trigger smooth scroll.
+    const timer = window.setTimeout(() => scrollToId(id), 320);
+    return () => window.clearTimeout(timer);
+  }, [mobileOpen]);
 
   return (
     <header className='sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md transition-all'>
@@ -136,23 +157,22 @@ export function Header({ logoSrc, logoAlt = 'Logo', locale }: HeaderProps) {
                   const isActive = activeId === item.id;
 
                   return (
-                    <DrawerClose asChild key={item.id}>
-                      <Link
-                        href={`/${locale}#${item.id}`}
-                        onClick={(e) => handleNavClick(e, item.id)}
-                        className={clsx(
-                          'flex items-center justify-between rounded-lg px-4 py-3.5 text-base font-medium transition-colors',
-                          isActive
-                            ? 'bg-brand/10 text-brand'
-                            : 'text-foreground/80 hover:bg-accent hover:text-foreground'
-                        )}
-                      >
-                        {item.label}
-                        {isActive && (
-                          <span className='size-2 rounded-full bg-brand' />
-                        )}
-                      </Link>
-                    </DrawerClose>
+                    <Link
+                      key={item.id}
+                      href={`/${locale}#${item.id}`}
+                      onClick={(e) => handleMobileNavClick(e, item.id)}
+                      className={clsx(
+                        'flex items-center justify-between rounded-lg px-4 py-3.5 text-base font-medium transition-colors',
+                        isActive
+                          ? 'bg-brand/10 text-brand'
+                          : 'text-foreground/80 hover:bg-accent hover:text-foreground'
+                      )}
+                    >
+                      {item.label}
+                      {isActive && (
+                        <span className='size-2 rounded-full bg-brand' />
+                      )}
+                    </Link>
                   );
                 })}
               </nav>
