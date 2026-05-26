@@ -244,28 +244,36 @@ export function ProjectDetail({
         </section>
       )}
 
-      {/* Gallery */}
+      {/* Gallery — first item is the project logo (object-contain), rest are screenshots */}
       {gallery.length > 0 && (
         <section className='space-y-4'>
           <h2 className='text-sm font-semibold uppercase tracking-wide text-muted-foreground'>
             {t('common.projects.gallery')}
           </h2>
           <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-            {gallery.map((src, i) => (
-              <button
-                key={i}
-                onClick={() => setLightbox(i)}
-                className='group relative aspect-[4/3] overflow-hidden rounded-xl border border-border/60 bg-muted transition-all hover:border-brand/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
-              >
-                <Image
-                  src={src}
-                  alt={`${localized.title} — ${i + 1}`}
-                  fill
-                  sizes='(max-width: 640px) 100vw, 33vw'
-                  className='object-cover transition-transform duration-500 group-hover:scale-105'
-                />
-              </button>
-            ))}
+            {gallery.map((src, i) => {
+              const isLogo = i === 0;
+
+              return (
+                <button
+                  key={i}
+                  onClick={() => setLightbox(i)}
+                  className='group relative aspect-[4/3] overflow-hidden rounded-xl border border-border/60 bg-muted transition-all hover:border-brand/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+                >
+                  <Image
+                    src={src}
+                    alt={`${localized.title} — ${i + 1}`}
+                    fill
+                    sizes='(max-width: 640px) 100vw, 33vw'
+                    className={
+                      isLogo
+                        ? 'object-contain p-6 transition-transform duration-500 group-hover:scale-[1.03]'
+                        : 'object-cover transition-transform duration-500 group-hover:scale-105'
+                    }
+                  />
+                </button>
+              );
+            })}
           </div>
         </section>
       )}
@@ -370,7 +378,11 @@ export function ProjectDetail({
                 alt={`${localized.title} — ${lightbox + 1}`}
                 width={1600}
                 height={1200}
-                className='max-h-[88vh] w-auto rounded-lg object-contain'
+                className={
+                  lightbox === 0
+                    ? 'max-h-[88vh] w-auto rounded-lg object-contain p-6'
+                    : 'max-h-[88vh] w-auto rounded-lg object-contain'
+                }
               />
             </motion.div>
           </motion.div>
