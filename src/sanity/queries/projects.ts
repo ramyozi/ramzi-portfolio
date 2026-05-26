@@ -5,6 +5,7 @@ const projectProjection = `
   status,
   dateRange,
   date,
+  featured,
   image { "url": asset->url },
   gallery[] { "url": asset->url },
   technologies[]->{
@@ -17,8 +18,10 @@ const projectProjection = `
   links
 `;
 
+// Featured projects pinned first (ascending rank, nulls last),
+// then everything else newest-first by project date.
 export const allProjectsQuery = `
-*[_type == "project"]{${projectProjection}} | order(coalesce(date, _createdAt) desc)
+*[_type == "project"]{${projectProjection}} | order(coalesce(featured, 9999) asc, coalesce(date, _createdAt) desc)
 `;
 
 export const projectByIdQuery = `
