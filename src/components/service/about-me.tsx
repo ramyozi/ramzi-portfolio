@@ -55,7 +55,7 @@ export function AboutMe({
         ref={textRef}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 'some' }}
         transition={{ duration: 0.6 }}
         className='h-full'
       >
@@ -78,7 +78,7 @@ export function AboutMe({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 'some' }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className='flex h-full flex-col'
         style={
