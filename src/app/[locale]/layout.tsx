@@ -13,6 +13,8 @@ import { ScrollProgress } from '@/components/layout/scroll-progress';
 import { BackToTop } from '@/components/layout/back-to-top';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getBaseUrl, ogLocale, seoContent, siteName } from '@/lib/seo';
 import { getMessages } from '@/i18n/messages';
 
@@ -139,6 +141,8 @@ export default async function LocaleLayout({ children, params }: Props) {
             </ActiveSectionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

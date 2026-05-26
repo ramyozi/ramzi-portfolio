@@ -25,6 +25,7 @@ export interface Project {
   status?: ProjectStatus;
   dateRange?: string;
   date?: string;
+  featured?: number;
   image?: { url: string };
   gallery?: { url: string }[];
   technologies?: Skill[];
