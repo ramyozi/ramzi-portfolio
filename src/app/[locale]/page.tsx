@@ -70,7 +70,7 @@ export default async function HomePage({ params }: { params: Params }) {
     ]);
 
   return (
-    <main className='space-y-32'>
+    <main className='space-y-20 sm:space-y-24 md:space-y-32'>
       <ScrollRestoration />
 
       <Hero hero={hero} status={status} />
