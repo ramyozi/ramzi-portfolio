@@ -50,5 +50,6 @@ next-env.d.ts
 
 /.codebuddy
 
-# claude code (local tooling & runtime worktrees)
-/.claude
+# local tooling and runtime worktrees
+/.local/
+/.tools/
