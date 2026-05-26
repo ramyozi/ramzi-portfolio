@@ -48,7 +48,7 @@ export function Experience({
               key={exp._id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 'some' }}
               transition={{ delay: Math.min(idx * 0.08, 0.32), duration: 0.5 }}
             >
               <Card className='group h-full rounded-2xl border border-border/60 bg-card/70 shadow-lg backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl'>

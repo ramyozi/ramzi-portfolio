@@ -43,12 +43,12 @@ function ProjectCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+      initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 'some' }}
       transition={{
-        duration: 0.5,
-        delay: Math.min(index * 0.07, 0.28),
+        duration: 0.45,
+        delay: Math.min(index * 0.06, 0.24),
         ease: [0.22, 1, 0.36, 1],
       }}
     >
