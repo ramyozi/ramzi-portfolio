@@ -4,7 +4,14 @@ import { JSX } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
-import { ArrowRight, CheckCircle, Clock, PauseCircle, Rocket } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  PauseCircle,
+  Rocket,
+  Sparkles,
+} from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import TechIcon from '@/components/service/common/tech-icon';
@@ -47,7 +54,7 @@ function ProjectCard({
     >
       <Link
         href={`/project/${project._id}`}
-        className='group flex h-full flex-col overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+        className='group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
       >
         <div className='relative aspect-[16/10] overflow-hidden bg-muted'>
           {project.image?.url ? (
@@ -68,6 +75,15 @@ function ProjectCard({
             <span className='absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/85 px-2.5 py-1 text-xs font-medium backdrop-blur-sm'>
               {statusIcon[project.status]}
               {t(`common.projects.statusLabels.${project.status}`)}
+            </span>
+          )}
+
+          {typeof project.featured === 'number' && (
+            <span
+              className='absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-brand/40 bg-brand/15 px-2.5 py-1 text-xs font-semibold text-brand backdrop-blur-sm'
+              aria-label='Featured project'
+            >
+              <Sparkles className='size-3.5' />
             </span>
           )}
         </div>
